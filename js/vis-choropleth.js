@@ -17,13 +17,14 @@ var colorScale = d3.scaleLinear().range(["#f2c9f1", "#b203ae"])//.interpolate(d3
 var mapJson;
 var stateNames;
 
+function findState(x) {
+    return x.id == stateID;
+}
+
 var tool_tip = d3.tip()
     .attr("class", "d3-tip")
     .html(function(d) {
         var stateID = (d.id / 100 | 0);
-        function findState(x) {
-            return x.id == stateID;
-        }
         var stateInfo = stateNames.filter(findState);
         var stateAbbr = stateInfo[0].code;
         var stateName = stateInfo[0].name;
@@ -38,22 +39,33 @@ var tool_tip = d3.tip()
     });
 d3.select('svg').call(tool_tip);
 
-
+var recentData;
 // Use the Queue.js library to read two files
 queue()
     .defer(d3.json, "data/districts.json")
     .defer(d3.csv, "data/us-state-names.csv")
-    .await(function(error, mapTopJson, stateNamesCsv){
+    .defer(d3.csv, "data/2014.csv")
+    .await(function(error, mapTopJson, stateNamesCsv, placeholderData){
         // Process Data
         console.log(mapTopJson)
         console.log(stateNamesCsv)
+        console.log(placeholderData)
         mapJson = mapTopJson;
         stateNames = stateNamesCsv;
+        recentData = placeholderData;
 
         // Update choropleth: add legend
         updateChoropleth();
     });
 
+function findDistrict(d) {
+    return d["State"] == stateName && d["CD#"] == districtID;
+}
+
+var stateID;
+var stateInfo;
+var stateName;
+var districtID;
 
 function updateChoropleth(error) {
     var districts = topojson.feature(mapJson, mapJson.objects.districts).features
@@ -65,19 +77,56 @@ function updateChoropleth(error) {
         .data(districts)
         .enter().append("path")
         .attr("d", path)
-        .attr("fill", "pink")
-        // .attr("fill", function(d) {
-        //     if(d.properties.adm0_a3 in malariaDataByCountryId){
-        //         var countryId = d.properties.adm0_a3;
-        //         return color(countryId)
-        //     }
-        //     return "#e3e7ed"
-        // })
+        //.attr("fill", "pink")
+        .attr("fill", function(d) {
+            stateID = (d.id / 100 | 0);
+            stateInfo = stateNames.filter(findState);
+            stateName = stateInfo[0].name;
+            districtID = (d.id % 100);
+            var electionResult = recentData.filter(findDistrict);
+            if(stateID <= 56 && stateID != 11){
+                if(electionResult[0]["Party"].includes("R")){
+                    return "#cd0000"
+                }
+                else{
+                    return "#0000ff"
+                }
+            }
+        })
         .attr("transform", "translate(0,50) scale(1.5)")
         .on('mouseover', tool_tip.show)
         .on('mouseout', tool_tip.hide);
 
-    //add legend
+    addLegend()
     //africa.exit().remove()
 }
 
+var colors = ["red","blue"]
+var party = [];
+party.push("Republican")
+party.push("Democrat")
+
+
+function addLegend() {
+    var legend = choroplethSvg.selectAll('.legend')
+        .data(party)
+        .enter()
+        .append('g')
+        .attr('class', 'legend')
+        .attr('transform', function(d, i) {
+            var y = 15*i+250;
+            return 'translate(60,' + y + ')';
+        });
+
+    legend.append('rect')
+        .attr('width', 12)
+        .attr('height', 12)
+        .style('fill', function(d, i) {
+            return colors[i];
+        });
+    legend.append('text')
+        .attr("class", "legend-names")
+        .attr('x', 20)
+        .attr('y', 10)
+        .text(function(d,i) {return d; });
+}
