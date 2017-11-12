@@ -7,36 +7,46 @@ var chartsSvg = d3.select("#districtCharts").append("svg")
     .attr("width", width)
     .attr("height", height);
 
+console.log("hi")
+
 queue()
-    .defer(d3.csv, "data.csv")
-    .await(createCharts);
+    .defer(d3.csv, "data/new_allCongressDataPublish.csv")
+    .await(function(error, congressDataCsv){
+        // Process Data
+
+        console.log(congressDataCsv)
+        console.log(congressDataCsv.columns)
+        congressData = congressDataCsv
+
+        createLineCharts();
+    });
 
 // Demographic charts: Race, Income, Education levels. All barcharts
 function createLineCharts(error, data){
-    console.log(data);
+    //console.log(data);
 
-    var raceChart = choroplethSvg.append("g")
-        .attr("class", "race")
-
-    raceChart.selectAll("rect")
-        .data(data)
-        .enter().append("rect")
-        .attr("fill", "grey")
-        .attr("width", function(d) {
-            return d.height_px;
-        })
-        .attr("height", 40)
-        .attr("x", 210)
-        .attr("y", function(d, index) {
-            return (index * 50);
-        })
-        .on("click", function(d) {
-            d3.selectAll("rect").attr("fill", "grey");
-            d3.select(this).attr("fill", "lightblue");
-            console.log("click");
-            console.log(d);
-            updateInfo(d)
-        });
+    // var raceChart = choroplethSvg.append("g")
+    //     .attr("class", "race")
+    //
+    // raceChart.selectAll("rect")
+    //     .data(data)
+    //     .enter().append("rect")
+    //     .attr("fill", "grey")
+    //     .attr("width", function(d) {
+    //         return d.height_px;
+    //     })
+    //     .attr("height", 40)
+    //     .attr("x", 210)
+    //     .attr("y", function(d, index) {
+    //         return (index * 50);
+    //     })
+    //     .on("click", function(d) {
+    //         d3.selectAll("rect").attr("fill", "grey");
+    //         d3.select(this).attr("fill", "lightblue");
+    //         console.log("click");
+    //         console.log(d);
+    //         updateInfo(d)
+    //     });
 
 }
 
