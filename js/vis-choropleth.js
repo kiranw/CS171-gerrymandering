@@ -57,6 +57,9 @@ queue()
     });
 
 var curYear = 2014;
+var currentYear = document.getElementById("current-year");
+currentYear.innerHTML = curYear;
+
 function findDistrict(d) {
     var dInfo = d.stateDist.split(".");
     return d.state == stateCode && dInfo[1] == districtID && d.Year == curYear;
@@ -105,6 +108,7 @@ function updateChoropleth(error) {
             districtID = (d.id % 100);
             var currentDistrict = document.getElementById("current-district");
             currentDistrict.innerHTML = stateCode + districtID;
+            createLineCharts()
         });
 
     addLegend()
