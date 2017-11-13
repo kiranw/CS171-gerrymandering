@@ -12,8 +12,6 @@ var projection = d3.geoMercator();
 var path = d3.geoPath()
     .projection(projection);
 
-var colorScale = d3.scaleLinear().range(["#f2c9f1", "#b203ae"])//.interpolate(d3.interpolateLab);
-
 var mapJson;
 var stateNames;
 
@@ -39,32 +37,35 @@ var tool_tip = d3.tip()
     });
 d3.select('svg').call(tool_tip);
 
-var recentData;
+var congressData;
 // Use the Queue.js library to read two files
 queue()
     .defer(d3.json, "data/districts.json")
     .defer(d3.csv, "data/us-state-names.csv")
-    .defer(d3.csv, "data/2014.csv")
-    .await(function(error, mapTopJson, stateNamesCsv, placeholderData){
+    .defer(d3.csv, "data/new_allCongressDataPublish.csv")
+    .await(function(error, mapTopJson, stateNamesCsv, allCongressData){
         // Process Data
         console.log(mapTopJson)
         console.log(stateNamesCsv)
-        console.log(placeholderData)
+        console.log(allCongressData)
         mapJson = mapTopJson;
         stateNames = stateNamesCsv;
-        recentData = placeholderData;
+        congressData = allCongressData;
 
         // Update choropleth: add legend
         updateChoropleth();
     });
 
+var curYear = 2014;
 function findDistrict(d) {
-    return d["State"] == stateName && d["CD#"] == districtID;
+    var dInfo = d.stateDist.split(".");
+    return d.state == stateCode && dInfo[1] == districtID && d.Year == curYear;
 }
 
 var stateID;
 var stateInfo;
 var stateName;
+var stateCode;
 var districtID;
 
 function updateChoropleth(error) {
@@ -77,15 +78,15 @@ function updateChoropleth(error) {
         .data(districts)
         .enter().append("path")
         .attr("d", path)
-        //.attr("fill", "pink")
         .attr("fill", function(d) {
             stateID = (d.id / 100 | 0);
             stateInfo = stateNames.filter(findState);
             stateName = stateInfo[0].name;
+            stateCode = stateInfo[0].code;
             districtID = (d.id % 100);
-            var electionResult = recentData.filter(findDistrict);
+            var electionResult = congressData.filter(findDistrict);
             if(stateID <= 56 && stateID != 11){
-                if(electionResult[0]["Party"].includes("R")){
+                if(electionResult[0].party.includes("R")){
                     return "#cd0000"
                 }
                 else{
@@ -95,7 +96,16 @@ function updateChoropleth(error) {
         })
         .attr("transform", "translate(0,50) scale(1.5)")
         .on('mouseover', tool_tip.show)
-        .on('mouseout', tool_tip.hide);
+        .on('mouseout', tool_tip.hide)
+        .on("click", function(d) {
+            stateID = (d.id / 100 | 0);
+            stateInfo = stateNames.filter(findState);
+            stateName = stateInfo[0].name;
+            stateCode = stateInfo[0].code;
+            districtID = (d.id % 100);
+            var currentDistrict = document.getElementById("current-district");
+            currentDistrict.innerHTML = stateCode + districtID;
+        });
 
     addLegend()
     //africa.exit().remove()

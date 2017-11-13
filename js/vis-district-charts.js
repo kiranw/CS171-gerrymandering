@@ -21,7 +21,7 @@ queue()
         createLineCharts();
     });
 
-// Demographic charts: Race, Income, Education levels. All barcharts
+// Add demographic charts for the selected district
 function createLineCharts(error, data){
     //console.log(data);
 
