@@ -1,7 +1,7 @@
 /* YOUR CSS STYLES */
 body {
     margin: 2% 5%;
-    font-size: 1em;
+    font-size: 2em;
 }
 
 /*********************/
@@ -34,4 +34,14 @@ body {
     content: "\25BC";
     position: absolute;
     text-align: center;
+}
+
+.section {
+    /*margin-top: 5vh;*/
+    margin-bottom: 15vh;
+}
+
+#cartoon {
+    width: 50%;
+    height: auto;
 }
