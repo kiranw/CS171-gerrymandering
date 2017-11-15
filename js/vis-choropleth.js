@@ -17,6 +17,7 @@ var path = d3.geoPath()
 
 var mapJson;
 var stateNames;
+var stateID;
 
 function findState(x) {
     return x.id == stateID;
@@ -25,7 +26,7 @@ function findState(x) {
 var tool_tip = d3.tip()
     .attr("class", "d3-tip")
     .html(function(d) {
-        var stateID = (d.id / 100 | 0);
+        stateID = (d.id / 100 | 0);
         var stateInfo = stateNames.filter(findState);
         var stateAbbr = stateInfo[0].code;
         var stateName = stateInfo[0].name;
