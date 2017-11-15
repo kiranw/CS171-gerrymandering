@@ -66,7 +66,7 @@ queue()
 
 var curYear = 2014;
 var currentYear = document.getElementById("current-year");
-currentYear.innerHTML = curYear;
+currentYear.innerHTML += curYear;
 
 function findDistrict(d) {
     var dInfo = d.stateDist.split(".");
@@ -115,7 +115,7 @@ function updateChoropleth(error) {
             stateCode = stateInfo[0].code;
             districtID = (d.id % 100);
             var currentDistrict = document.getElementById("current-district");
-            currentDistrict.innerHTML = stateCode + districtID;
+            currentDistrict.innerHTML = stateName +" " + districtID;
             createLineCharts()
         });
 
