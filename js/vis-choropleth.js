@@ -89,6 +89,11 @@ function updateChoropleth(error) {
         .data(districts)
         .enter().append("path")
         .attr("d", path)
+        .attr("id", function(d){ return "s"+d.id; })
+        .attr("value", function(d){
+            stateID = (d.id / 100 | 0);
+            stateInfo = stateNames.filter(findState);
+            return stateInfo[0].name; })
         .attr("fill", function(d) {
             stateID = (d.id / 100 | 0);
             stateInfo = stateNames.filter(findState);
@@ -106,8 +111,8 @@ function updateChoropleth(error) {
             }
         })
         .attr("transform", "translate(0,50) scale(1.5)")
-        .on('mouseover', tool_tip.show)
-        .on('mouseout', tool_tip.hide)
+        .on('mouseenter', stateMouseOver)
+        .on('mouseout', stateMouseOut)
         .on("click", function(d) {
             stateID = (d.id / 100 | 0);
             stateInfo = stateNames.filter(findState);
@@ -151,4 +156,19 @@ function addLegend() {
         .attr('x', 20)
         .attr('y', 10)
         .text(function(d,i) {return d; });
+}
+
+function stateMouseOver(d) {
+    // console.log(d);
+    tool_tip.show(d);
+    d3.select("#s" + d.id)
+        .attr("stroke","white")
+        .attr("stroke-width",1);
+}
+
+function stateMouseOut(d) {
+    tool_tip.hide(d);
+    d3.select("#s" + d.id)
+        .attr("stroke","white")
+        .attr("stroke-width",0);
 }
