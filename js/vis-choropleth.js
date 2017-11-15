@@ -31,12 +31,16 @@ var tool_tip = d3.tip()
         var stateAbbr = stateInfo[0].code;
         var stateName = stateInfo[0].name;
         var districtID = (d.id % 100);
-        var totalInfo = "State: " + stateName + " District: " + districtID
-        totalInfo += "<br> Efficiency Gap: </br>"
-        totalInfo += "Compactness Ratio: "
-        totalInfo += "<br> Electoral Outcome: </br> "
-        totalInfo += "Congressional Seats: "
-        totalInfo += "<br> How fair was this election? </br> "
+        var efficiencyGap = -1;
+        var compactnessRatio = -1;
+        var electoralOutcome = -1;
+        var congressionalSeats = -1;
+        var totalInfo = "<div class='tooltip-label'><span class='tooltip-title'>State:</span> " + stateName + "</div>";
+        totalInfo += "<div class='tooltip-label'><span class='tooltip-title'>District:</span> " + districtID + "</div>";
+        totalInfo += "<div class='tooltip-label'><span class='tooltip-title'>Efficiency Gap:</span> " + efficiencyGap + "</div>";
+        totalInfo += "<div class='tooltip-label'><span class='tooltip-title'>Compactness Ratio:</span> " + compactnessRatio + "</div>";
+        totalInfo += "<div class='tooltip-label'><span class='tooltip-title'>Electoral Outcome:</span> " + electoralOutcome + "</div>";
+        totalInfo += "<div class='tooltip-label'><span class='tooltip-title'>Congressional Seats:</span> " + congressionalSeats + "</div>";
         return totalInfo
     });
 d3.select('svg').call(tool_tip);
@@ -49,9 +53,9 @@ queue()
     .defer(d3.csv, "data/new_allCongressDataPublish.csv")
     .await(function(error, mapTopJson, stateNamesCsv, allCongressData){
         // Process Data
-        console.log(mapTopJson)
-        console.log(stateNamesCsv)
-        console.log(allCongressData)
+        // console.log(mapTopJson);
+        // console.log(stateNamesCsv);
+        // console.log(allCongressData);
         mapJson = mapTopJson;
         stateNames = stateNamesCsv;
         congressData = allCongressData;
