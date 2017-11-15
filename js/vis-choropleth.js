@@ -1,6 +1,6 @@
 // --> CREATE SVG DRAWING AREA
 var margin = { top: 30, right: 40, bottom: 60, left: 60 };
-var width = 500,
+var width = 800,
     height = 450;
 
 var choroplethSvg = d3.select("#choropleth").append("svg")
@@ -8,7 +8,10 @@ var choroplethSvg = d3.select("#choropleth").append("svg")
     .attr("height", height);
 
 
-var projection = d3.geoMercator();
+var projection = d3.geoAlbersUsa()
+    .scale(600)
+    .translate([300,height/4]);
+
 var path = d3.geoPath()
     .projection(projection);
 
