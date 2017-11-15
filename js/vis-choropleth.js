@@ -8,12 +8,14 @@ var choroplethSvg = d3.select("#choropleth").append("svg")
     .attr("height", height);
 
 
-var projection = d3.geoMercator();
+var projection = d3.geoMercator()
+    //.scale([1000]);
 var path = d3.geoPath()
     .projection(projection);
 
 var mapJson;
 var stateNames;
+var stateID;
 
 function findState(x) {
     return x.id == stateID;
@@ -22,7 +24,7 @@ function findState(x) {
 var tool_tip = d3.tip()
     .attr("class", "d3-tip")
     .html(function(d) {
-        var stateID = (d.id / 100 | 0);
+        stateID = (d.id / 100 | 0);
         var stateInfo = stateNames.filter(findState);
         var stateAbbr = stateInfo[0].code;
         var stateName = stateInfo[0].name;
