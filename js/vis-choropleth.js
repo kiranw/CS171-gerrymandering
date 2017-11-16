@@ -163,12 +163,15 @@ function stateMouseOver(d) {
     tool_tip.show(d);
     d3.select("#s" + d.id)
         .attr("stroke","white")
-        .attr("stroke-width",1);
+        .attr("stroke-width",1)
+        .attr("stroke-opacity",0.6)
+        .attr("opacity",0.7);
 }
 
 function stateMouseOut(d) {
     tool_tip.hide(d);
     d3.select("#s" + d.id)
         .attr("stroke","white")
-        .attr("stroke-width",0);
+        .attr("stroke-width",0)
+        .attr("opacity", 1);
 }
