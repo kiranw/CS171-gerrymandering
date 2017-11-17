@@ -1,9 +1,12 @@
 /* YOUR CSS STYLES */
 body {
-    margin: 2% 5%;
+    margin: 0;
     font-size: 16px;
     line-height: 1.5em;
     font-family: 'Lora', Georgia, serif;
+}
+h2 {
+    margin: 1em auto 1em;
 }
 
 /*********************/
@@ -38,14 +41,34 @@ body {
     text-align: center;
 }
 
+hr {
+    margin: 4em auto 4em;
+}
 .section {
     /*margin-top: 5vh;*/
-    margin-bottom: 15vh;
+    margin-bottom: 5vh;
 }
 
 #cartoon {
     width: 50%;
     height: auto;
+}
+
+
+/* Fade in on scroll */
+#intro p {
+    font-size: 24px;
+    line-height: 1.5em;
+}
+#intro div {
+    height:100vh;
+    background-color: #ccc;
+    margin: 0;
+    padding: 25% 10%;
+    text-align: center;
+}
+.hideme {
+    opacity:0;
 }
 
 .tooltip-label {
@@ -57,10 +80,11 @@ body {
     font-weight: 600;
 }
 
+/* ============ TIMELINE SECTION =================*/
+
 #tl-info {
     background-color: #d9d9d9;
-    height: 100%;
-    min-height: 600px;
+    height: 600px;
     padding: 15px 30px;
     border-radius: 10px;
     padding-bottom: 30px;
@@ -75,6 +99,8 @@ body {
 
 #tl-text {
     margin-bottom: 20px;
+    height: 400px;
+    overflow-y: scroll;
 }
 
 #tl-src {

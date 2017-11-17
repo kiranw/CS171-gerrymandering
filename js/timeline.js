@@ -1,6 +1,6 @@
 // set the dimensions and margins of the graph
 var tl_margin = {top: 10, right: 20, bottom: 10, left: 50},
-    tl_width = 900 - tl_margin.left - tl_margin.right,
+    tl_width = 800 - tl_margin.left - tl_margin.right,
     tl_height = 80 - tl_margin.top - tl_margin.bottom;
 
 var tl_svg_event = d3.select("#tl-svg-event").append("svg")
@@ -93,6 +93,8 @@ function tlInitVis(error, events, caseMetadata, caseLinks, policies) {
             .attr("width", rectWidth)
             .attr("fill", function(d){ return colorMappings[key]; })
             .attr("opacity", 0.6)
+            .attr("stroke", "#d9d9d9")
+            .attr("stroke-width", 1)
             .on('mouseenter', tlMouseEnter)
             .on('mouseout', tlMouseOut)
             .on("click", tlClick)

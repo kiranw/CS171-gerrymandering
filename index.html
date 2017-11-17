@@ -14,49 +14,79 @@
 </head>
 <body>
 
-<div class="container">
-	<div id="intro" class="section">
+<div id="intro">
+	<div>
 		<h1>The United States of Gerrymandering</h1>
 		<h4>A Primer on Gerrymandering, Fair Districting, and its Impacts on Representation</h4>
-		<hr>
 	</div>
-	<div id="goals" class="section">
-		<h2>What is redistricting, what is gerrymandering and what are their goals?</h2>
+	<div class="hideme">
+		<h2>A Tradition as Old as the Republic</h2>
+		<p>Gerrymandering, or the practice of manipulating electoral district boundaries for political gain, is a practice as old as America itself.</p>
 
-		Partisan fairness (reflect the population)<br>
-		Align communities of interest<br>
-		Fair representation (minority-majority) - “one person one vote” (Baker v Carr)<br>
-		Fair-fight districts (real electoral competition)<br>
-		Compactness<br>
+		<p>Where the lines are drawn affects both state and federal elections. For Congressional elections, states are divided into districts based on how many representatives they send to the House of Representatives.</p>
+	</div>
+
+	<div class="hideme">
+		<p>In these cases, partisan gerrymandering is often used to maximize the wins for their own party.</p>
+
+		<p>Many of the resulting districts end up as <a href="#">strange, winding shapes</a> that intentionally include or exclude populations for political gain.</p>
+
 		<img id="cartoon" src="img/gerrymander.png">
 	</div>
-	<div id="requirements" class="section">
-		<h2>Requirements</h2>
-		Fairly uniform population<br>
-		Continuous and compact geography<br>
+
+	<div class="hideme">
+		<p>As a result, even though Party A may win the popular vote, Party B may end up sending more representatives to congress.</p>
+
+		<p>Whoever decides the lines decide whose vote is reflected. This can skew statewide representation, dilute minority votes, split communities.</p>
 	</div>
-	<div id="goals" class="section">
-		<h2>Goals of Gerrymandering</h2>
-		“Cracking” - separating interests into different districts for vote dilution (-)<br>
-		“Packing” - overconcentrating similar interests for vote wastage (-)<br>
-		“Sweetheart gerrymandering” - favor status quo, protecting incumbents (-)<br>
-		Protecting minority interests (+)<br>
+
+	<div class="hideme">
+		<h2>What makes a district?</h2>
+		<p>District lines are redrawn every 10 years to reflect the updated populations taken by the US Census.</p>
+
+		<p>In most states, district lines are drawn by the majority party of the state legislature and approved by governor. Even in states with alternative processes, like Independent Commissions, there are seats specifically reserved for Democratic or Republican appointees, so there are no truly non-partisan redistricting committees.</p>
+
+		<img src="img/district_decider.png" border="0" alt="" />
+
+		<p><em>*8 states have only one allotted Representative, so there is no need to draw districts within the state.</em></p>
 	</div>
-	<div id="existingtests" class="section">
-		<h2>Existing Tests to Determine Fairness</h2>
+
+	<div id="howitworks" class="section">
+		<h2>The Art and Science of Map Manipulation</h2>
+
+		<p>The goal of gerrymandering is to maximize the number of districts that will vote for your party. There are multiple ways to do that, primarily being:</p>
+
+		<ul>
+			<li>“Cracking” - separating interests into different districts for vote dilution</li>
+			<li>“Packing” - over concentrating similar interests for vote wastage</li>
+		</ul>
+
+		<p>Ideally, a map can place all of your opponent’s supporters into a few districts (that will definitely be lost). The rest of your supporters can be spread out evenly amongst the districts so you win a comfortable majority of a district.</p>
+
+		<p>This partisan distribution requires balancing the risk of maintaining a comfortable lead with the need of minimizing vote wastage.</p>
+
+		<img src="img/howitworks.png" border="0" alt="" width="500px">
+
+		<p>Gerrymandering can be done for a variety of reasons, such as bipartisan “sweetheart” gerrymandering to favor the incumbents and the status quo or racial gerrymandering to dilute the voting power of certain demographic groups.</p>
+
+		<p>In some cases, gerrymandering can even be positive, by grouping minority interests together in order to give their community a voice in government. Many states even require districts not separate communities of interest when drawing the lines.</p>
+
+		<p>There is a fine line between packing and cracking where an appropriate amount of community representation falls. The ambiguity of the situation is exacerbated by the lack of standard measurements of fairness.</p>
+	</div>
+	<div id="tests" class="section">
+		<h2>The Quest to Define Fairness</h2>
 		Compactness - ratio of perimeter/area [0:1, 1 is ideal]<br>
 		Efficiency gap - measures both wasted votes and diluted votes<br>
 		Find Wasted Votes: ratio of net wasted votes/total votes cast<br>
 		Find Seat Advantage: compare to how many seats were won<br>
 	</div>
-	<div id="timeline-intro" class="section">
-		<h2>Whats the legal and social context that got us here?</h2>
-		Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
-	</div>
-	</div>
+</div>
+
+<div class="container">
 	<div id="timeline" class="section">
 		<h2>A Brief History of Gerrymandering</h2>
 		<hr>
+		<h2>Tracing the legal and cultural history of gerrymandering</h2>
 		<div class="row">
 			<div id="tl-svg" class="col-md-8">
 				<div id="tl-svg-event"></div>
@@ -69,14 +99,15 @@
 				<div id="tl-src"></div>
 			</div>
 		</div>
-
-		<img src="img/timeline-placeholder2.png" width="100%" />
+		<!--<img src="img/timeline-placeholder2.png" width="100%" />-->
 	</div>
+
 	<div class="map" class="section">
-		<h2>What are the impacts of redistricting?</h2>
-		<h4>Stuff on district level data</h4>
+		<hr />
+		<h2>How gerrymandered is your district?</h2>
+
 		<div class="col-md-8">
-			<h5 id="my-title">Mouse over a district to learn more:</h5>
+			<h5>Mouse over a district to learn more:</h5>
 			<p>
 				Current Year is currently set to 2014 but next step is to implement slider.
 				Filter function will filter based on selected year.
@@ -100,16 +131,18 @@
 	</div>
 
 	<div id="future" class="section">
-		<h2>What about future elections, and the current case?</h2>
-		Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+		<h2>Is there any other way?</h2>
+		<ul>
+			<li>Proportional representation - uniquely solves judicial meddling, natural geographic clustering</li>
+			<li>Ranked choice voting</li>
+			<li>Independent redistricting commissions (Canada shifted to ICs in 1960s - problem is US lets politicians name appointees to district)</li>
+			<li>Election commission</li>
+			<li>Algorithms (equal # of voters, compactness) - but ignores communities of interest</li>
+		</ul>
 	</div>
-	<div id="calltoaction" class="section">
-		<h1>What can you do about it? What are alternatives?</h1>
-		Independent redistricting commission<br>
-		Transparency and Public Participation<br>
-		Crowd-sourced redistricting maps<br>
-		Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
-	</div>
+</div>
+
+
 </body>
 
 	<!-- Load JS libraries -->
@@ -124,6 +157,26 @@
 	<script src="js/d3-tip.js"></script>
 	<script src="js/d3-scale-chromatic.min.js"></script>
 	<script src="js/d3-legend.min.js"></script>
+
+	<script>
+	$(document).ready(function() {
+    
+	    /* Every time the window is scrolled ... */
+	    $(window).scroll( function(){
+	        /* Check the location of each desired element */
+	        $('.hideme').each( function(i){
+	            var bottom_of_object = $(this).offset().top + $(this).outerHeight();
+	            var bottom_of_window = $(window).scrollTop() + $(window).height();
+	            
+	            /* If the object is completely visible in the window, fade it it */
+
+	            if( bottom_of_window > 0.7*bottom_of_object ){
+	                $(this).animate({'opacity':'1'},500);
+	            }
+	        }); 
+	    });
+	});
+	</script>
 
     <!-- Load JS files -->
 	<script src="js/vis-choropleth.js"></script>
