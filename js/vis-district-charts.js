@@ -14,8 +14,8 @@ queue()
     .await(function(error, congressDataCsv){
         // Process Data
 
-        console.log(congressDataCsv)
-        console.log(congressDataCsv.columns)
+        // console.log(congressDataCsv)
+        // console.log(congressDataCsv.columns)
         congressData = congressDataCsv
 
         createLineCharts();
@@ -26,7 +26,7 @@ queue()
 // Add demographic charts for the selected district
 function createLineCharts(error){
     // curYear = document.getElementById("current-year");
-    console.log("Current Year: " + curYear)
+    // console.log("Current Year: " + curYear)
 
     function findDistrict(d) {
         var dInfo = d.stateDist.split(".");
@@ -34,7 +34,7 @@ function createLineCharts(error){
     }
 
     var districtData = congressData.filter(findDistrict);
-    console.log(districtData)
+    // console.log(districtData)
     createRaceChart(districtData)
     createIncomeChart(districtData)
 
@@ -53,7 +53,7 @@ function createRaceChart(districtData){
     raceData.push(prcntHisp)
     raceData.push(prcntWhite)
     // raceData.push(other)
-    console.log(raceData)
+    // console.log(raceData)
     var races = ["Asian", "Black", "Hispanic", "White"]
 
     var raceChart = chartsSvg.append("g")
@@ -64,7 +64,7 @@ function createRaceChart(districtData){
         .enter().append("rect")
         .attr("fill", "grey")
         .attr("width", function(d) {
-            console.log(d)
+            // console.log(d)
             return d
         })
         .attr("height", 20)
@@ -92,7 +92,7 @@ function createRaceChart(districtData){
 }
 
 function createIncomeChart(districtData){
-    console.log("Income")
+    // console.log("Income")
 
     var over25k = parseFloat(districtData[0].over25k).toFixed(2);
     var over50k = parseFloat(districtData[0].over50k).toFixed(2);
@@ -113,7 +113,7 @@ function createIncomeChart(districtData){
     incomeData.push(from75to100)
     incomeData.push(from100to150)
     incomeData.push(from150to200)
-    console.log(incomeData)
+    // console.log(incomeData)
     var incomes = ["under25k", "25to50k", "50to75k", "75to100k","100to150k","150to200k"];
 
     var incomeChart = chartsSvg.append("g")

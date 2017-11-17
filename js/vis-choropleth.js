@@ -1,4 +1,4 @@
-// --> CREATE SVG DRAWING AREA
+// Create SVG Drawing area
 var margin = { top: 30, right: 40, bottom: 60, left: 60 };
 var width = 800,
     height = 450;
@@ -7,7 +7,7 @@ var choroplethSvg = d3.select("#choropleth").append("svg")
     .attr("width", width)
     .attr("height", height);
 
-
+// Initialize map settings
 var projection = d3.geoAlbersUsa()
     .scale(600)
     .translate([300,height/4]);
@@ -19,6 +19,7 @@ var mapJson;
 var stateNames;
 var stateID;
 
+// Create SVG Drawing area
 function findState(x) {
     return x.id == stateID;
 }
@@ -53,9 +54,6 @@ queue()
     .defer(d3.csv, "data/new_allCongressDataPublish.csv")
     .await(function(error, mapTopJson, stateNamesCsv, allCongressData){
         // Process Data
-        // console.log(mapTopJson);
-        // console.log(stateNamesCsv);
-        // console.log(allCongressData);
         mapJson = mapTopJson;
         stateNames = stateNamesCsv;
         congressData = allCongressData;
@@ -80,8 +78,7 @@ var stateCode;
 var districtID;
 
 function updateChoropleth(error) {
-    var districts = topojson.feature(mapJson, mapJson.objects.districts).features
-    console.log(districts)
+    var districts = topojson.feature(mapJson, mapJson.objects.districts).features;
 
     choroplethSvg.append("g")
         .attr("class", "region")
@@ -125,13 +122,12 @@ function updateChoropleth(error) {
         });
 
     addLegend()
-    //africa.exit().remove()
 }
 
-var colors = ["red","blue"]
+var colors = ["red","blue"];
 var party = [];
-party.push("Republican")
-party.push("Democrat")
+party.push("Republican");
+party.push("Democrat");
 
 
 function addLegend() {
