@@ -123,13 +123,14 @@ function createIncomeChart(districtData){
         .data(incomeData)
         .enter().append("rect")
         .attr("fill", "steelblue")
+        .attr("title", "sdfj")
         .attr("width", function(d) {
             return d
         })
         .attr("height", 20)
         .attr("x", 80)
         .attr("y", function(d, index) {
-            return (100 + index * 30);
+            return (150 + index * 30);
         });
 
     chartsSvg.selectAll("text.race")
@@ -141,7 +142,7 @@ function createIncomeChart(districtData){
         .attr("height", 10)
         .attr("x", 50)
         .attr("y", function(d, index) {
-            return (110+index * 30);
+            return (150+index * 30);
         })
         .text(function(d) {
             return d;

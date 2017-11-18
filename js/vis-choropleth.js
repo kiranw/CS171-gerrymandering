@@ -9,8 +9,8 @@ var choroplethSvg = d3.select("#choropleth").append("svg")
 
 // Initialize map settings
 var projection = d3.geoAlbersUsa()
-    .scale(600)
-    .translate([300,height/4]);
+    .scale(500)
+    .translate([200,height/4]);
 
 var path = d3.geoPath()
     .projection(projection);
@@ -137,8 +137,8 @@ function addLegend() {
         .append('g')
         .attr('class', 'legend')
         .attr('transform', function(d, i) {
-            var y = 15*i+250;
-            return 'translate(60,' + y + ')';
+            var y = 15*i+50;
+            return 'translate(400,' + y + ')';
         });
 
     legend.append('rect')
