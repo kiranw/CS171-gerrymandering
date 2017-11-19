@@ -37,6 +37,7 @@ function createLineCharts(error){
     // console.log(districtData)
     createRaceChart(districtData)
     createIncomeChart(districtData)
+    createEducationChart(districtData)
 
 }
 
@@ -130,8 +131,15 @@ function createIncomeChart(districtData){
         .attr("height", 20)
         .attr("x", 80)
         .attr("y", function(d, index) {
-            return (150 + index * 30);
+            return (135 + index * 30);
         });
+
+    chartsSvg.append("text")
+        .style("fill", "black")
+        .attr("font-size", "0px")
+        .attr("x", 50)
+        .attr("y", 150)
+        .text("Income Distribution");
 
     chartsSvg.selectAll("text.race")
         .data(incomes)
@@ -149,4 +157,9 @@ function createIncomeChart(districtData){
         });
 
     incomeBars.exit().transition(500).remove();
+}
+
+function createEducationChart(districtData){
+    console.log(districtData)
+
 }
