@@ -1,6 +1,6 @@
 // --> CREATE SVG DRAWING AREA
 var margin = { top: 30, right: 40, bottom: 60, left: 60 };
-var width = 500,
+var width = 400,
     height = 500;
 
 var chartsSvg = d3.select("#districtCharts").append("svg")
