@@ -8,7 +8,7 @@ with open('2014.csv', 'r') as fin:
         next(reader)
         writer = csv.writer(fout, delimiter=',')
         # writer.writerow(next(reader) + ['Year'])
-        writer.writerow(['State','Gap'])
+        writer.writerow(['State','Gap','Seats'])
         curState = "Alabama"
         seatsR = 0
         seatsD = 0
@@ -25,7 +25,9 @@ with open('2014.csv', 'r') as fin:
                 seatMargin = max(seatsR/(1.0*totalSeats),seatsD/(1.0*totalSeats))-.5
                 voteMargin = max(votesR/(1.0*totalVotes),votesD/(1.0*totalVotes))-.5
                 gap = seatMargin-2*voteMargin
-                writer.writerow([curState,gap])
+                gap = gap*100
+                gap = "%0.2f" % gap
+                writer.writerow([curState,gap,totalSeats])
                 print curState
                 print gap
                 curState = rowSplit[0]
@@ -50,4 +52,4 @@ with open('2014.csv', 'r') as fin:
                 seatMargin = .5
                 voteMargin = max(int(rowSplit[5])/(1.0*totalVotes),int(rowSplit[6])/(1.0*totalVotes))-.5
                 gap = seatMargin-2*voteMargin
-                writer.writerow([curState,gap])
+                writer.writerow([curState,gap,1])

@@ -1,6 +1,6 @@
 // --> CREATE SVG DRAWING AREA
 var margin = { top: 30, right: 40, bottom: 60, left: 60 };
-var width = 400,
+var width = 800,
     height = 500;
 
 var chartsSvg = d3.select("#districtCharts").append("svg")
@@ -120,25 +120,48 @@ function createIncomeChart(districtData){
     var incomeChart = chartsSvg.append("g")
         .attr("class", "income")
 
-    var incomeBars = incomeChart.selectAll("rect")
-        .data(incomeData)
-        .enter().append("rect")
-        .attr("fill", "steelblue")
-        .attr("title", "sdfj")
-        .attr("width", function(d) {
-            return d
-        })
-        .attr("height", 20)
-        .attr("x", 80)
-        .attr("y", function(d, index) {
-            return (135 + index * 30);
+    // var incomeBars = incomeChart.selectAll("rect")
+    //     .data(incomeData)
+    //     .enter().append("rect")
+    //     .attr("fill", "steelblue")
+    //     .attr("title", "sdfj")
+    //     .attr("width", function(d) {
+    //         return d
+    //     })
+    //     .attr("height", 20)
+    //     .attr("x", 280)
+    //     .attr("y", function(d, index) {
+    //         return (10 + index * 30);
+    //     });
+    var dataIncomeBars = incomeChart.selectAll("rect")
+        .data(incomeData, function(d) {
+            // console.log(incomeData)
+            return d.key;
         });
+
+    var incomeBars = dataIncomeBars.enter()
+        .append("rect")
+        .attr('transform', 'translate(100, 0)')
+        .attr("class", "income-bars")
+        .attr("fill", "steelblue")
+
+    incomeBars.merge(incomeBars)
+            .transition()
+            .duration(1000)
+            .attr("width", function(d) {return d})
+            .attr("height", 20)
+            .attr("x", 280)
+            .attr("y", function(d, index) {
+                    return (index * 30);
+                })
+
+    incomeBars.exit().transition(500).remove();
 
     chartsSvg.append("text")
         .style("fill", "black")
         .attr("font-size", "0px")
-        .attr("x", 50)
-        .attr("y", 150)
+        .attr("x", 250)
+        .attr("y", 50)
         .text("Income Distribution");
 
     chartsSvg.selectAll("text.race")
@@ -148,15 +171,15 @@ function createIncomeChart(districtData){
         .style("fill", "black")
         .attr("font-size", "10px")
         .attr("height", 10)
-        .attr("x", 50)
+        .attr("x", 250)
         .attr("y", function(d, index) {
-            return (150+index * 30);
+            return (10+index * 30);
         })
         .text(function(d) {
             return d;
         });
 
-    incomeBars.exit().transition(500).remove();
+    //incomeBars.exit().transition(500).remove();
 }
 
 function createEducationChart(districtData){
