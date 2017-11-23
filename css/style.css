@@ -92,6 +92,27 @@ hr {
     font-family: 'Lora', Georgia, serif;
 }
 
+.race-title {
+    font-size: 16px;
+    font-family: 'Lora', Georgia, serif;
+}
+
+.income-title {
+    font-size: 16px;
+    font-family: 'Lora', Georgia, serif;
+}
+
+.emp-title {
+    font-size: 16px;
+    font-family: 'Lora', Georgia, serif;
+}
+
+.income-line {
+    fill: none;
+    stroke: orange;
+    stroke-width: 1.5px;
+}
+
 /* ============ TIMELINE SECTION =================*/
 
 #tl-info {
