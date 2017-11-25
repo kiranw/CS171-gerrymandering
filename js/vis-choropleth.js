@@ -52,14 +52,21 @@ queue()
     .defer(d3.json, "data/districts.json")
     .defer(d3.csv, "data/us-state-names.csv")
     .defer(d3.csv, "data/new_allCongressDataPublish.csv")
-    .await(function(error, mapTopJson, stateNamesCsv, allCongressData){
+    // Adding US state data
+    .defer(d3.json, "data/us-states.json")
+    .await(function(error, mapTopJson, stateNamesCsv, allCongressData, mapStateJson){
         // Process Data
         mapJson = mapTopJson;
         stateNames = stateNamesCsv;
         congressData = allCongressData;
+        // Adding in state JSON data [JFAN]
+        mapStates = mapStateJson;
 
         // Update choropleth: add legend
         updateChoropleth();
+
+        // Update district drawn by Chloropleth [JFAN]
+        updateDistrictDrawn();
     });
 
 var curYear = 2014;
