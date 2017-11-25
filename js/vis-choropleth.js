@@ -38,44 +38,47 @@ var tool_tip = d3.tip()
         var congressionalSeats = -1;
         var totalInfo = "<div class='tooltip-label'><span class='tooltip-title'>State:</span> " + stateName + "</div>";
         totalInfo += "<div class='tooltip-label'><span class='tooltip-title'>District:</span> " + districtID + "</div>";
-        totalInfo += "<div class='tooltip-label'><span class='tooltip-title'>Efficiency Gap:</span> " + efficiencyGap + "</div>";
-        totalInfo += "<div class='tooltip-label'><span class='tooltip-title'>Compactness Ratio:</span> " + compactnessRatio + "</div>";
-        totalInfo += "<div class='tooltip-label'><span class='tooltip-title'>Electoral Outcome:</span> " + electoralOutcome + "</div>";
-        totalInfo += "<div class='tooltip-label'><span class='tooltip-title'>Congressional Seats:</span> " + congressionalSeats + "</div>";
+        // totalInfo += "<div class='tooltip-label'><span class='tooltip-title'>Efficiency Gap:</span> " + efficiencyGap + "</div>";
+        // totalInfo += "<div class='tooltip-label'><span class='tooltip-title'>Compactness Ratio:</span> " + compactnessRatio + "</div>";
+        // totalInfo += "<div class='tooltip-label'><span class='tooltip-title'>Electoral Outcome:</span> " + electoralOutcome + "</div>";
+        // totalInfo += "<div class='tooltip-label'><span class='tooltip-title'>Congressional Seats:</span> " + congressionalSeats + "</div>";
         return totalInfo
     });
 d3.select('svg').call(tool_tip);
 
 var congressData;
+var gapData
 // Use the Queue.js library to read two files
 queue()
     .defer(d3.json, "data/districts.json")
     .defer(d3.csv, "data/us-state-names.csv")
     .defer(d3.csv, "data/new_allCongressDataPublish.csv")
-    // Adding US state data
-    .defer(d3.json, "data/us-states.json")
-    .await(function(error, mapTopJson, stateNamesCsv, allCongressData, mapStateJson){
+    .defer(d3.csv, "data/gapData.csv")
+    .await(function(error, mapTopJson, stateNamesCsv, allCongressData, allGapData){
+
         // Process Data
         mapJson = mapTopJson;
         stateNames = stateNamesCsv;
         congressData = allCongressData;
-        // Adding in state JSON data [JFAN]
-        mapStates = mapStateJson;
+        gapData = allGapData;
+        console.log(gapData)
 
         // Update choropleth: add legend
         updateChoropleth();
 
         // Update district drawn by Chloropleth [JFAN]
-        updateDistrictDrawn();
+        // updateDistrictDrawn();
     });
 
 var curYear = 2014;
-var currentYear = document.getElementById("current-year");
-currentYear.innerHTML += curYear;
 
 function findDistrict(d) {
     var dInfo = d.stateDist.split(".");
     return d.state == stateCode && dInfo[1] == districtID && d.Year == curYear;
+}
+
+function findGapData(d) {
+    return d.State == stateName;
 }
 
 var stateID;
@@ -124,7 +127,22 @@ function updateChoropleth(error) {
             stateCode = stateInfo[0].code;
             districtID = (d.id % 100);
             var currentDistrict = document.getElementById("current-district");
-            currentDistrict.innerHTML = stateName +" " + districtID;
+            currentDistrict.innerHTML = stateName +" District " + districtID;
+            districtInfo = gapData.filter(findGapData);
+            // console.log(districtInfo)
+            document.getElementById("efficiency-gap").innerHTML = "Efficiency Gap: " + districtInfo[0].Gap +"%";
+            //Electoral Outcome
+            // console.log(d)
+            var electionResult = congressData.filter(findDistrict);
+            //console.log(electionResult)
+            document.getElementById("outcome").innerHTML = "Winning Party: " + electionResult[0].party;
+            // if (electionResult[0].party.includes("R")) {
+            //     document.getElementById("outcome").innerHTML = "Winning Party: Republican Party"
+            // }
+            // else {
+            //     document.getElementById("outcome").innerHTML = "Winning Party: Democratic Party"
+            // }
+            document.getElementById("contested-seats").innerHTML = "Total contested seats in " + stateName +": " + districtInfo[0].Seats;
             createLineCharts()
         });
 
