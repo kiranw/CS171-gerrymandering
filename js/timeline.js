@@ -1,9 +1,17 @@
 // set the dimensions and margins of the graph
 var tl_margin = {top: 10, right: 20, bottom: 10, left: 50},
     tl_width = 800 - tl_margin.left - tl_margin.right,
-    tl_height = 80 - tl_margin.top - tl_margin.bottom;
+    tl_height = 70 - tl_margin.top - tl_margin.bottom;
 
 var tl_expansion_height = 400;
+
+var tl_svg_axis = d3.select("#tl-svg-axis").append("svg")
+    .attr("width", tl_width)
+    .attr("height", tl_height)
+    .append("g")
+    .attr("width", tl_width - tl_margin.right - tl_margin.left)
+    .attr("height", tl_height - tl_margin.top)
+    .attr("transform", "translate("+tl_margin.left+","+20+")");
 
 var tl_svg_event = d3.select("#tl-svg-event").append("svg")
     .attr("width", tl_width)
@@ -40,7 +48,7 @@ var tl_expansion_case = d3.select("#tl-expansion-case").append("svg")
 var node_position_factor = 7;
 
 var svgMappings = {"event":tl_svg_event, "policy": tl_svg_policy, "case":tl_svg_case};
-var colorMappings = {"event": "#5FC5E6", "policy": "#BF76A4", "case": "#7CAD7E"}
+var colorMappings = {"event": "#3E2B38", "policy": "#732D41", "case": "#DA7C07"}
 
 var tl_width2 = tl_width - tl_margin.right - tl_margin.left;
 var tl_height2 = tl_height - tl_margin.top - tl_margin.bottom;
@@ -69,7 +77,7 @@ var tl_links = [];
 
 
 function drawSankey(svg, nodes, links_tl_1, links_tl_2){
-    var units = "Widgets";
+    var units = "";
 
     // set the dimensions and margins of the graph
         width = svg.attr("width"),
@@ -111,9 +119,9 @@ function drawSankey(svg, nodes, links_tl_1, links_tl_2){
 
     // add the link titles
     link.append("title")
+        .attr("class", function(d){ return "node"+d.source.node + " node" + d.target.node + " nodeLabel";})
         .text(function(d) {
-            return d.source.name + " → " +
-                d.target.name + "\n" + format(d.value); });
+            return d.source.name + " → " +  d.target.name});
 
     // add in the nodes
     var node = svg.append("g").selectAll(".node")
@@ -127,7 +135,14 @@ function drawSankey(svg, nodes, links_tl_1, links_tl_2){
                 return d;
             })
             .on("start", function(data) {
-                console.log($("#tl-title"));
+                d3.selectAll(".activeNode").classed("activeNode", false);
+                d3.selectAll("circle.node" + data.node)
+                    .classed("activeNode", true);
+
+                d3.selectAll(".activeLink").classed("activeLink", false);
+                d3.selectAll("path.node" + data.node + ".link")
+                    .classed("activeLink", true);
+
                 $("#tl-title").text(data.name);
                 if ("expanded" in data){
                     $("#tl-text").text(data.expanded);
@@ -147,10 +162,6 @@ function drawSankey(svg, nodes, links_tl_1, links_tl_2){
         .attr("class", function(d){ return "node" + d.node; })
         .style("fill", function(d) {
             return d.color = color(d.name.replace(/ .*/, "")); })
-        .on("click", function(data){
-            console.log("click being registered");
-
-        })
         .append("title")
         .text(function(d) {
             return d.name + "\n" + format(d.value); });
@@ -239,8 +250,8 @@ function makeSankey(){
         var curvature = .5;
 
         function link(d) {
-            var x0 = d.source.x + d.source.dx,
-                x1 = d.target.x + 1,
+            var x0 = d.source.x + d.source.dx - 10,
+                x1 = d.target.x + 10,
                 xi = d3.interpolateNumber(x0, x1),
                 x2 = xi(curvature),
                 x3 = xi(1 - curvature),
@@ -424,11 +435,44 @@ function tlInitVis(error, events, caseMetadata, caseLinks, policies) {
             .on("click", tlClick)
     };
 
+    tl_svg_axis
+        .append("rect")
+        .attr("id","tl_axis")
+        .attr("width", tl_width2)
+        .attr("height", 2)
+        .attr("x",0)
+        .attr("y",tl_height2-15)
+        .attr("fill", "#000");
+
+    tl_svg_axis.append("g").selectAll(".tl_ticks")
+        .data([2013, 2012, 2011, 2014, 2016,2017,2018].concat(Array.from(Array(49).keys()).map(function(d,i){ return i*5 + 1780; })))
+        .enter()
+        .append("rect")
+        .attr("class","tl_ticks")
+        .attr("width", 2)
+        .attr("height", function(d){ return [1800, 1900, 1950, 1980, 1990, 2000, 2005, 2010, 2012, 2014, 2015, 2016, 2017].includes(d) ? 20: 10;})
+        .attr("x", function(d){ console.log(d); return tl_x(new Date(d,1,1));})
+        .attr("y", function(d){ return [1800, 1900, 1950, 1980, 1990, 2000, 2005, 2010, 2012, 2014, 2015, 2016, 2017].includes(d) ? tl_height2-35: tl_height2-25;})
+        .attr("fill", "#000");
+    ;
+
+    tl_svg_axis.append("g").selectAll(".tl_tick_text")
+        .data([1800, 1900, 1950, 1980, 1990, 2012, 2014, 2016, 2017].concat(Array.from(Array(4).keys()).map(function(d,i){ return i*5 + 2000; })))
+        .enter()
+        .append("text")
+        .attr("class", "tl_tick_text")
+        .text(function(d){ return d;})
+        .attr("x", function(d){ console.log(d); return tl_x(new Date(d,1,1));})
+        .attr("y", -10)
+        .attr("text-anchor", "middle")
+        .attr("fill", "#000");
+    ;
+
+
     tl_events = metadata["event"];
     tl_caseMetadata = metadata["case"];
     tl_caseLinks = caseLinks;
     tl_policies = metadata["policy"];
-
 
     tl_caseMetadata.forEach(function(d,i){
         tl_nodes.push({
@@ -457,7 +501,7 @@ function tlInitVis(error, events, caseMetadata, caseLinks, policies) {
     });
 
     node_position_factor = tl_expansion_height/tl_nodes.length;
-    drawSankey(tl_expansion_case, tl_nodes, tl_links.slice(0,19), tl_links.slice(19));
+    drawSankey(tl_expansion_case, tl_nodes, tl_links.slice(0,19), tl_links.slice(20));
 }
 
 function tlMouseEnter(data){
@@ -479,5 +523,27 @@ function tlClick(data){
 }
 
 
+$(".tl-row-label").click(function(){
+    var options = ["event", "policy", "case"];
+    var id = this.id.slice("tl-row-".length);
+    options.forEach(function(d){
+        if (d!== id){
+            console.log("reversing "+d);
+            $("#"+d+"-caret").addClass("caret-reversed");
+            $("#tl-expansion-"+d).slideUp("slow").animate(
+                { opacity: 0 },
+                { queue: false, duration: 'slow' }
+            );;
+        } else {
+            console.log("normal "+d);
+            $("#"+d+"-caret").toggleClass("caret-reversed");
+            $("#tl-expansion-"+d).slideDown("slow"
+            ).animate(
+                { opacity: 1 },
+                { queue: false, duration: 'slow' }
+            );;
+        }
 
+    })
 
+})

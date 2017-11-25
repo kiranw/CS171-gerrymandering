@@ -101,9 +101,18 @@
 		<hr>
 		<div class="row">
 			<div id="tl-svg" class="col-md-8">
-				<div id="tl-svg-event"></div>
-				<div id="tl-svg-policy"></div>
-				<div id="tl-svg-case"></div>
+                <div id="tl-svg-axis">
+                    <div class="tl-row-label">Time</div>
+                </div>
+				<div id="tl-svg-event">
+                    <button class="tl-row-label" id="tl-row-event">In the news<span id="event-caret" class="caret caret-reversed"></span></button>
+                </div>
+				<div id="tl-svg-policy">
+                    <button class="tl-row-label" id="tl-row-policy">Policy<span id="policy-caret" class="caret caret-reversed"></span></button>
+                </div>
+				<div id="tl-svg-case">
+                    <button class="tl-row-label" id="tl-row-case">Cases<span id="case-caret" class="caret"></span></button>
+                </div>
 				<div id="tl-expansion-case"></div>
 			</div>
 			<div id="tl-info" class="col-md-4">

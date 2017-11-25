@@ -65,8 +65,9 @@ h2 {
 }
 
 hr {
-    margin: 4em auto 4em;
+    /*margin: 4em auto 4em;*/
 }
+
 .section {
 }
 
@@ -163,30 +164,94 @@ hr {
     background-color: #d9d9d9;
 }
 
+.tl-row-label{
+    position: relative;
+    display: inline-block;
+    top: 35px;
+    left: -160px;
+    /* text-anchor: end; */
+    text-align: end;
+    width: 200px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    letter-spacing: 1.5px;
+    border: none;
+    background-color: transparent;
+}
+
+button:focus {outline:0;}
+
 #tl-content {
     height: 50vh;
     overflow-y: scroll;
 }
 
-
-
-.node rect {
+.node circle {
     cursor: move;
-    fill-opacity: .9;
     shape-rendering: crispEdges;
+    fill: gray !important;
+    fill-opacity: 0.8;
+    -webkit-transition: all 0.5s linear;
+    -moz-transition: all 0.5s linear;
+    -o-transition: all 0.5s linear;
+    transition: all 0.5s linear;
+}
+
+circle:hover{
+    stroke-width:4px;
+    stroke: white;
+    fill: orange;
+    fill-opacity: 1;
+    r: 8;
 }
 
 .node text {
     pointer-events: none;
-    text-shadow: 0 1px 0 #fff;
+    text-shadow: 2px 2px 2px #fff;
 }
 
 .link {
     fill: none;
+    stroke: 1px;
     stroke: #000;
-    stroke-opacity: .2;
+    stroke-opacity: .1;
+    position: relative;
+    -webkit-transition: all 1s linear;
+    -moz-transition: all 1s linear;
+    -o-transition: all 1s linear;
+    transition: all 1s linear;
+
 }
 
 .link:hover {
     stroke-opacity: .5;
+}
+
+.activeLink {
+    fill: none;
+    stroke: 1px;
+    stroke: #F4B006;
+    stroke-opacity: 0.3;
+}
+
+circle.activeNode {
+    stroke-width:4px;
+    stroke: #F4B006;
+    fill: #F4B006 !important;
+    fill-opacity: 0.7;
+    r: 8;
+}
+
+#tl-svg-case, #tl-svg-event, #tl-svg-policy, #tl-svg-axis {
+    height: 50px;
+}
+
+#tl-svg-case {
+    margin-bottom: 25px;
+}
+
+.caret.caret-reversed {
+    border-top-width: 0;
+    border-bottom: 4px solid #000000;
 }
