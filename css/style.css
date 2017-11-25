@@ -134,7 +134,7 @@ hr {
 /* ============ TIMELINE SECTION =================*/
 
 #tl-info {
-    background-color: #d9d9d9;
+    background-color: #efefef;
     padding: 15px 30px;
     border-radius: 10px;
     padding-bottom: 30px;
@@ -152,6 +152,8 @@ hr {
     margin-bottom: 20px;
     /*height: 400px;*/
     overflow-y: scroll;
+    font-size: 0.8em;
+    line-height: 1.5em;
 }
 
 #tl-src {
@@ -161,7 +163,7 @@ hr {
     word-wrap: break-word;
     font-size: 0.6em;
     line-height: 1em;
-    background-color: #d9d9d9;
+    background-color: #efefef;
 }
 
 .tl-row-label{
@@ -217,10 +219,10 @@ circle:hover{
     stroke: #000;
     stroke-opacity: .1;
     position: relative;
-    -webkit-transition: all 1s linear;
-    -moz-transition: all 1s linear;
-    -o-transition: all 1s linear;
-    transition: all 1s linear;
+    -webkit-transition: all 0.5s linear;
+    -moz-transition: all 0.5s linear;
+    -o-transition: all 0.5s linear;
+    transition: all 0.5s linear;
 
 }
 
@@ -254,4 +256,33 @@ circle.activeNode {
 .caret.caret-reversed {
     border-top-width: 0;
     border-bottom: 4px solid #000000;
+}
+
+button:hover, .event-rec:hover {
+    opacity: 0.5;
+}
+
+/*.expansion-event-rect{*/
+    /*pointer-events:all;*/
+    /*cursor: pointer;*/
+/*}*/
+
+.expansion-event-img{
+    pointer-events:all;
+    /*z-index:100;*/
+    -webkit-transition: all 0.5s linear;
+    -moz-transition: all 0.5s linear;
+    -o-transition: all 0.5s linear;
+    transition: all 0.5s linear;
+}
+
+image.expansion-event-img:hover{
+    opacity:1;
+    z-index:100;
+}
+
+rect.event-rect:hover {
+    pointer-events:all;
+    cursor: pointer;
+    opacity: 1;
 }
