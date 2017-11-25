@@ -59,8 +59,8 @@ queue()
         mapJson = mapTopJson;
         stateNames = stateNamesCsv;
         congressData = allCongressData;
-        gapData = allGapData
-        console.log(gapData)
+        gapData = allGapData;
+        // console.log(gapData)
         // Update choropleth: add legend
         updateChoropleth();
     });
@@ -123,14 +123,14 @@ function updateChoropleth(error) {
             districtID = (d.id % 100);
             var currentDistrict = document.getElementById("current-district");
             currentDistrict.innerHTML = stateName +" District " + districtID;
-            districtInfo = gapData.filter(findGapData)
-            console.log(districtInfo)
+            districtInfo = gapData.filter(findGapData);
+            // console.log(districtInfo)
             document.getElementById("efficiency-gap").innerHTML = "Efficiency Gap: " + districtInfo[0].Gap +"%";
             //Electoral Outcome
-            console.log(d)
+            // console.log(d)
             var electionResult = congressData.filter(findDistrict);
             //console.log(electionResult)
-            document.getElementById("outcome").innerHTML = "Winning Party: " + electionResult[0].party
+            document.getElementById("outcome").innerHTML = "Winning Party: " + electionResult[0].party;
             // if (electionResult[0].party.includes("R")) {
             //     document.getElementById("outcome").innerHTML = "Winning Party: Republican Party"
             // }

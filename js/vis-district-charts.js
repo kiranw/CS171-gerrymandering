@@ -124,13 +124,13 @@ function createIncomeChart(districtData){
     var from100to150 = over100k-over150k;
     var from150to200 = over150k-over200k;
     var incomeData = [];
-    incomeData.push(under25k)
-    incomeData.push(from25to50)
-    incomeData.push(from50to75)
-    incomeData.push(from75to100)
-    incomeData.push(from100to150)
-    incomeData.push(from150to200)
-    console.log(incomeData)
+    incomeData.push(under25k);
+    incomeData.push(from25to50);
+    incomeData.push(from50to75);
+    incomeData.push(from75to100);
+    incomeData.push(from100to150);
+    incomeData.push(from150to200);
+    // console.log(incomeData)
     var incomes = ["under25k", "25to50k", "50to75k", "75to100k","100to150k","150to200k"];
 
     var incomeChart = chartsSvg.append("g")
@@ -163,10 +163,10 @@ function createIncomeChart(districtData){
 
     var incomeLine = d3.line()
         .x(function(d,i) {
-            console.log(i)
+            // console.log(i)
             return x(+i); })
         .y(function(d) {
-            console.log(d)
+            // console.log(d)
             return y(+d); });
 
     d3.selectAll(".income-line").remove();
@@ -199,12 +199,12 @@ function createIncomeChart(districtData){
 }
 
 function createEmploymentChart(districtData){
-    console.log(districtData)
+    // console.log(districtData)
     var unemp = districtData[0].prcntUnemp
     var emData = []
     emData.push(100-unemp)
     emData.push(unemp)
-    console.log(unemp)
+    // console.log(unemp)
     var color = ["#aedd56", "#f2b0d1"];
     var arc = d3.arc().outerRadius(50).innerRadius(0);
 
@@ -232,7 +232,6 @@ function createEmploymentChart(districtData){
         .attr('stroke', '#fff') // <-- THIS
         .attr('stroke-width', '2') // <-- THIS
         .attr('fill', function(d, i) {
-            console.log("sdf")
             return color[i];
         });
 

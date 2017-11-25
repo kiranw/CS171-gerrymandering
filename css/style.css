@@ -16,6 +16,22 @@ h2 {
     margin: 1em auto 1em;
 }
 
+#headline{
+    font-size:6em;
+    font-weight: 700;
+}
+
+#subheadline{
+    font-size:3em;
+    font-style: italic;
+}
+
+.section-title{
+    margin-top: 15vh;
+    font-size:2.5em;
+    font-weight: 700;
+}
+
 /*********************/
 /*  TOOLTIP OVERLAY  */
 /*********************/
@@ -64,12 +80,13 @@ hr {
 }
 #intro div {
     height:100vh;
-    background-color: #ccc;
+    background-color: #f4f4f4;
     margin: 0;
-    text-align: center;
+    /*text-align: center;*/
 }
 .title {
-    background-image: url('../img/districtmap.jpg');
+    /*background-image: url('../img/districtmap.jpg');*/
+    background-image: url('../img/Salamander.png');
     background-size: cover;
     padding: 25% 10%;
 }
@@ -117,10 +134,10 @@ hr {
 
 #tl-info {
     background-color: #d9d9d9;
-    height: 600px;
     padding: 15px 30px;
     border-radius: 10px;
     padding-bottom: 30px;
+    height: 65vh;
 }
 
 #tl-title {
@@ -132,10 +149,44 @@ hr {
 
 #tl-text {
     margin-bottom: 20px;
-    height: 400px;
+    /*height: 400px;*/
     overflow-y: scroll;
 }
 
 #tl-src {
     color: gray;
+    width: 80%;
+    margin-top: 50px;
+    word-wrap: break-word;
+    font-size: 0.6em;
+    line-height: 1em;
+    background-color: #d9d9d9;
+}
+
+#tl-content {
+    height: 50vh;
+    overflow-y: scroll;
+}
+
+
+
+.node rect {
+    cursor: move;
+    fill-opacity: .9;
+    shape-rendering: crispEdges;
+}
+
+.node text {
+    pointer-events: none;
+    text-shadow: 0 1px 0 #fff;
+}
+
+.link {
+    fill: none;
+    stroke: #000;
+    stroke-opacity: .2;
+}
+
+.link:hover {
+    stroke-opacity: .5;
 }

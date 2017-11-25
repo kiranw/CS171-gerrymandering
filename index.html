@@ -5,7 +5,6 @@
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Efficiency Gaps | Gerrymandering through the years</title>
-
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/style.css">
@@ -16,12 +15,12 @@
 
 <div id="intro" class="container-fluid">
 	<div class="title section">
-		<h1>The United States of Gerrymandering</h1>
-		<h4>A Primer on Gerrymandering, Fair Districting, and its Impacts on Representation</h4>
+		<h1 id="headline">The United States of Gerrymandering</h1>
+		<h4 id="subheadline">A Primer on Gerrymandering, Fair Districting, and its Impacts on Representation</h4>
 	</div>
 	<div class="section hideme">
 		<div>
-			<h2>A Tradition as Old as the Republic</h2>
+			<h2 class="section-title">A Tradition as Old as the Republic</h2>
 			<p>Gerrymandering, or the practice of manipulating electoral district boundaries for political gain, is a practice as old as America itself.</p>
 
 			<p>Where the lines are drawn affects both state and federal elections. For Congressional elections, states are divided into districts based on how many representatives they send to the House of Representatives.</p>
@@ -47,7 +46,7 @@
 
 	<div class="row hideme">
 		<div class="col-md-6">
-			<h2>What makes a district?</h2>
+			<h2 class="section-title">What makes a district?</h2>
 			<p>District lines are redrawn every 10 years to reflect the updated populations taken by the US Census.</p>
 
 			<p>In most states, district lines are drawn by the majority party of the state legislature and approved by governor. Even in states with alternative processes, like Independent Commissions, there are seats specifically reserved for Democratic or Republican appointees, so there are no truly non-partisan redistricting committees.</p>
@@ -60,7 +59,7 @@
 	</div>
 
 	<div class="section hideme">
-		<h2>The Art and Science of Map Manipulation</h2>
+		<h2 class="section-title">The Art and Science of Map Manipulation</h2>
 
 		<p>The goal of gerrymandering is to maximize the number of districts that will vote for your party. There are multiple ways to do that, primarily being:</p>
 
@@ -88,7 +87,7 @@
 	</div>
 
 	<div class="section hideme">
-		<h2>The Quest to Define Fairness</h2>
+		<h2 class="section-title">The Quest to Define Fairness</h2>
 		<p>Compactness - ratio of perimeter/area [0:1, 1 is ideal]<br>
 		Efficiency gap - measures both wasted votes and diluted votes<br>
 		Find Wasted Votes: ratio of net wasted votes/total votes cast<br>
@@ -98,17 +97,20 @@
 
 <div id="main" class="container-fluid">
 	<div id="timeline" class="container">
-		<h2>Tracing the legal and cultural history of gerrymandering</h2>
+		<h2 class="section-title">Tracing the legal and cultural history of gerrymandering</h2>
 		<hr>
 		<div class="row">
 			<div id="tl-svg" class="col-md-8">
 				<div id="tl-svg-event"></div>
 				<div id="tl-svg-policy"></div>
 				<div id="tl-svg-case"></div>
+				<div id="tl-expansion-case"></div>
 			</div>
 			<div id="tl-info" class="col-md-4">
-				<div id="tl-title"></div>
-				<div id="tl-text">click on an event to see more here</div>
+				<div id="tl-content">
+					<div id="tl-title"></div>
+					<div id="tl-text">click on an event to see more here</div>
+				</div>
 				<div id="tl-src"></div>
 			</div>
 		</div>
@@ -116,7 +118,7 @@
 	</div>
 
 	<div id="map" class="container">
-		<h2>How gerrymandered is your district?</h2>
+		<h2 class="section-title">How gerrymandered is your district?</h2>
 		<hr>
 
 		<div class="col-md-8">
@@ -144,7 +146,7 @@
 	</div>
 
 	<div id="conclusion" class="section">
-		<h2>Is there any other way?</h2>
+		<h2  class="section-title">Is there any other way?</h2>
 		<ul>
 			<li>Proportional representation - uniquely solves judicial meddling, natural geographic clustering</li>
 			<li>Ranked choice voting</li>
