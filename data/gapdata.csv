@@ -1,51 +1,1 @@
-State,Gap,Seats
-Alabama,10.53,4
-Alaska,39.12,1
-Arizona,-6.45,7
-Arkansas,33.15,3
-California,10.88,42
-Colorado,3.85,7
-Connecticut,29.06,5
-Delaware,26.57,1
-Florida,1.02,20
-Georgia,10.30,7
-Hawaii,17.56,2
-Idaho,23.57,2
-Illinois,2.71,18
-Indiana,5.57,9
-Iowa,17.16,4
-Kansas,23.10,4
-Kentucky,6.17,6
-Louisiana,5.89,3
-Maine,-14.47,2
-Maryland,21.22,8
-Massachusetts,33.66,3
-Michigan,12.53,14
-Minnesota,8.70,8
-Mississippi,6.41,3
-Missouri,0.98,8
-Montana,34.35,1
-Nebraska,-12.91,3
-Nevada,6.62,4
-New Hampshire,-3.14,2
-New Jersey,-2.06,12
-New Mexico,10.67,3
-New York,0.48,17
-North Carolina,18.97,12
-North Dakota,31.85,1
-Ohio,7.39,15
-Oklahoma,5.10,4
-Oregon,15.66,5
-Pennsylvania,15.65,15
-Rhode Island,27.80,2
-South Carolina,17.78,5
-South Dakota,16.94,1
-Tennessee,0.89,8
-Texas,1.58,23
-Utah,18.66,4
-Vermont,15.03,1
-Virginia,13.39,8
-Washington,5.00,9
-West Virginia,35.88,3
-Wisconsin,6.90,8
-Wyoming,0.0012297717464084812,1
+State,Gap,Seats,DrawnByAlabama,10.53,4,Legislature AloneAlaska,39.12,1,Single DistrictArizona,-6.45,7,Independent CommissionArkansas,33.15,3,Legislature AloneCalifornia,10.88,42,Independent CommissionColorado,3.85,7,Legislature AloneConnecticut,29.06,5,Backup CommissionDelaware,26.57,1,Single DistrictFlorida,1.02,20,Legislature AloneGeorgia,10.3,7,Legislature AloneHawaii,17.56,2,Politician CommissionIdaho,23.57,2,Independent CommissionIllinois,2.71,18,Legislature AloneIndiana,5.57,9,Backup CommissionIowa,17.16,4,Advisory CommissionKansas,23.1,4,Legislature AloneKentucky,6.17,6,Legislature AloneLouisiana,5.89,3,Legislature AloneMaine,-14.47,2,Advisory CommissionMaryland,21.22,8,Legislature AloneMassachusetts,33.66,3,Legislature AloneMichigan,12.53,14,Legislature AloneMinnesota,8.7,8,Legislature AloneMississippi,6.41,3,Legislature AloneMissouri,0.98,8,Legislature AloneMontana,34.35,1,Single DistrictNebraska,-12.91,3,Legislature AloneNevada,6.62,4,Legislature AloneNew Hampshire,-3.14,2,Legislature AloneNew Jersey,-2.06,12,Politician CommissionNew Mexico,10.67,3,Legislature AloneNew York,0.48,17,Advisory CommissionNorth Carolina,18.97,12,Legislature AloneNorth Dakota,31.85,1,Single DistrictOhio,7.39,15,Advisory CommissionOklahoma,5.1,4,Legislature AloneOregon,15.66,5,Legislature AlonePennsylvania,15.65,15,Legislature AloneRhode Island,27.8,2,Advisory CommissionSouth Carolina,17.78,5,Legislature AloneSouth Dakota,16.94,1,Single DistrictTennessee,0.89,8,Legislature AloneTexas,1.58,23,Legislature AloneUtah,18.66,4,Legislature AloneVermont,15.03,1,Single DistrictVirginia,13.39,8,Advisory CommissionWashington,5,9,Independent CommissionWest Virginia,35.88,3,Legislature AloneWisconsin,6.9,8,Legislature AloneWyoming,0.001229772,1,Single District

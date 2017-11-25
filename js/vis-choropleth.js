@@ -55,14 +55,19 @@ queue()
     .defer(d3.csv, "data/new_allCongressDataPublish.csv")
     .defer(d3.csv, "data/gapData.csv")
     .await(function(error, mapTopJson, stateNamesCsv, allCongressData, allGapData){
+
         // Process Data
         mapJson = mapTopJson;
         stateNames = stateNamesCsv;
         congressData = allCongressData;
         gapData = allGapData;
         // console.log(gapData)
+
         // Update choropleth: add legend
         updateChoropleth();
+
+        // Update district drawn by Chloropleth [JFAN]
+        updateDistrictDrawn();
     });
 
 var curYear = 2014;
