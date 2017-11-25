@@ -19,11 +19,13 @@ h2 {
 #headline{
     font-size:6em;
     font-weight: 700;
+    color: white;
 }
 
 #subheadline{
     font-size:3em;
     font-style: italic;
+    color: white;
 }
 
 .section-title{
@@ -87,7 +89,7 @@ hr {
 }
 .title {
     /*background-image: url('../img/districtmap.jpg');*/
-    background-image: url('../img/Salamander.png');
+    background-image: url('../img/Salamander2.png');
     background-size: cover;
     padding: 25% 10%;
 }
