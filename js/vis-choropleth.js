@@ -54,13 +54,15 @@ queue()
     .defer(d3.csv, "data/us-state-names.csv")
     .defer(d3.csv, "data/new_allCongressDataPublish.csv")
     .defer(d3.csv, "data/gapData.csv")
-    .await(function(error, mapTopJson, stateNamesCsv, allCongressData, allGapData){
+    .defer(d3.json, "data/us-states.json")
+    .await(function(error, mapTopJson, stateNamesCsv, allCongressData, allGapData, mapStatesJson){
 
         // Process Data
         mapJson = mapTopJson;
         stateNames = stateNamesCsv;
         congressData = allCongressData;
         gapData = allGapData;
+        mapStates = mapStatesJson;
         // console.log(gapData)
 
         // Update choropleth: add legend
@@ -149,7 +151,7 @@ function updateChoropleth(error) {
     addLegend()
 }
 
-var colors = ["red","blue"];
+var colors = ['#d7301f','#2171b5'];
 var party = [];
 party.push("Republican");
 party.push("Democrat");
