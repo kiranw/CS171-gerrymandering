@@ -14,7 +14,7 @@ var districtPath = d3.geoPath()
 
 function updateDistrictDrawn(error) {
 
-    console.log(stateNames);
+    console.log(gapData);
     // var districts = topojson.feature(mapJson, mapJson.objects.districts).features;
 
     // districtSvg.append("g")

@@ -61,13 +61,13 @@ queue()
         stateNames = stateNamesCsv;
         congressData = allCongressData;
         gapData = allGapData;
-        console.log(gapData)
+        // console.log(gapData)
 
         // Update choropleth: add legend
         updateChoropleth();
 
         // Update district drawn by Chloropleth [JFAN]
-        // updateDistrictDrawn();
+        updateDistrictDrawn();
     });
 
 var curYear = 2014;
