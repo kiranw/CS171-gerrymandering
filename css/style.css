@@ -15,19 +15,20 @@ h2 {
 .container-fluid {
     padding: 0;
 }
-#intro p, #intro li {
-    font-size: 18px;
+p, li {
+    font-size: 16px;
     line-height: 1.5em;
     font-weight: 300;
 }
-#intro div {
+#intro div, #explanation div, #conclusion div {
     height:100vh;
     background-color: #f4f4f4;
     margin: 0;
 }
 .title {
     /*background-image: url('../img/districtmap.jpg');*/
-    background-image: url('../img/Salamander.png');
+    /* background-image: url('../img/Salamander.png'); */
+    background-image: url('../img/Salamander2.png');
     background-size: cover;
     padding: 20% 10%;
 
@@ -43,6 +44,10 @@ h2 {
     font-style: italic;
     color: white;
 }
+.hideme {
+    opacity:0;
+}
+
 
 .section {
     padding: 10% 20%;
@@ -83,29 +88,6 @@ h2 {
     content: "\25BC";
     position: absolute;
     text-align: center;
-}
-
-/* Fade in on scroll */
-#intro p {
-    font-size: 20px;
-    line-height: 1.5em;
-  /*   font-family: 'Roboto',sans-serif; */
-    font-weight: 300;
-}
-#intro div {
-    height:100vh;
-    background-color: #f4f4f4;
-    margin: 0;
-    /*text-align: center;*/
-}
-.title {
-    /*background-image: url('../img/districtmap.jpg');*/
-    background-image: url('../img/Salamander2.png');
-    background-size: cover;
-    padding: 25% 10%;
-}
-.hideme {
-    opacity:0;
 }
 
 .tooltip-label, text, label {
