@@ -5,19 +5,35 @@ body {
     line-height: 1.5em;
     font-family: 'Lora', Georgia, serif;
 }
-.container-fluid {
-    padding: 0;
-}
-.section {
-    padding: 10% 25%;
-}
+
 h2 {
     font-size: 24px;
     margin: 1em auto 1em;
 }
 
+
+.container-fluid {
+    padding: 0;
+}
+#intro p, #intro li {
+    font-size: 18px;
+    line-height: 1.5em;
+    font-weight: 300;
+}
+#intro div {
+    height:100vh;
+    background-color: #f4f4f4;
+    margin: 0;
+}
+.title {
+    /*background-image: url('../img/districtmap.jpg');*/
+    background-image: url('../img/Salamander.png');
+    background-size: cover;
+    padding: 20% 10%;
+
+}
 #headline{
-    font-size:6em;
+    font-size:5em;
     font-weight: 700;
 }
 
@@ -26,8 +42,11 @@ h2 {
     font-style: italic;
 }
 
+.section {
+    padding: 10% 20%;
+}
 .section-title{
-    margin-top: 15vh;
+    margin-top: 5vh;
     font-size:2.5em;
     font-weight: 700;
 }
@@ -63,38 +82,6 @@ h2 {
     position: absolute;
     text-align: center;
 }
-
-hr {
-    /*margin: 4em auto 4em;*/
-}
-
-.section {
-}
-
-
-/* Fade in on scroll */
-#intro p {
-    font-size: 20px;
-    line-height: 1.5em;
-  /*   font-family: 'Roboto',sans-serif; */
-    font-weight: 300;
-}
-#intro div {
-    height:100vh;
-    background-color: #f4f4f4;
-    margin: 0;
-    /*text-align: center;*/
-}
-.title {
-    /*background-image: url('../img/districtmap.jpg');*/
-    background-image: url('../img/Salamander.png');
-    background-size: cover;
-    padding: 25% 10%;
-}
-.hideme {
-    opacity:0;
-}
-
 .tooltip-label, text, label {
     font-family: 'Lora', Georgia, serif;
     font-size: 11px;

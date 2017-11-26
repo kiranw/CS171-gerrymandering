@@ -1,21 +1,33 @@
 function updateDistrictDrawn(error) {
     // Create SVG Drawing area
     var districtSvg = d3.select("#districtDrawn").append("svg")
-        .attr("width", 800)
-        .attr("height", 600);
+        .attr("width", 650)
+        .attr("height", 500)
+        .attr("class", "districtDrawn");
 
     // Initialize map settings
     var districtProjection = d3.geoAlbersUsa()
-        /***** WHY DOESN'T THIS SCALE UP? ****/
-        .scale(1000)
-        .translate([300,500]);
+        .scale(800)
+        .translate([350,200]);
 
     var districtPath = d3.geoPath()
         .projection(districtProjection);
 
+    // Scales & legends
     var districtColor = d3.scaleOrdinal()
-        .domain(["Legislature Alone", "Advisory Commission", "Backup Commission", "Politician Commission", "Independent Commission", "Single District"])
         .range(['#762a83','#af8dc3','#e7d4e8','#d9f0d3','#7fbf7b','#1b7837']);
+
+    var legendText = ["Legislature Alone", "Advisory Commission", "Backup Commission", "Politician Commission", "Independent Commission", "Single District"];
+
+    // Tooltip
+    var districtTip = d3.tip()
+        .attr("class", "d3-tip")
+        .html(function(d) {
+            var totalInfo = "<div class='tooltip-label'><span class='tooltip-title'>State:</span> " + d.properties.name + "</div>";
+            totalInfo += "<div class='tooltip-label'><span class='tooltip-title'>District Lines Drawn By:</span> " + d.properties.drawnBy + "</div>";
+            return totalInfo;
+        });
+    d3.select(".districtDrawn").call(districtTip);
 
 
     // using gapData and mapStates from vis-chloropleth
@@ -33,10 +45,11 @@ function updateDistrictDrawn(error) {
             }
         })
     })
-    console.log(stateData);
+    // console.log(stateData);
 
-
-    var districtMap = districtSvg.selectAll("path")
+    // Draw map
+    var districtMap = districtSvg
+        .selectAll("path")
         .data(stateData)
         .enter().append("g")
         .attr("class", function(d) {
@@ -44,40 +57,43 @@ function updateDistrictDrawn(error) {
         });
 
     districtMap.append("path")
-        .attr("d", path)
+        .attr("d", districtPath)
         .attr("opacity", 0.7)
         .attr("fill", function(d) {
             return districtColor(d.properties.drawnBy);
         })
         .on("mouseover", function(d) {
             d3.select(this).attr("opacity", 1);
+            districtTip.show(d);
         })
         .on("mouseout", function(d) {
             d3.select(this).attr("opacity", 0.7);
+            districtTip.hide(d);
         });
 
 
     // Add legend
-    var districtLegend = districtSvg.selectAll('.legend')
-        .data(stateData)
+    var districtLegend = districtSvg
+        .selectAll('.legend')
+        .data(legendText)
         .enter()
         .append('g')
         .attr('class', 'legend')
         .attr('transform', function(d, i) {
-            var y = 15*i+50;
-            return 'translate(450,' + y + ')';
+            var y = 15*i+350;
+            return 'translate(375,' + y + ')';
         });
 
     districtLegend.append('rect')
         .attr('width', 12)
         .attr('height', 12)
-        .style('fill', function(d, i) {
-            return districtColor(d.properties.drawnBy);
+        .style('fill', function(d) {
+            return districtColor(d);
         });
         
     districtLegend.append('text')
         .attr("class", "legend-names")
         .attr('x', 20)
         .attr('y', 10)
-        .text(function(d,i) {return d.properties.drawnBy; });
+        .text(function(d) { return d; });
 }

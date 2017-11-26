@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Efficiency Gaps | Gerrymandering through the years</title>
+	<title>The United States of Gerrymandering [CS171]</title>
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/style.css">
@@ -28,30 +28,28 @@
 	</div>
 
 	<div class="row">
-		<div class="col-sm-6">
+		<div class="col-sm-4">
 			<img src="img/gerrymander.png" width="100%">
 		</div>
-		<div class="col-sm-6">
+		<div class="col-sm-8">
 			<p>In these cases, partisan gerrymandering is often used to maximize the wins for their own party.</p>
 
 			<p>Many of the resulting districts end up as <a href="#">strange, winding shapes</a> that intentionally include or exclude populations for political gain.</p>
+
+			<p>As a result, even though Party A may win the popular vote, Party B may end up sending more representatives to congress.</p>
+
+			<p>Whoever decides the lines decide whose vote is reflected. This can skew statewide representation, dilute minority votes, split communities.</p>
 		</div>
-	</div>
-
-	<div class="section">
-		<p>As a result, even though Party A may win the popular vote, Party B may end up sending more representatives to congress.</p>
-
-		<p>Whoever decides the lines decide whose vote is reflected. This can skew statewide representation, dilute minority votes, split communities.</p>
 	</div>
 
 	<div class="row">
-		<div class="col-md-4">
-			<h2 class="section-title">What makes a district?</h2>
+		<div class="col-md-5">
+			<h2 class="section-title">Who draws the district lines?</h2>
 			<p>District lines are redrawn every 10 years to reflect the updated populations taken by the US Census.</p>
 
-			<p>In most states, district lines are drawn by the majority party of the state legislature and approved by governor. Even in states with alternative processes, like Independent Commissions, there are seats specifically reserved for Democratic or Republican appointees, so there are no truly non-partisan redistricting committees.</p>
+			<p>In most states, district lines are drawn by the majority party of the state legislature and approved by governor. Even in states with alternative processes like Independent Commissions, there are seats specifically reserved for Democratic or Republican appointees, so there are no truly non-partisan redistricting committees.</p>
 		</div>
-		<div class="col-md-8" id="districtDrawn">
+		<div class="col-md-7" id="districtDrawn">
 		</div>
 	</div>
 
@@ -170,34 +168,18 @@
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/d3.min.js"></script>
+    
+    <!-- [JFAN] Do we need all of these? // 
     <script src="js/d3-color.v1.min.js"></script>
     <script src="js/d3-interpolate.v1.min.js"></script>
     <script src="js/d3-scale-chromatic.v1.min.js"></script>
+    <script src="js/d3-scale-chromatic.min.js"></script>
+	<script src="js/d3-legend.min.js"></script>
+	-->
 	<script src="js/queue.min.js"></script>
 	<script src="js/topojson.js"></script>
 	<script src="js/d3-tip.js"></script>
-	<script src="js/d3-scale-chromatic.min.js"></script>
-	<script src="js/d3-legend.min.js"></script>
 
-	<script>
-	$(document).ready(function() {
-    
-	    /* Every time the window is scrolled ... */
-	    $(window).scroll( function(){
-	        /* Check the location of each desired element */
-	        $('.hideme').each( function(i){
-	            var bottom_of_object = $(this).offset().top + $(this).outerHeight();
-	            var bottom_of_window = $(window).scrollTop() + $(window).height();
-	            
-	            /* If the object is completely visible in the window, fade it it */
-
-	            if( bottom_of_window > 0.7*bottom_of_object ){
-	                $(this).animate({'opacity':'1'},500);
-	            }
-	        }); 
-	    });
-	});
-	</script>
 
     <!-- Load JS files -->
 	<script src="js/vis-choropleth.js"></script>
