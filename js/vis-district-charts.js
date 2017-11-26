@@ -85,9 +85,9 @@ function createRaceChart(districtData){
         //.duration(1000)
         .attr("width", function(d) {return d})
         .attr("height", 20)
-        .attr("x", 0)
+        .attr("x", -20)
         .attr("y", function(d, index) {
-            return (index * 30);
+            return (-12+index * 30);
         })
 
     chartsSvg.selectAll("text.race")
