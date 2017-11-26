@@ -35,11 +35,13 @@ h2 {
 #headline{
     font-size:5em;
     font-weight: 700;
+    color: white;
 }
 
 #subheadline{
     font-size:3em;
     font-style: italic;
+    color: white;
 }
 
 .section {
@@ -82,6 +84,30 @@ h2 {
     position: absolute;
     text-align: center;
 }
+
+/* Fade in on scroll */
+#intro p {
+    font-size: 20px;
+    line-height: 1.5em;
+  /*   font-family: 'Roboto',sans-serif; */
+    font-weight: 300;
+}
+#intro div {
+    height:100vh;
+    background-color: #f4f4f4;
+    margin: 0;
+    /*text-align: center;*/
+}
+.title {
+    /*background-image: url('../img/districtmap.jpg');*/
+    background-image: url('../img/Salamander2.png');
+    background-size: cover;
+    padding: 25% 10%;
+}
+.hideme {
+    opacity:0;
+}
+
 .tooltip-label, text, label {
     font-family: 'Lora', Georgia, serif;
     font-size: 11px;
@@ -121,7 +147,7 @@ h2 {
 /* ============ TIMELINE SECTION =================*/
 
 #tl-info {
-    background-color: #d9d9d9;
+    background-color: #efefef;
     padding: 15px 30px;
     border-radius: 10px;
     padding-bottom: 30px;
@@ -139,6 +165,8 @@ h2 {
     margin-bottom: 20px;
     /*height: 400px;*/
     overflow-y: scroll;
+    font-size: 0.8em;
+    line-height: 1.5em;
 }
 
 #tl-src {
@@ -148,7 +176,7 @@ h2 {
     word-wrap: break-word;
     font-size: 0.6em;
     line-height: 1em;
-    background-color: #d9d9d9;
+    background-color: #efefef;
 }
 
 .tl-row-label{
@@ -190,7 +218,6 @@ circle:hover{
     stroke: white;
     fill: orange;
     fill-opacity: 1;
-    r: 8;
 }
 
 .node text {
@@ -204,10 +231,10 @@ circle:hover{
     stroke: #000;
     stroke-opacity: .1;
     position: relative;
-    -webkit-transition: all 1s linear;
-    -moz-transition: all 1s linear;
-    -o-transition: all 1s linear;
-    transition: all 1s linear;
+    -webkit-transition: all 0.5s linear;
+    -moz-transition: all 0.5s linear;
+    -o-transition: all 0.5s linear;
+    transition: all 0.5s linear;
 
 }
 
@@ -227,7 +254,6 @@ circle.activeNode {
     stroke: #F4B006;
     fill: #F4B006 !important;
     fill-opacity: 0.7;
-    r: 8;
 }
 
 #tl-svg-case, #tl-svg-event, #tl-svg-policy, #tl-svg-axis {
@@ -241,4 +267,33 @@ circle.activeNode {
 .caret.caret-reversed {
     border-top-width: 0;
     border-bottom: 4px solid #000000;
+}
+
+button:hover, .event-rec:hover {
+    opacity: 0.5;
+}
+
+/*.expansion-event-rect{*/
+    /*pointer-events:all;*/
+    /*cursor: pointer;*/
+/*}*/
+
+.expansion-event-img{
+    pointer-events:all;
+    /*z-index:100;*/
+    -webkit-transition: all 0.5s linear;
+    -moz-transition: all 0.5s linear;
+    -o-transition: all 0.5s linear;
+    transition: all 0.5s linear;
+}
+
+image.expansion-event-img:hover{
+    opacity:1;
+    z-index:100;
+}
+
+rect.event-rect:hover {
+    pointer-events:all;
+    cursor: pointer;
+    opacity: 1;
 }

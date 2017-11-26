@@ -45,6 +45,14 @@ var tl_expansion_case = d3.select("#tl-expansion-case").append("svg")
     .attr("height", tl_expansion_height - tl_margin.top - tl_margin.bottom)
     .attr("transform", "translate("+tl_margin.left+","+tl_margin.top+")");
 
+var tl_expansion_event = d3.select("#tl-expansion-event").append("svg")
+    .attr("width", tl_width)
+    .attr("height", 200)
+    .append("g")
+    .attr("width", tl_width - tl_margin.right - tl_margin.left)
+    .attr("height", tl_expansion_height - tl_margin.top - tl_margin.bottom)
+    .attr("transform", "translate("+tl_margin.left+","+tl_margin.top+")");
+
 var node_position_factor = 7;
 
 var svgMappings = {"event":tl_svg_event, "policy": tl_svg_policy, "case":tl_svg_case};
@@ -66,7 +74,7 @@ var tl_x_time = d3.scaleTime().range([tl_width2, 1]);
 var logScale = d3.scaleLog()
     .base([20])
     .domain([tl_width2, 1])
-    .range([0, tl_width2]);
+    .range([0, tl_width2-10]);
 
 function tl_x(d){
     return logScale(tl_x_time(d));
@@ -391,7 +399,7 @@ var tl_caseLinks = [];
 var tl_policies = [];
 
 function tlInitVis(error, events, caseMetadata, caseLinks, policies) {
-    var rectWidth = 8;
+    var rectWidth = 10;
 
     var metadata = {"event":events, "policy":policies, "case":caseMetadata};
     for (var key in metadata){
@@ -404,6 +412,17 @@ function tlInitVis(error, events, caseMetadata, caseLinks, policies) {
     };
 
     tl_x_time.domain([tl_minYear, tl_maxYear]);
+
+    tl_expansion_event.selectAll(".expansion-event-pointer")
+        .data(events)
+        .enter()
+        .append("rect")
+        .attr("class", "expansion-event-pointer")
+        .attr("x", function(d){ return tl_x(d.date) - 2.5; })
+        .attr("y", rectWidth)
+        .attr("height", 12)
+        .attr("width", rectWidth)
+        .attr("fill", "#d9d9d9");
 
     for (var key in metadata){
         var dataSet = metadata[key];
@@ -427,13 +446,48 @@ function tlInitVis(error, events, caseMetadata, caseLinks, policies) {
             .attr("height", tl_height2)
             .attr("width", rectWidth)
             .attr("fill", function(d){ return colorMappings[key]; })
-            .attr("opacity", 0.6)
+            .attr("opacity", 0.4)
             .attr("stroke", "#d9d9d9")
             .attr("stroke-width", 1)
             .on('mouseenter', tlMouseEnter)
             .on('mouseout', tlMouseOut)
             .on("click", tlClick)
     };
+
+    tl_expansion_event.selectAll(".expansion-event-img")
+        .data(events)
+        .enter()
+        .append("svg:image")
+        .attr("xlink:href", function(d,i){ return "img/events/" + i +".png"; })
+        .attr("class", "expansion-event-img")
+        .attr("x", function(d){ return tl_x(d.date) - 3; })
+        .attr("y", 20)
+        .attr("height", 75)
+        .attr("width", 50)
+        .attr("opacity", 0.5)
+        .on('mouseenter', tlMouseEnterImage)
+        .on('mouseout', tlMouseOutImage)
+        .on("click", tlClick);
+
+    tl_expansion_event.selectAll(".expansion-event-rect")
+        .data(events)
+        .enter()
+        .append("rect")
+        .attr("class", "expansion-event-rect")
+        // .attr("rx",10)
+        // .attr("ry",10)
+        .attr("x", function(d){ return tl_x(d.date) - 3; })
+        .attr("y", 20)
+        .attr("fill", function(d){ return "url(#bg" + d.date.getMonth() + d.date.getDate() + d.date.getYear()+")"; })
+        .attr("height", 75)
+        .attr("width", 50)
+        .attr("opacity", 0.6)
+        // .attr("stroke", "#d9d9d9")
+        // .attr("stroke-width", 3)
+        .on('mouseenter', tlMouseEnterImage)
+        .on('mouseout', tlMouseOutImage)
+        .on("click", tlClick);
+
 
     tl_svg_axis
         .append("rect")
@@ -451,7 +505,7 @@ function tlInitVis(error, events, caseMetadata, caseLinks, policies) {
         .attr("class","tl_ticks")
         .attr("width", 2)
         .attr("height", function(d){ return [1800, 1900, 1950, 1980, 1990, 2000, 2005, 2010, 2012, 2014, 2015, 2016, 2017].includes(d) ? 20: 10;})
-        .attr("x", function(d){ console.log(d); return tl_x(new Date(d,1,1));})
+        .attr("x", function(d){ return tl_x(new Date(d,1,1));})
         .attr("y", function(d){ return [1800, 1900, 1950, 1980, 1990, 2000, 2005, 2010, 2012, 2014, 2015, 2016, 2017].includes(d) ? tl_height2-35: tl_height2-25;})
         .attr("fill", "#000");
     ;
@@ -462,7 +516,7 @@ function tlInitVis(error, events, caseMetadata, caseLinks, policies) {
         .append("text")
         .attr("class", "tl_tick_text")
         .text(function(d){ return d;})
-        .attr("x", function(d){ console.log(d); return tl_x(new Date(d,1,1));})
+        .attr("x", function(d){ return tl_x(new Date(d,1,1));})
         .attr("y", -10)
         .attr("text-anchor", "middle")
         .attr("fill", "#000");
@@ -502,12 +556,26 @@ function tlInitVis(error, events, caseMetadata, caseLinks, policies) {
 
     node_position_factor = tl_expansion_height/tl_nodes.length;
     drawSankey(tl_expansion_case, tl_nodes, tl_links.slice(0,19), tl_links.slice(20));
+    $("#tl-expansion-event").slideUp("fast")
+
 }
 
 function tlMouseEnter(data){
 }
 
 function tlMouseOut(data){
+}
+
+function tlMouseEnterImage(data){
+    d3.select(this)
+        .attr("width",100)
+        .attr("height",150);
+}
+
+function tlMouseOutImage(data){
+    d3.select(this)
+        .attr("width",50)
+        .attr("height",75);
 }
 
 function tlClick(data){
@@ -528,15 +596,13 @@ $(".tl-row-label").click(function(){
     var id = this.id.slice("tl-row-".length);
     options.forEach(function(d){
         if (d!== id){
-            console.log("reversing "+d);
             $("#"+d+"-caret").addClass("caret-reversed");
             $("#tl-expansion-"+d).slideUp("slow").animate(
                 { opacity: 0 },
                 { queue: false, duration: 'slow' }
-            );;
+            );
         } else {
-            console.log("normal "+d);
-            $("#"+d+"-caret").toggleClass("caret-reversed");
+            $("#"+d+"-caret").removeClass("caret-reversed");
             $("#tl-expansion-"+d).slideDown("slow"
             ).animate(
                 { opacity: 1 },
