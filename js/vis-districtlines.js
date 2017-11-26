@@ -8,7 +8,7 @@ function updateDistrictDrawn(error) {
     // Initialize map settings
     var districtProjection = d3.geoAlbersUsa()
         .scale(800)
-        .translate([350,200]);
+        .translate([300,200]);
 
     var districtPath = d3.geoPath()
         .projection(districtProjection);
@@ -58,16 +58,21 @@ function updateDistrictDrawn(error) {
 
     districtMap.append("path")
         .attr("d", districtPath)
-        .attr("opacity", 0.7)
         .attr("fill", function(d) {
             return districtColor(d.properties.drawnBy);
         })
         .on("mouseover", function(d) {
-            d3.select(this).attr("opacity", 1);
+            d3.select(this).attr("opacity", 0.7)
+                .attr("stroke","white")
+                .attr("stroke-width",1)
+                .attr("stroke-opacity",0.6);
             districtTip.show(d);
         })
         .on("mouseout", function(d) {
-            d3.select(this).attr("opacity", 0.7);
+            d3.select(this).attr("opacity", 1)
+                .attr("stroke","white")
+                .attr("stroke-width",0)
+                .attr("stroke-opacity",0.6);
             districtTip.hide(d);
         });
 
@@ -81,7 +86,7 @@ function updateDistrictDrawn(error) {
         .attr('class', 'legend')
         .attr('transform', function(d, i) {
             var y = 15*i+350;
-            return 'translate(375,' + y + ')';
+            return 'translate(325,' + y + ')';
         });
 
     districtLegend.append('rect')
