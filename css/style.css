@@ -11,6 +11,9 @@ h2 {
     font-size: 2.5em;
     margin: 0em auto 1em;
 }
+h3 {
+    line-height: 1.4em;
+}
 h5 {
     font-style: italic;
 }
