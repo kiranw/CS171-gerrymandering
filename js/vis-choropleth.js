@@ -1,7 +1,7 @@
 // Create SVG Drawing area
-var margin = { top: 30, right: 40, bottom: 60, left: 60 };
+var margin = { top: 30, right: 0, bottom: 60, left: 0 };
 var width = 800,
-    height = 450;
+    height = 500;
 
 var choroplethSvg = d3.select("#choropleth").append("svg")
     .attr("width", width)

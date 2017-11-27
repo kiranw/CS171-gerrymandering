@@ -13,62 +13,65 @@
 </head>
 <body>
 
-<div id="intro" class="container-fluid">
-	<div class="title section">
+<div id="title" class="title container-fluid">
+	<div class="col-md-2"></div>
+	<div class="col-md-8 section">
 		<h1 id="headline">The United States of Gerrymandering</h1>
 		<h4 id="subheadline">A Primer on Gerrymandering, Fair Districting, and its Impacts on Representation</h4>
 	</div>
-	<div class="section">
-		<div>
-			<h2 class="section-title">A Tradition as Old as the Republic</h2>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+			<h2>A Tradition as Old as the Republic</h2>
 			<p>Gerrymandering, or the practice of manipulating electoral district boundaries for political gain, is a practice as old as America itself.</p>
 
-			<p>Where the lines are drawn affects both state and federal elections. For Congressional elections, states are divided into districts based on how many representatives they send to the House of Representatives.</p>
+			<p>Where the lines are drawn affects both state and federal elections. For Congressional elections, states are divided into districts based on how many representatives they send to the House of Representatives. In these cases, partisan gerrymandering is often used to maximize the wins for their own party.</p>
 		</div>
 	</div>
 
 	<div class="row">
-		<div class="col-sm-4">
+		<div class="col-md-4">
 			<img src="img/gerrymander.png" width="100%">
 		</div>
-		<div class="col-sm-8">
-			<p>In these cases, partisan gerrymandering is often used to maximize the wins for their own party.</p>
-
+		<div class="col-md-8">
 			<p>Many of the resulting districts end up as <a href="#">strange, winding shapes</a> that intentionally include or exclude populations for political gain.</p>
 
-			<p>As a result, even though Party A may win the popular vote, Party B may end up sending more representatives to congress.</p>
+			<p>As a result, even though Party A may win the popular vote, Party B may end up sending more representatives to congress. Whoever decides the lines decide whose vote is reflected. This can skew statewide representation, dilute minority votes, split communities.</p>
 
-			<p>Whoever decides the lines decide whose vote is reflected. This can skew statewide representation, dilute minority votes, split communities.</p>
+			<h4 class="red">Include SVGs of most gerrymandered (highest efficiency gap) districts</h4>
 		</div>
 	</div>
 
 	<div class="row">
-		<div class="col-md-6">
-			<h2 class="section-title">Who draws the district lines?</h2>
+		<div class="col-md-5">
+			<h2>Who draws the lines?</h2>
 			<p>District lines are redrawn every 10 years to reflect the updated populations taken by the US Census.</p>
 
 			<p>In most states, district lines are drawn by the majority party of the state legislature and approved by governor. Even in states with alternative processes like Independent Commissions, there are seats specifically reserved for Democratic or Republican appointees, so there are no truly non-partisan redistricting committees.</p>
 		</div>
-		<div class="col-md-6" id="districtDrawn">
+		<div class="col-md-7" id="districtDrawn">
 		</div>
 	</div>
 
-	<div class="section">
-		<h2 class="section-title">The Art &amp; Science of Map Manipulation</h2>
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+			<h2>The Art &amp; Science of Map Manipulation</h2>
 
-		<p>The goal of gerrymandering is to maximize the number of districts that will vote for your party. There are multiple ways to do that, primarily being <b>“cracking”</b> the constituency to dilute votes) and <b>"packing"</b> similar interests to waste votes.</p>
+			<p>The goal of gerrymandering is to maximize the number of districts that will vote for your party. There are multiple ways to do that, primarily being <b>“cracking”</b> the constituency to dilute votes and <b>"packing"</b> similar interests to waste votes.</p>
 
-		<p>Ideally, a district map would place all of your opponent’s supporters into only a few foregone districts, while the rest of your supporters can be spread out evenly amongst the districts so you win a comfortable majority.</p>
+			<p>Ideally, a district map would place all of your opponent’s supporters into only a few foregone districts, while the rest of your supporters can be spread out evenly amongst the districts so you win a comfortable majority.</p>
 
-		<p>This partisan distribution requires balancing the risk of maintaining a comfortable lead with the need of minimizing vote wastage.</p>
+			<p>This partisan distribution requires balancing the risk of maintaining a comfortable lead with the need of minimizing vote wastage.</p>
+		</div>
 	</div>
-</div>
 
-<div id="main" class="container-fluid">
-	<div id="timeline" class="container">
-		<h2 class="section-title">Tracing the legal and cultural history of gerrymandering</h2>
-		<hr>
-		<div class="row">
+	<div id="timeline" class="row">
+		<h2>Tracing the legal and cultural history of gerrymandering</h2>
+		<div>
 			<div id="tl-svg" class="col-md-8">
                 <div id="tl-svg-axis">
                     <div class="tl-row-label">Time</div>
@@ -88,79 +91,97 @@
 			<div id="tl-info" class="col-md-4">
 				<div id="tl-content">
 					<div id="tl-title"></div>
-					<div id="tl-text">click on an event to see more here</div>
+					<div id="tl-text"><h5>Click on an event to learn more</h5></div>
 				</div>
 				<div id="tl-src"></div>
 			</div>
 		</div>
 		<!--<img src="img/timeline-placeholder2.png" width="100%" />-->
 	</div>
-</div>
 
-<div id="explanation" class="container-fluid">
-	<div class="row">
-		<div class="col-md-6">
-			<img src="img/howitworks.png" border="0" alt="" width="100%">
+	<div id="explanation" class="row">
+		<div class="col-md-6" id="districtGrouping">
+			<div class="btn-group" id="groupingMethod" data-toggle="buttons">
+			  <label class="btn btn-secondary">
+			    <input type="radio" name="options" id="option1" autocomplete="off" checked>Perfect representation
+			  </label>
+			  <label class="btn btn-secondary">
+			    <input type="radio" name="options" id="option2" autocomplete="off">Compact but unfair
+			  </label>
+			  <label class="btn btn-secondary active">
+			    <input type="radio" name="options" id="option3" autocomplete="off">Neither compact nor fair
+			  </label>
+			</div>
+
+			<h3>Winner: <span id="winner" class="red">Red</span></h3>
 		</div>
 		<div class="col-md-6">
+			<h2>Unfair Divisions</h2>
+
 			<p>Gerrymandering often occurs to secure party control, favor incumbents, or dilute the voting power of certain demographic groups.</p>
 
-			<p>In some cases, gerrymandering can be helpful by grouping minority interests to give their community a voice in government. Many states even require districts not separate communities of interest when drawing the lines.</p>
+			<p>In some cases, gerrymandering <em>can</em> be helpful by grouping minority interests to give their community a voice in government. But there is a fine line between packing and cracking where an appropriate amount of community representation falls. The ambiguity of the situation is exacerbated by the lack of standard measurements of fairness.</p>
 
-			<p>But there is a fine line between packing and cracking where an appropriate amount of community representation falls. The ambiguity of the situation is exacerbated by the lack of standard measurements of fairness.</p>
+			<p>In an imaginary country of 50 people where 60% are blue and 40% are red, there are 3 ways to divide 5 districts.</p>
+
+			<p>1. Perfect representation (3 blue districts, 2 red): Blue</p>
+			<p>2. Compact but unfair (5 blue districts, 0 red): Blue</p>
+			<p>3. Neither compact nor unfair (2 blue districts, 3 red): Red</p>
 		</div>
 	</div>
-	<div class="section">
-		<h2 class="section-title">A Rule for Fairness</h2>
 
-		<p>To measure "fairness", numerous metrics have been proposed, including a measure of <b>compactness</b> (the ratio of perimeter to area, with the ideal being a perfect circle at 1) and more recently, the <b>efficiency gap</b>, which measures the number of both wasted vote and diluted votes.</p>
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+			<h2>A Rule for Fairness</h2>
 
-		<p>The efficiency gap measures a ratio of <b>net wasted votes</b> by both parties over the total number of votes cast. The metric is compared against the number of seats won to find any <b>seat advantages</b> attained by either party.</p>
+			<p>To measure "fairness", numerous metrics have been proposed, including a measure of <b>compactness</b> (the ratio of perimeter to area, with the ideal being a perfect circle at 1) and more recently, the <b>efficiency gap</b>, which measures the number of both wasted vote and diluted votes.</p>
 
-		<p>The <a href="https://www.brennancenter.org/legal-work/whitford-v-gill" target="_blank">Gill v. Whitford</a> case heard by the Supreme Court in October 2017 offers an opportunity to set a precedent for a legal test of fairness.</p>
-	</div>
-</div>
+			<p>The efficiency gap measures a ratio of <b>net wasted votes</b> by both parties over the total number of votes cast. The metric is compared against the number of seats won to find any <b>seat advantages</b> attained by either party.</p>
 
-
-<div id="map" class="container">
-	<h2 class="section-title">How gerrymandered is your district?</h2>
-
-	<div class="col-md-8">
-		<h5>Mouse over to explore the 2014 elections:</h5>
-		<div id="choropleth"></div>
-	</div>
-	<div class="col-md-4">
-		<div id="gapData">
-			<h4 id="current-district"> Click on a district to learn more.</h4>
-			<h5 id="efficiency-gap"> Efficiency Gap: </h5>
-			<h5 id="outcome"> Election Outcome: </h5>
-			<h5 id="contested-seats"> Total contested Seats: </h5>
+			<p>The <a href="https://www.brennancenter.org/legal-work/whitford-v-gill" target="_blank">Gill v. Whitford</a> case heard by the Supreme Court in October 2017 offers an opportunity to set a precedent for a legal test of fairness.</p>
 		</div>
 	</div>
-</div>
 
-<div id="infoCharts" class="container">
-	<div id="districtCharts">
-		<h4>
-			Demographic charts: Race, Income, Education levels for selected district.
-		</h4>
-		<h5>
-			Issues: enter/exit pattern, async data loading
-		</h5>
+	<div id="map">
+		<h2>How gerrymandered is your district?</h2>
+
+		<div class="col-md-7">
+			<h5>Mouse over to explore the 2014 elections:</h5>
+			<div id="choropleth"></div>
+		</div>
+		<div class="col-md-5">
+			<div id="gapData">
+				<h5 id="current-district">Click on a district to learn more.</h5>
+				<h4 id="efficiency-gap">Efficiency Gap: </h4>
+				<h4 id="outcome">Election Outcome: </h4>
+				<h4 id="contested-seats">Total contested Seats:</h4>
+			</div>
+
+			<div id="districtCharts" class="section">
+				<h5>Selected District Demographics</h5>
+			</div>
+		</div>
 	</div>
-</div>
 
-<div id="conclusion" class="section">
-	<h2 class="section-title">Is there any other way?</h2>
-	<ul>
-		<li>Proportional representation - uniquely solves judicial meddling, natural geographic clustering</li>
-		<li>Ranked choice voting</li>
-		<li>Independent redistricting commissions (Canada shifted to ICs in 1960s - problem is US lets politicians name appointees to district)</li>
-		<li>Election commission</li>
-		<li>Algorithms (equal # of voters, compactness) - but ignores communities of interest</li>
-	</ul>
-</div>
+	<!-- <div id="infoCharts" class="container">
+	</div> -->
 
+	<div id="conclusion" class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+			<h2>Is there any other way?</h2>
+			<ul>
+				<li>Proportional representation - uniquely solves judicial meddling, natural geographic clustering</li>
+				<li>Ranked choice voting</li>
+				<li>Independent redistricting commissions (Canada shifted to ICs in 1960s - problem is US lets politicians name appointees to district)</li>
+				<li>Election commission</li>
+				<li>Algorithms (equal # of voters, compactness) - but ignores communities of interest</li>
+			</ul>
+		</div>
+	</div>
+
+</div>
 
 </body>
 
@@ -186,6 +207,7 @@
 	<script src="js/vis-district-charts.js"></script>
 	<script src="js/timeline.js"></script>
 	<script src="js/vis-districtlines.js"></script>
+	<script src="js/vis-districtgrouping.js"></script>
 
 </body>
 </html>

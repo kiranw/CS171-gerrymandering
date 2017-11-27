@@ -1,7 +1,7 @@
 // --> CREATE SVG DRAWING AREA
-var margin = { top: 30, right: 40, bottom: 60, left: 60 };
+var margin = { top: 30, right: 0, bottom: 20, left: 0 };
 var width = 800,
-    height = 500;
+    height = 350;
 
 var chartsSvg = d3.select("#districtCharts").append("svg")
     .attr("width", width)
@@ -76,7 +76,7 @@ function createRaceChart(districtData){
 
     var raceBars = dataRaceBars.enter()
         .append("rect")
-        .attr('transform', 'translate(100, 50)')
+        .attr('transform', 'translate(60, 40)')
         .attr("class", "race-bars")
         .attr("fill", "steelblue")
 

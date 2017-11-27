@@ -1,4 +1,5 @@
-function updateDistrictDrawn(error) {
+// Draws chloropleth showing how each state determines who draws the district lines (state legislature, etc)
+function updateDistrictDrawn() {
     // Create SVG Drawing area
     var districtSvg = d3.select("#districtDrawn").append("svg")
         .attr("width", 650)
