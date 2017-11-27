@@ -56,15 +56,15 @@ body {
 .container-fluid {
     padding: 0;
 }
-.row, .section {
+.section {
     padding-top: 8em;
     padding-bottom: 8em;
 }
-/* #intro div, #explanation div, #conclusion div {
-    height:100vh;
-    background-color: #f4f4f4;
-    margin: 0;
-} */
+p, li {
+    font-size: 16px;
+    line-height: 1.5em;
+    font-weight: 300;
+}
 .title {
     /*background-image: url('../img/districtmap.jpg');*/
     /* background-image: url('../img/Salamander.png'); */
@@ -72,7 +72,19 @@ body {
     background-size: cover;
     height: 100vh;
 }
+.hideme {
+    opacity:0;
+}
 
+
+
+.gap-explain{
+    background-color:#f4f4f4;
+    text-align:left;
+    vertical-align: middle;
+    padding:20px;
+    border-radius: 15px;
+}
 
 /*********************/
 /*  TOOLTIP OVERLAY  */

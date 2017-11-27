@@ -22,7 +22,7 @@
 </div>
 
 <div class="container">
-	<div class="row">
+	<div class="row section">
 		<div class="col-md-2"></div>
 		<div class="col-md-8">
 			<h2>A Tradition as Old as the Republic</h2>
@@ -32,7 +32,7 @@
 		</div>
 	</div>
 
-	<div class="row">
+	<div class="row section">
 		<div class="col-md-4">
 			<img src="img/gerrymander.png" width="100%">
 		</div>
@@ -45,18 +45,18 @@
 		</div>
 	</div>
 
-	<div class="row">
+	<div class="row section">
 		<div class="col-md-5">
 			<h2>Who draws the lines?</h2>
 			<p>District lines are redrawn every 10 years to reflect the updated populations taken by the US Census.</p>
 
 			<p>In most states, district lines are drawn by the majority party of the state legislature and approved by governor. Even in states with alternative processes like Independent Commissions, there are seats specifically reserved for Democratic or Republican appointees, so there are no truly non-partisan redistricting committees.</p>
 		</div>
-		<div class="col-md-7" id="districtDrawn">
+		<div class="col-md-6" id="districtDrawn">
 		</div>
 	</div>
 
-	<div class="row">
+	<div class="row section">
 		<div class="col-md-2"></div>
 		<div class="col-md-8">
 			<h2>The Art &amp; Science of Map Manipulation</h2>
@@ -69,7 +69,7 @@
 		</div>
 	</div>
 
-	<div id="timeline" class="row">
+	<div id="timeline" class="row section">
 		<h2>Tracing the legal and cultural history of gerrymandering</h2>
 		<div>
 			<div id="tl-svg" class="col-md-8">
@@ -99,7 +99,7 @@
 		<!--<img src="img/timeline-placeholder2.png" width="100%" />-->
 	</div>
 
-	<div id="explanation" class="row">
+	<div class="row section">
 		<div class="col-md-6" id="districtGrouping">
 			<div class="btn-group" id="groupingMethod" data-toggle="buttons">
 			  <label class="btn btn-secondary">
@@ -130,7 +130,7 @@
 		</div>
 	</div>
 
-	<div class="row">
+	<div class="row section">
 		<div class="col-md-2"></div>
 		<div class="col-md-8">
 			<h2>A Rule for Fairness</h2>
@@ -143,31 +143,45 @@
 		</div>
 	</div>
 
-	<div id="map">
+	<div id="map" class="row section">
 		<h2>How gerrymandered is your district?</h2>
 
-		<div class="col-md-7">
-			<h5>Mouse over to explore the 2014 elections:</h5>
-			<div id="choropleth"></div>
-		</div>
-		<div class="col-md-5">
-			<div id="gapData">
-				<h5 id="current-district">Click on a district to learn more.</h5>
-				<h4 id="efficiency-gap">Efficiency Gap: </h4>
-				<h4 id="outcome">Election Outcome: </h4>
-				<h4 id="contested-seats">Total contested Seats:</h4>
+		<div class="row">
+			<div class="col-md-7">
+				<h5>Mouse over to explore the 2014 elections:</h5>
+				<div id="choropleth"></div>
 			</div>
-
-			<div id="districtCharts" class="section">
-				<h5>Selected District Demographics</h5>
-			</div>
+			<div class="col-md-5">
+				<div id="gapData">
+					<h5 id="current-district">Click on a district to learn more.</h5>
+					<h4 id="efficiency-gap">Efficiency Gap: </h4>
+					<h4 id="outcome">Election Outcome: </h4>
+					<h4 id="contested-seats">Total contested Seats:</h4>
+				</div>
+				<div class="gap-explain">
+	            	<p style="font-size:14px">
+	                The basic <b>efficiency gap</b> metric can be calculated based on the results of elections for contested seats between two parties as follows:
+	            	</p>
+	            	<div style="padding-bottom:14px">Seat margin - (2*vote margin)</div>
+	            	<p style="font-size:14px">
+	                where <b>seat margin</b> is the share of seats won by the winning party minus 50% and
+	                <b>vote margin</b> is the share of votes won by the winning party minus 50%.
+	                For uncontested races, we assumed that the opponent would have won 25% of the votes, as both the
+	                <a href="http://www.detroitnews.com/story/news/politics/2017/06/25/redrawing-america-imbalance-power-methodology/103170886/">Associated Press</a>
+	                and the
+	                <a href="http://chicagounbound.uchicago.edu/cgi/viewcontent.cgi?article=1946&context=public_law_and_legal_theory">University of Chicago Law School</a>
+	                utilized this 75-to-25 vote share assumption in their models.
+	            	</p>
+	        	</div>
+	        </div>
+    	</div>
+    	<div class="row">
+			<h5>Selected District Demographics</h5>
+        	<div id="districtCharts"></div>
 		</div>
 	</div>
 
-	<!-- <div id="infoCharts" class="container">
-	</div> -->
-
-	<div id="conclusion" class="row">
+	<div id="conclusion" class="row section">
 		<div class="col-md-2"></div>
 		<div class="col-md-8">
 			<h2>Is there any other way?</h2>
@@ -180,9 +194,7 @@
 			</ul>
 		</div>
 	</div>
-
 </div>
-
 </body>
 
 	<!-- Load JS libraries -->

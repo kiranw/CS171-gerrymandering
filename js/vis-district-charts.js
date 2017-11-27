@@ -1,7 +1,12 @@
 // --> CREATE SVG DRAWING AREA
-var margin = { top: 30, right: 0, bottom: 20, left: 0 };
-var width = 800,
-    height = 350;
+
+// var margin = { top: 30, right: 0, bottom: 20, left: 0 };
+// var width = 800,
+//     height = 350;
+
+var margin = { top: 30, right: 40, bottom: 60, left: 60 };
+var width = 940,
+    height = 500;
 
 var chartsSvg = d3.select("#districtCharts").append("svg")
     .attr("width", width)
@@ -73,12 +78,13 @@ function createRaceChart(districtData){
         });
 
     d3.selectAll(".race-bars").remove();
+    d3.selectAll(".race-percent").remove();
 
     var raceBars = dataRaceBars.enter()
         .append("rect")
         .attr('transform', 'translate(60, 40)')
         .attr("class", "race-bars")
-        .attr("fill", "steelblue")
+        .attr("fill", "grey")
 
     raceBars.merge(raceBars)
         //.transition()
@@ -87,7 +93,7 @@ function createRaceChart(districtData){
         .attr("height", 20)
         .attr("x", 0)
         .attr("y", function(d, index) {
-            return (index * 30);
+            return (3+index * 30);
         })
 
     chartsSvg.selectAll("text.race")
@@ -103,6 +109,21 @@ function createRaceChart(districtData){
         })
         .text(function(d) {
             return d;
+        });
+    chartsSvg.selectAll("text.racePercent")
+        .data(raceData)
+        .enter().append("text")
+        .attr("class","race-percent")
+        .style("fill", "black")
+        .attr("font-size", "10px")
+        .attr("height", 10)
+        .attr("x", function(d) {
+            return 80+parseFloat(d)})
+        .attr("y", function(d, index) {
+            return (50+index * 30);
+        })
+        .text(function(d) {
+            return d + "%";
         });
 
     //raceBars.exit().transition(500).remove();
@@ -131,7 +152,7 @@ function createIncomeChart(districtData){
     incomeData.push(from100to150);
     incomeData.push(from150to200);
     // console.log(incomeData)
-    var incomes = ["under25k", "25to50k", "50to75k", "75to100k","100to150k","150to200k"];
+    var incomes = ["<25k", "25-50k", "50-75k", "75-100k","100-150k","150k+"];
 
     var incomeChart = chartsSvg.append("g")
         .attr("class", "income")
@@ -205,7 +226,7 @@ function createEmploymentChart(districtData){
     emData.push(100-unemp)
     emData.push(unemp)
     // console.log(unemp)
-    var color = ["#aedd56", "#f2b0d1"];
+    var color = ["grey", "orange"];
     var arc = d3.arc().outerRadius(50).innerRadius(0);
 
     var employmentChart = chartsSvg.append("g")
@@ -235,4 +256,28 @@ function createEmploymentChart(districtData){
             return color[i];
         });
 
+    var employStatus = ["Employed", "Unemployed"]
+
+    var legend = employmentChart.selectAll('.legend')
+        .data(employStatus)
+        .enter()
+        .append('g')
+        .attr('class', 'legend')
+        .attr('transform', function(d, i) {
+            var y = 15*i+180;
+            return 'translate(90,' + y + ')';
+        });
+
+    legend.append('rect')
+        .attr('width', 12)
+        .attr('height', 12)
+        .style('fill', function(d, i) {
+            console.log(d)
+            return color[i];
+        });
+    legend.append('text')
+        .attr("class", "legend-names")
+        .attr('x', 20)
+        .attr('y', 10)
+        .text(function(d,i) {return d; });
 }
