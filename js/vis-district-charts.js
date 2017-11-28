@@ -7,20 +7,6 @@ var chartsSvg = d3.select("#districtCharts").append("svg")
     .attr("width", width)
     .attr("height", height);
 
-var congressData;
-
-queue()
-    .defer(d3.csv, "data/new_allCongressDataPublish.csv")
-    .await(function(error, congressDataCsv){
-        // Process Data
-
-        // console.log(congressDataCsv)
-        // console.log(congressDataCsv.columns)
-        congressData = congressDataCsv
-
-        createLineCharts();
-    });
-
 //var curYear;
 
 // Add demographic charts for the selected district

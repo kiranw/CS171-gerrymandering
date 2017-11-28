@@ -55,6 +55,7 @@ queue()
     .defer(d3.csv, "data/new_allCongressDataPublish.csv")
     .defer(d3.csv, "data/gapData.csv")
     .defer(d3.json, "data/us-states.json")
+    .defer(d3.csv, "data/new_allCongressDataPublish.csv")
     .await(function(error, mapTopJson, stateNamesCsv, allCongressData, allGapData, mapStatesJson){
 
         // Process Data
@@ -67,6 +68,7 @@ queue()
 
         // Update choropleth: add legend
         updateChoropleth();
+        createLineCharts()
 
         // Update district drawn by Chloropleth [JFAN]
         updateDistrictDrawn();
