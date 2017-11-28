@@ -140,7 +140,22 @@
 			<p>The efficiency gap measures a ratio of <b>net wasted votes</b> by both parties over the total number of votes cast. The metric is compared against the number of seats won to find any <b>seat advantages</b> attained by either party.</p>
 
 			<p>The <a href="https://www.brennancenter.org/legal-work/whitford-v-gill" target="_blank">Gill v. Whitford</a> case heard by the Supreme Court in October 2017 offers an opportunity to set a precedent for a legal test of fairness.</p>
-		</div>
+            <div class="gap-explain">
+                <p style="font-size:14px">
+                    The basic <b>efficiency gap</b> metric can be calculated based on the results of elections for contested seats between two parties as follows:
+                </p>
+                <div style="padding-bottom:14px">Seat margin - (2*vote margin)</div>
+                <p style="font-size:14px">
+                    where <b>seat margin</b> is the share of seats won by the winning party minus 50% and
+                    <b>vote margin</b> is the share of votes won by the winning party minus 50%.
+                    For uncontested races, we assumed that the opponent would have won 25% of the votes, as both the
+                    <a href="http://www.detroitnews.com/story/news/politics/2017/06/25/redrawing-america-imbalance-power-methodology/103170886/">Associated Press</a>
+                    and the
+                    <a href="http://chicagounbound.uchicago.edu/cgi/viewcontent.cgi?article=1946&context=public_law_and_legal_theory">University of Chicago Law School</a>
+                    utilized this 75-to-25 vote share assumption in their models.
+                </p>
+            </div>
+        </div>
 	</div>
 
 	<div id="map" class="row section">
@@ -158,27 +173,10 @@
 					<h4 id="outcome">Election Outcome: </h4>
 					<h4 id="contested-seats">Total contested Seats:</h4>
 				</div>
-				<div class="gap-explain">
-	            	<p style="font-size:14px">
-	                The basic <b>efficiency gap</b> metric can be calculated based on the results of elections for contested seats between two parties as follows:
-	            	</p>
-	            	<div style="padding-bottom:14px">Seat margin - (2*vote margin)</div>
-	            	<p style="font-size:14px">
-	                where <b>seat margin</b> is the share of seats won by the winning party minus 50% and
-	                <b>vote margin</b> is the share of votes won by the winning party minus 50%.
-	                For uncontested races, we assumed that the opponent would have won 25% of the votes, as both the
-	                <a href="http://www.detroitnews.com/story/news/politics/2017/06/25/redrawing-america-imbalance-power-methodology/103170886/">Associated Press</a>
-	                and the
-	                <a href="http://chicagounbound.uchicago.edu/cgi/viewcontent.cgi?article=1946&context=public_law_and_legal_theory">University of Chicago Law School</a>
-	                utilized this 75-to-25 vote share assumption in their models.
-	            	</p>
-	        	</div>
+                <h5>Selected District Demographics</h5>
+                <div id="districtCharts"></div>
 	        </div>
     	</div>
-    	<div class="row">
-			<h5>Selected District Demographics</h5>
-        	<div id="districtCharts"></div>
-		</div>
 	</div>
 
 	<div id="conclusion" class="row section">
