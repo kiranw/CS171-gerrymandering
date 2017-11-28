@@ -125,20 +125,32 @@ function createIncomeChart(districtData){
     var over150k = parseFloat(districtData[0].over150k).toFixed(2);
     var over200k = parseFloat(districtData[0].over200k).toFixed(2);
     var under25k = 100 - over25k;
-    var from25to50 = over25k-over50k;
-    var from50to75 = over50k-over75k;
-    var from75to100 = over75k-over100k;
-    var from100to150 = over100k-over150k;
-    var from150to200 = over150k-over200k;
+    // var from25to50 = over25k-over50k;
+    // var from50to75 = over50k-over75k;
+    // var from75to100 = over75k-over100k;
+    // var from100to150 = over100k-over150k;
+    // var from150to200 = over150k-over200k;
+    var under50k = 100 - over50k;
+    var under75k = 100 - over75k;
+    var under100k = 100 - over100k;
+    var under150k = 100 - over150k;
+    var under200k = 100 - over200k;
     var incomeData = [];
+    incomeData.push(0)
     incomeData.push(under25k);
-    incomeData.push(from25to50);
-    incomeData.push(from50to75);
-    incomeData.push(from75to100);
-    incomeData.push(from100to150);
-    incomeData.push(from150to200);
+    // incomeData.push(from25to50);
+    // incomeData.push(from50to75);
+    // incomeData.push(from75to100);
+    // incomeData.push(from100to150);
+    // incomeData.push(from150to200);
+    // incomeData.push(from150to200);
+    incomeData.push(under50k);
+    incomeData.push(under75k);
+    incomeData.push(under100k);
+    incomeData.push(under150k);
+    incomeData.push(under200k);
     // console.log(incomeData)
-    var incomes = ["<25k", "25-50k", "50-75k", "75-100k","100-150k","150k+"];
+    var incomes = ["0","25k", "50k", "75k", "100k","150k","200k+"];
 
     var incomeChart = chartsSvg.append("g")
         .attr("class", "income")
@@ -146,9 +158,9 @@ function createIncomeChart(districtData){
         .attr("width", 100)
         .attr("height", 600);
 
-    var x = d3.scaleLinear().domain([0,5]).range([0, 200]);
+    var x = d3.scaleLinear().domain([0,6]).range([0, 200]);
     var y = d3.scaleLinear().domain([0,100]).range([200, 0]);
-    var xAxis = d3.axisBottom(x).ticks(6).tickFormat(function (d,i) {return incomes[i]});
+    var xAxis = d3.axisBottom(x).ticks(7).tickFormat(function (d,i) {return incomes[i]});
     var yAxis = d3.axisLeft(y);
 
     incomeChart.append('g')
@@ -193,7 +205,7 @@ function createIncomeChart(districtData){
 
     chartsSvg.append("text")
         .attr("transform", "translate(280,310)")
-        .text("Annual Income Bracket");
+        .text("Annual Income");
     chartsSvg.append("text")
         .attr("transform", "rotate(-90)")
         .attr("y", 205 )
@@ -217,6 +229,7 @@ function createEmploymentChart(districtData){
 
     var employmentChart = chartsSvg.append("g")
         .attr("class", "employment")
+        .attr("id", "employment")
         .attr("transform", "translate(450,0)")
 
     chartsSvg.append("text")
@@ -231,13 +244,22 @@ function createEmploymentChart(districtData){
             return d
         }).sort(null);
 
+    var tooltipPie = d3.select('.employment')
+        .append('div')
+        .attr('id', 'tooltip-pie')
+        .attr('class', 'tooltip');
+
+    tooltipPie.append('div')
+        .attr('class', 'tooltip-label')
+        .attr('id', 'pie-label');
+
     var path = employmentChart.selectAll('path')
         .data(pie(emData))
         .enter().append('path')
         .attr('d', arc)
         .attr("transform", "translate(100,100)")
-        .attr('stroke', '#fff') // <-- THIS
-        .attr('stroke-width', '2') // <-- THIS
+        .attr('stroke', '#fff')
+        .attr('stroke-width', '2')
         .attr('fill', function(d, i) {
             return color[i];
         });
@@ -251,19 +273,24 @@ function createEmploymentChart(districtData){
         .attr('class', 'legend')
         .attr('transform', function(d, i) {
             var y = 15*i+180;
-            return 'translate(90,' + y + ')';
+            return 'translate(50,' + y + ')';
         });
 
     legend.append('rect')
         .attr('width', 12)
         .attr('height', 12)
         .style('fill', function(d, i) {
-            console.log(d)
             return color[i];
         });
+
+    d3.selectAll(".legend-names").remove();
     legend.append('text')
         .attr("class", "legend-names")
         .attr('x', 20)
         .attr('y', 10)
-        .text(function(d,i) {return d; });
+        .text(function(d,i) {
+            var pieData = emData
+            return d + " " + pieData[i] + "%";
+        });
+
 }

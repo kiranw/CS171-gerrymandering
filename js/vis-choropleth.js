@@ -140,12 +140,12 @@ function updateChoropleth(error) {
             var electionResult = congressData.filter(findDistrict);
             //console.log(electionResult)
             document.getElementById("outcome").innerHTML = "Winning Party: " + electionResult[0].party;
-            // if (electionResult[0].party.includes("R")) {
-            //     document.getElementById("outcome").innerHTML = "Winning Party: Republican Party"
-            // }
-            // else {
-            //     document.getElementById("outcome").innerHTML = "Winning Party: Democratic Party"
-            // }
+            if (electionResult[0].party.includes("R")) {
+                document.getElementById("outcome").className = "red";
+            }
+            else {
+                document.getElementById("outcome").className = "blue";
+            }
             document.getElementById("contested-seats").innerHTML = "Total contested seats in " + stateName +": " + districtInfo[0].Seats;
             createLineCharts()
         });
