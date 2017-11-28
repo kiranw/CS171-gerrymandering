@@ -1,4 +1,9 @@
 // --> CREATE SVG DRAWING AREA
+
+// var margin = { top: 30, right: 0, bottom: 20, left: 0 };
+// var width = 800,
+//     height = 350;
+
 var margin = { top: 30, right: 40, bottom: 60, left: 60 };
 var width = 940,
     height = 500;
@@ -63,7 +68,7 @@ function createRaceChart(districtData){
 
     var raceBars = dataRaceBars.enter()
         .append("rect")
-        .attr('transform', 'translate(100, 50)')
+        .attr('transform', 'translate(60, 40)')
         .attr("class", "race-bars")
         .attr("fill", "grey")
 
@@ -72,9 +77,9 @@ function createRaceChart(districtData){
         //.duration(1000)
         .attr("width", function(d) {return d})
         .attr("height", 20)
-        .attr("x", -30)
+        .attr("x", 0)
         .attr("y", function(d, index) {
-            return (-12+index * 30);
+            return (3+index * 30);
         })
 
     chartsSvg.selectAll("text.race")

@@ -1,62 +1,85 @@
-/* YOUR CSS STYLES */
+/* TEXT STYLES */
 body {
-    margin: 0;
     font-size: 16px;
     line-height: 1.5em;
     font-family: 'Lora', Georgia, serif;
 }
-
+h1, h2, h3, h4 {
+    font-weight: 700;
+}
 h2 {
-    font-size: 24px;
-    margin: 1em auto 1em;
+    font-size: 2.5em;
+    margin: 0em auto 1em;
+}
+h3 {
+    line-height: 1.4em;
+}
+h5 {
+    font-style: italic;
+}
+#headline{
+    font-size:5em;
+    font-weight: 700;
+    color: #fff;
+}
+#subheadline{
+    font-size:3em;
+    font-style: italic;
+    color: #fff;
+}
+p, li {
+    font-size: 18px;
+    line-height: 1.7em;
+    font-weight: 300;
+}
+.legend, .race-title, .income-title, .emp-title {
+    font-weight: 700;
+    font-size: 1em;
+}
+.blue {
+    color: #2171b5;
+}
+.red {
+    color: #d7301f;
+}
+.btn-group label {
+    border: 1px solid #ccc;
+}
+.btn-group .active {
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
 }
 
-
+/* SECTION STYLING */
+body {
+    margin: 0;
+    background-color: #f4f4f4;
+}
 .container-fluid {
     padding: 0;
+}
+.section {
+    padding-top: 8em;
+    padding-bottom: 8em;
 }
 p, li {
     font-size: 16px;
     line-height: 1.5em;
     font-weight: 300;
 }
-#intro div, #explanation div, #conclusion div {
-    height:100vh;
-    background-color: #f4f4f4;
-    margin: 0;
-}
 .title {
     /*background-image: url('../img/districtmap.jpg');*/
     /* background-image: url('../img/Salamander.png'); */
     background-image: url('../img/Salamander2.png');
     background-size: cover;
-    padding: 20% 10%;
-
-}
-#headline{
-    font-size:5em;
-    font-weight: 700;
-    color: white;
-}
-
-#subheadline{
-    font-size:3em;
-    font-style: italic;
-    color: white;
+    height: 100vh;
 }
 .hideme {
     opacity:0;
 }
 
 
-.section {
-    padding: 10% 20%;
-}
-.section-title{
-    margin-top: 5vh;
-    font-size:2.5em;
-    font-weight: 700;
-}
 
 .gap-explain{
     background-color:#f4f4f4;
@@ -108,31 +131,12 @@ p, li {
 .tooltip-title {
     font-weight: 600;
 }
-
-.legend {
-    font-family: 'Lora', Georgia, serif;
-}
-
-.race-title {
-    font-size: 16px;
-    font-family: 'Lora', Georgia, serif;
-}
-
-.income-title {
-    font-size: 16px;
-    font-family: 'Lora', Georgia, serif;
-}
-
-.emp-title {
-    font-size: 16px;
-    font-family: 'Lora', Georgia, serif;
-}
-
 .income-line {
     fill: none;
     stroke: orange;
     stroke-width: 1.5px;
 }
+
 
 /* ============ TIMELINE SECTION =================*/
 
@@ -173,7 +177,7 @@ p, li {
     position: relative;
     display: inline-block;
     top: 35px;
-    left: -160px;
+    left: -150px;
     /* text-anchor: end; */
     text-align: end;
     width: 200px;
