@@ -5,7 +5,7 @@
 //     height = 350;
 
 var margin = { top: 30, right: 40, bottom: 60, left: 60 };
-var width = 940,
+var width = 840,
     height = 500;
 
 var chartsSvg = d3.select("#districtCharts").append("svg")
