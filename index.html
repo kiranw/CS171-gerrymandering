@@ -10,55 +10,56 @@
 	<link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i|Roboto:300,300i,500,500i" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+		<script src="js/modernizr.custom.js"></script>
 </head>
 <body>
 
-<div id="title" class="title container-fluid">
+<header id="title" class="title container-fluid">
 	<div class="col-md-2"></div>
 	<div class="col-md-8 section">
 		<h1 id="headline">The United States of Gerrymandering</h1>
 		<h4 id="subheadline">A Primer on Gerrymandering, Fair Districting, and its Impacts on Representation</h4>
 	</div>
-</div>
+</header>
 
-<div class="container">
-	<div class="row section">
-		<div class="col-md-2"></div>
-		<div class="col-md-8">
+<div id="cbp-so-scroller" class="container cbp-so-scroller">
+	<section id="intro" class="row section cbp-so-section">
+		<div class="col-md-2 cbp-so-side cbp-so-side-left"></div>
+		<div class="col-md-8 cbp-so-side cbp-so-side-right">
 			<h2>A Tradition as Old as the Republic</h2>
 			<p>Gerrymandering, or the practice of manipulating electoral district boundaries for political gain, is a practice as old as America itself.</p>
 
 			<p>Where the lines are drawn affects both state and federal elections. For Congressional elections, states are divided into districts based on how many representatives they send to the House of Representatives. In these cases, partisan gerrymandering is often used to maximize the wins for their own party.</p>
 		</div>
-	</div>
+	</section>
 
-	<div class="row section">
-		<div class="col-md-4">
+	<section class="row section cbp-so-section">
+		<div class="col-md-4 cbp-so-side cbp-so-side-left">
 			<img src="img/gerrymander.png" width="100%">
 		</div>
-		<div class="col-md-8">
+		<div class="col-md-8 cbp-so-side cbp-so-side-right">
 			<p>Many of the resulting districts end up as <a href="#">strange, winding shapes</a> that intentionally include or exclude populations for political gain.</p>
 
 			<p>As a result, even though Party A may win the popular vote, Party B may end up sending more representatives to congress. Whoever decides the lines decide whose vote is reflected. This can skew statewide representation, dilute minority votes, split communities.</p>
 
 			<h4 class="red">Include SVGs of most gerrymandered (highest efficiency gap) districts</h4>
 		</div>
-	</div>
+	</section>
 
-	<div class="row section">
-		<div class="col-md-5">
+	<section class="row section cbp-so-section">
+		<div class="col-md-5 cbp-so-side cbp-so-side-left">
 			<h2>Who draws the lines?</h2>
 			<p>District lines are redrawn every 10 years to reflect the updated populations taken by the US Census.</p>
 
 			<p>In most states, district lines are drawn by the majority party of the state legislature and approved by governor. Even in states with alternative processes like Independent Commissions, there are seats specifically reserved for Democratic or Republican appointees, so there are no truly non-partisan redistricting committees.</p>
 		</div>
-		<div class="col-md-6" id="districtDrawn">
+		<div class="col-md-6 cbp-so-side cbp-so-side-right" id="districtDrawn">
 		</div>
-	</div>
+	</section>
 
-	<div class="row section">
+	<section class="row section cbp-so-section">
 		<div class="col-md-2"></div>
-		<div class="col-md-8">
+		<div class="col-md-8 cbp-so-side cbp-so-side-left">
 			<h2>The Art &amp; Science of Map Manipulation</h2>
 
 			<p>The goal of gerrymandering is to maximize the number of districts that will vote for your party. There are multiple ways to do that, primarily being <b>“cracking”</b> the constituency to dilute votes and <b>"packing"</b> similar interests to waste votes.</p>
@@ -67,11 +68,11 @@
 
 			<p>This partisan distribution requires balancing the risk of maintaining a comfortable lead with the need of minimizing vote wastage.</p>
 		</div>
-	</div>
+	</section>
 
-	<div id="timeline" class="row section">
+	<section id="timeline" class="row section cbp-so-section">
 		<h2>Tracing the legal and cultural history of gerrymandering</h2>
-		<div>
+		<div class="cbp-so-side cbp-so-side-right">
 			<div id="tl-svg" class="col-md-8">
                 <div id="tl-svg-axis">
                     <div class="tl-row-label">Time</div>
@@ -97,10 +98,10 @@
 			</div>
 		</div>
 		<!--<img src="img/timeline-placeholder2.png" width="100%" />-->
-	</div>
+	</section>
 
-	<div class="row section">
-		<div class="col-md-6" id="districtGrouping">
+	<section class="row section cbp-so-section">
+		<div class="col-md-6 cbp-so-side cbp-so-side-left" id="districtGrouping">
 			<div class="btn-group" id="groupingMethod" data-toggle="buttons">
 			  <label class="btn btn-secondary">
 			    <input type="radio" name="options" id="option1" autocomplete="off" checked>Perfect representation
@@ -115,7 +116,7 @@
 
 			<h3>Winner: <span id="winner" class="red">Red</span></h3>
 		</div>
-		<div class="col-md-6">
+		<div class="col-md-6 cbp-so-side cbp-so-side-right">
 			<h2>Unfair Divisions</h2>
 
 			<p>Gerrymandering often occurs to secure party control, favor incumbents, or dilute the voting power of certain demographic groups.</p>
@@ -128,11 +129,11 @@
 			<p>2. Compact but unfair (5 blue districts, 0 red): Blue</p>
 			<p>3. Neither compact nor unfair (2 blue districts, 3 red): Red</p>
 		</div>
-	</div>
+	</section>
 
-	<div class="row section">
+	<section class="row section cbp-so-section">
 		<div class="col-md-2"></div>
-		<div class="col-md-8">
+		<div class="col-md-8 cbp-so-side cbp-so-side-left">
 			<h2>A Rule for Fairness</h2>
 
 			<p>To measure "fairness", numerous metrics have been proposed, including a measure of <b>compactness</b> (the ratio of perimeter to area, with the ideal being a perfect circle at 1) and more recently, the <b>efficiency gap</b>, which measures the number of both wasted vote and diluted votes.</p>
@@ -141,17 +142,17 @@
 
 			<p>The <a href="https://www.brennancenter.org/legal-work/whitford-v-gill" target="_blank">Gill v. Whitford</a> case heard by the Supreme Court in October 2017 offers an opportunity to set a precedent for a legal test of fairness.</p>
 		</div>
-	</div>
+	</section>
 
-	<div id="map" class="row section">
+	<section id="map" class="row section cbp-so-section">
 		<h2>How gerrymandered is your district?</h2>
 
 		<div class="row">
-			<div class="col-md-7">
+			<div class="col-md-7 cbp-so-side cbp-so-side-left">
 				<h5>Mouse over to explore the 2014 elections:</h5>
 				<div id="choropleth"></div>
 			</div>
-			<div class="col-md-5">
+			<div class="col-md-5 cbp-so-side cbp-so-side-right">
 				<div id="gapData">
 					<h5 id="current-district">Click on a district to learn more.</h5>
 					<h4 id="efficiency-gap">Efficiency Gap: </h4>
@@ -179,11 +180,11 @@
 			<h5>Selected District Demographics</h5>
         	<div id="districtCharts"></div>
 		</div>
-	</div>
+	</section>
 
-	<div id="conclusion" class="row section">
+	<section id="conclusion" class="row section cbp-so-section">
 		<div class="col-md-1"></div>
-		<div class="col-md-7">
+		<div class="col-md-7 cbp-so-side cbp-so-side-left">
 			<h2></h2>
 			<p>Over the years, many alternative systems to having state legislatures draw district lines have been proposed.</p>
 			<ul>
@@ -197,7 +198,7 @@
 			<p>While Proportional Representation would most fairly represent a state's interests, it also requires the most drastic changes to the current politican system. For now, the outcome of the Supreme Court's decision for <em>Gill v. Whitford</em> will potentially provide a precedent for states to test the fairness of districting as a single, universal standard.</p>
 			<h3>In light of the impending 2020 Census redistricting, the shape of these districts could dramatically impact the 2020 Presidential Election and the future of America.</h3>
 		</div>
-		<div class="col-md-3">
+		<div class="col-md-3 cbp-so-side cbp-so-side-right">
 			<h2></h2>
 			<h5>Learn more about how gerrymandering affects you</h5>
 
@@ -207,7 +208,7 @@
 				<li><a href="https://www.vox.com/policy-and-politics/2017/10/11/16453512/gerrymandering-proportional-representation" target="_blank">"The real fix for gerrymandering is proportional representation"</a> (Vox)</li>
 			</ul>
 		</div>
-	</div>
+	</section>
 </div>
 </body>
 
@@ -215,6 +216,13 @@
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/d3.min.js"></script>
+
+	<!-- CBP Scroller: -->
+	<script src="js/classie.js"></script>
+	<script src="js/cbpScroller.js"></script>
+	<script>
+		new cbpScroller( document.getElementById( 'cbp-so-scroller' ) );
+	</script>
     
     <!-- [JFAN] Do we need all of these? // 
     <script src="js/d3-color.v1.min.js"></script>

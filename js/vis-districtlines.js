@@ -16,7 +16,7 @@ function updateDistrictDrawn() {
 
     // Scales & legends
     var districtColor = d3.scaleOrdinal()
-        .range(['#762a83','#af8dc3','#e7d4e8','#d9f0d3','#7fbf7b','#1b7837']);
+        .range(['#762a83','#af8dc3','#e7d4e8','#d9f0d3','#7fbf7b','#1b7837','#000']);
 
     var legendText = ["Legislature Alone", "Advisory Commission", "Backup Commission", "Politician Commission", "Independent Commission", "Single District"];
 
@@ -46,7 +46,7 @@ function updateDistrictDrawn() {
             }
         })
     })
-    // console.log(stateData);
+    console.log(stateData);
 
     // Draw map
     var districtMap = districtSvg
