@@ -5,7 +5,8 @@ var width = 800,
 
 var choroplethSvg = d3.select("#choropleth").append("svg")
     .attr("width", width)
-    .attr("height", height);
+    .attr("height", height)
+    .on("click","clicked");
 
 // Initialize map settings
 var projection = d3.geoAlbersUsa()
@@ -22,6 +23,31 @@ var stateID;
 // Create SVG Drawing area
 function findState(x) {
     return x.id == stateID;
+}
+
+function clicked(d) {
+    var x, y, k;
+
+    if (d && centered !== d) {
+        var centroid = path.centroid(d);
+        x = centroid[0];
+        y = centroid[1];
+        k = 4;
+        centered = d;
+    } else {
+        x = width / 2;
+        y = height / 2;
+        k = 1;
+        centered = null;
+    }
+
+    g.selectAll("path")
+        .classed("active", centered && function(d) { return d === centered; });
+
+    g.transition()
+        .duration(750)
+        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+        .style("stroke-width", 1.5 / k + "px");
 }
 
 var tool_tip = d3.tip()
@@ -55,7 +81,6 @@ queue()
     .defer(d3.csv, "data/new_allCongressDataPublish.csv")
     .defer(d3.csv, "data/gapData.csv")
     .defer(d3.json, "data/us-states.json")
-    .defer(d3.csv, "data/new_allCongressDataPublish.csv")
     .await(function(error, mapTopJson, stateNamesCsv, allCongressData, allGapData, mapStatesJson){
 
         // Process Data
@@ -90,6 +115,18 @@ var stateInfo;
 var stateName;
 var stateCode;
 var districtID;
+
+function choroplethColoring(d){
+    if(d == 0){
+        console.log("Efficiency gap")
+    }
+    if(d == 1){
+        console.log("Election outcome")
+    }
+    if(d == 2){
+        console.log("Total contested seats")
+    }
+}
 
 function updateChoropleth(error) {
     var districts = topojson.feature(mapJson, mapJson.objects.districts).features;
@@ -180,7 +217,10 @@ function addLegend() {
         .attr("class", "legend-names")
         .attr('x', 20)
         .attr('y', 10)
-        .text(function(d,i) {return d; });
+        .text(function(d,i) {
+            console.log(d)
+            return d;
+        });
 }
 
 function stateMouseOver(d) {
