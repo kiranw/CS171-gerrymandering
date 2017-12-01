@@ -95,7 +95,7 @@ function districtGrouping() {
         .attr("transform", "translate(100,25)");
 
     var group = groupingSvg.selectAll(".row")
-        .data(neither);
+        .data(perfectRep);
     
     var row = group.enter()
         .append("g")

@@ -6,10 +6,13 @@ body {
 }
 h1, h2, h3, h4 {
     font-weight: 700;
+    color: #000;
 }
 h2 {
-    font-size: 2.5em;
-    margin: 0em auto 1em;
+    font-size: 2.2em;
+    margin: 0.5em auto 1em;
+    line-height: 1em;
+    font-weight: 400;
 }
 h3 {
     line-height: 1.4em;
@@ -24,6 +27,7 @@ h5 {
 }
 #subheadline{
     font-size:3em;
+    font-weight: 400;
     font-style: italic;
     color: #fff;
 }
@@ -31,6 +35,14 @@ p, li {
     font-size: 18px;
     line-height: 1.7em;
     font-weight: 300;
+}
+label, text {
+    color: #000;
+    fill: #000;
+    font-family: 'Lora', Georgia, serif;
+    font-size: 11px;
+    font-weight: 100;
+    margin-bottom: 2px;
 }
 .legend, .race-title, .income-title, .emp-title {
     font-weight: 700;
@@ -59,9 +71,15 @@ body {
 .container-fluid {
     padding: 0;
 }
+#cbp-so-scroller section {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
 .section {
     padding-top: 8em;
     padding-bottom: 8em;
+}
+section {
+    color: #afa9b0;
 }
 p, li {
     font-size: 16px;
@@ -121,7 +139,7 @@ p, li {
     text-align: center;
 }
 
-.tooltip-label, text, label {
+.tooltip-label {
     font-family: 'Lora', Georgia, serif;
     font-size: 11px;
     font-weight: 100;
@@ -291,3 +309,113 @@ rect.event-rect:hover {
     cursor: pointer;
     opacity: 1;
 }
+
+
+
+/** CBP SCROLLER: https://tympanus.net/codrops/2013/07/18/on-scroll-effect-layout/ ***/
+.cbp-so-scroller {
+    margin-top: 3em;
+    overflow: hidden;
+}
+
+.cbp-so-section {
+    margin-bottom: 15em;
+}
+
+/* Clear floats of children */
+.cbp-so-section:before,
+.cbp-so-section:after {
+    content: " ";
+    display: table;
+}
+
+.cbp-so-section:after {
+    clear: both;
+}
+
+/* Sides */
+.cbp-so-side {
+    /* width: 50%; */
+    float: left;
+    margin: 0;
+    /* padding: 3em 4%; */
+    overflow: hidden;
+    min-height: 12em;
+    -webkit-transition: -webkit-transform 0.5s, opacity 0.5s;
+    -moz-transition: -moz-transform 0.5s, opacity 0.5s;
+    transition: transform 0.5s, opacity 0.5s;
+}
+
+/* Clear floats of children */
+.cbp-so-side:before,
+.cbp-so-side:after {
+    content: " ";
+    display: table;
+}
+
+.cbp-so-side:after {
+    clear: both;
+}
+
+.cbp-so-side-right img {
+    float: left;
+}
+
+.cbp-so-side-left img {
+    float: right;
+}
+
+/* Initial state (hidden or anything else) */
+.cbp-so-init .cbp-so-side {
+    opacity: 0;
+}
+
+.cbp-so-init .cbp-so-side-left {
+    -webkit-transform: translateX(-80px);
+    -moz-transform: translateX(-80px);
+    transform: translateX(-80px);
+}
+
+.cbp-so-init .cbp-so-side-right {
+    -webkit-transform: translateX(80px);
+    -moz-transform: translateX(80px);
+    transform: translateX(80px);
+}
+
+/* Animated state */
+/* add you final states (transition) or your effects (animations) for each side */
+.cbp-so-section.cbp-so-animate .cbp-so-side-left,
+.cbp-so-section.cbp-so-animate .cbp-so-side-right {
+    -webkit-transform: translateX(0px);
+    -moz-transform: translateX(0px);
+    transform: translateX(0px);
+    opacity: 1;
+}
+
+/* For example, add a delay for the right side:
+.cbp-so-section.cbp-so-animate .cbp-so-side-right {
+    -webkit-transition-delay: 0.2s;
+    -moz-transition-delay: 0.2s;
+    transition-delay: 0.2s;
+}
+*/
+
+/* Example media queries */
+
+@media screen and (max-width: 73.5em) {
+    .cbp-so-side img {
+        max-width: 120%;
+    }
+}
+
+@media screen and (max-width: 41.125em) {
+    .cbp-so-side {
+        float: none;
+        width: 100%;
+    }
+
+    .cbp-so-side img {
+        max-width: 100%;
+    }
+}
+
