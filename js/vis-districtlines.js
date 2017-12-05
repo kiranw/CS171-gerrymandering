@@ -16,7 +16,8 @@ function updateDistrictDrawn() {
 
     // Scales & legends
     var districtColor = d3.scaleOrdinal()
-        .range(['#762a83','#af8dc3','#e7d4e8','#d9f0d3','#7fbf7b','#1b7837','#000']);
+        .range(['#d73027','#fc8d59','#fee090','#ffffbf','#e0f3f8','#91bfdb','#4575b4']);
+        
 
     var legendText = ["Legislature Alone", "Advisory Commission", "Backup Commission", "Politician Commission", "Independent Commission", "Single District"];
 

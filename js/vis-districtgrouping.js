@@ -12,7 +12,7 @@ function districtGrouping() {
 
     // Scales & legends
     var groupColor = d3.scaleOrdinal()
-        .range(['#762a83','#af8dc3','#e7d4e8','#d9f0d3','#7fbf7b']);
+        .range(['#e66101','#fdb863','#f7f7f7','#b2abd2','#5e3c99']);
 
     // var groupingTypes = [
     // { key: "party", title: "Party"},
@@ -92,7 +92,8 @@ function districtGrouping() {
         .attr("width", width)
         .attr("height", height)
     .append("g")
-        .attr("transform", "translate(100,25)");
+        .attr("class", "districtGrouping")
+        .attr("transform", "translate(150,25)");
 
     var group = groupingSvg.selectAll(".row")
         .data(perfectRep);
@@ -142,9 +143,11 @@ function districtGrouping() {
             return ((cellWidth + cellPadding) * i) + (cellWidth/2);
         })
         .attr("cy", cellHeight/2)
-        .attr("fill", function(d,i) {
+        .attr("stroke-width","2")
+        .attr("stroke", function(d,i) {
             return (d == 0) ? "#d7301f" : "#2171b5";
-    });
+    })
+        .attr("fill","none");
 
 
     // Add legend

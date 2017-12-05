@@ -16,7 +16,7 @@
 
 <header id="title" class="title container-fluid">
 	<div class="col-md-2"></div>
-	<div class="col-md-8 section">
+	<div class="col-md-8">
 		<h1 id="headline">The United States of Gerrymandering</h1>
 		<h4 id="subheadline">A Primer on Gerrymandering, Fair Districting, and its Impacts on Representation</h4>
 	</div>
@@ -24,8 +24,8 @@
 
 <div id="cbp-so-scroller" class="container cbp-so-scroller">
 	<section id="intro" class="row section cbp-so-section">
-		<div class="col-md-2 cbp-so-side cbp-so-side-left"></div>
-		<div class="col-md-8 cbp-so-side cbp-so-side-right">
+		<div class="col-md-2"></div>
+		<div class="col-md-8 cbp-so-side cbp-so-side-left">
 			<h2>A Tradition as Old as the Republic</h2>
 			<p>Gerrymandering, or the practice of manipulating electoral district boundaries for political gain, is a practice as old as America itself.</p>
 
@@ -34,15 +34,13 @@
 	</section>
 
 	<section class="row section cbp-so-section">
-		<div class="col-md-4 cbp-so-side cbp-so-side-left">
-			<img src="img/gerrymander.png" width="100%">
+		<div class="col-md-2">
 		</div>
 		<div class="col-md-8 cbp-so-side cbp-so-side-right">
-			<p>Many of the resulting districts end up as <a href="#">strange, winding shapes</a> that intentionally include or exclude populations for political gain.</p>
+			<h2>Windiest Districts in America</h2>
+			<p>Many of the resulting districts end up as strange, winding shapes that intentionally include or exclude populations for political gain.</p>
 
 			<p>As a result, even though Party A may win the popular vote, Party B may end up sending more representatives to congress. Whoever decides the lines decide whose vote is reflected. This can skew statewide representation, dilute minority votes, split communities.</p>
-
-			<h4 class="red">Include SVGs of most gerrymandered (highest efficiency gap) districts</h4>
 		</div>
 	</section>
 
@@ -53,7 +51,7 @@
 
 			<p>In most states, district lines are drawn by the majority party of the state legislature and approved by governor. Even in states with alternative processes like Independent Commissions, there are seats specifically reserved for Democratic or Republican appointees, so there are no truly non-partisan redistricting committees.</p>
 		</div>
-		<div class="col-md-6 cbp-so-side cbp-so-side-right" id="districtDrawn">
+		<div class="col-md-7 cbp-so-side cbp-so-side-right" id="districtDrawn">
 		</div>
 	</section>
 
@@ -114,7 +112,7 @@
 			  </label>
 			</div>
 
-			<h3>Winner: <span id="winner" class="red">Red</span></h3>
+			<h4 style="text-align:center">Winner: <span id="winner" class="red">Red</span></h4>
 		</div>
 		<div class="col-md-6 cbp-so-side cbp-so-side-right">
 			<h2>Unfair Divisions</h2>
@@ -132,8 +130,7 @@
 	</section>
 
 	<section class="row section cbp-so-section">
-		<div class="col-md-2"></div>
-		<div class="col-md-8 cbp-so-side cbp-so-side-left">
+		<div class="col-md-7 cbp-so-side cbp-so-side-left">
 			<h2>A Rule for Fairness</h2>
 
 			<p>To measure "fairness", numerous metrics have been proposed, including a measure of <b>compactness</b> (the ratio of perimeter to area, with the ideal being a perfect circle at 1) and more recently, the <b>efficiency gap</b>, which measures the number of both wasted vote and diluted votes.</p>
@@ -142,24 +139,21 @@
 
 			<p>The <a href="https://www.brennancenter.org/legal-work/whitford-v-gill" target="_blank">Gill v. Whitford</a> case heard by the Supreme Court in October 2017 offers an opportunity to set a precedent for a legal test of fairness.</p>
 		</div>
+		<div class="col-md-5 cbp-so-side cbp-so-side-right">
+			<h2></h2>
+			<h4>Efficiency Gap Formula</h4>
+
+			<code>Seat margin - (2 * vote margin)</code>
+
+			<ul>
+				<li><b>Seat margin:</b> share of seats won by the winning party minus 50%</li>
+				<li><b>Vote margin:</b> share of votes won by the winning party minus 50%</li>
+			</ul>
+
+			<small><em>For uncontested races, we assumed that the opponent would have won 25% of the votes, as both the <a href="http://www.detroitnews.com/story/news/politics/2017/06/25/redrawing-america-imbalance-power-methodology/103170886/">Associated Press</a> and the <a href="http://chicagounbound.uchicago.edu/cgi/viewcontent.cgi?article=1946&context=public_law_and_legal_theory">University of Chicago Law School</a> utilized this 75-to-25 vote share assumption in their models.</em></small>
+		</div>
 	</section>
-            <div class="gap-explain">
-                <p style="font-size:14px">
-                    The basic <b>efficiency gap</b> metric can be calculated based on the results of elections for contested seats between two parties as follows:
-                </p>
-                <div style="padding-bottom:14px">Seat margin - (2*vote margin)</div>
-                <p style="font-size:14px">
-                    where <b>seat margin</b> is the share of seats won by the winning party minus 50% and
-                    <b>vote margin</b> is the share of votes won by the winning party minus 50%.
-                    For uncontested races, we assumed that the opponent would have won 25% of the votes, as both the
-                    <a href="http://www.detroitnews.com/story/news/politics/2017/06/25/redrawing-america-imbalance-power-methodology/103170886/">Associated Press</a>
-                    and the
-                    <a href="http://chicagounbound.uchicago.edu/cgi/viewcontent.cgi?article=1946&context=public_law_and_legal_theory">University of Chicago Law School</a>
-                    utilized this 75-to-25 vote share assumption in their models.
-                </p>
-            </div>
-        </div>
-	</div>
+
 
 	<section id="map" class="row section cbp-so-section">
 		<h2>How gerrymandered is your district?</h2>
@@ -192,33 +186,58 @@
 	        </div>
     	</div>
 	</section>
-	</div>
 
 	<section id="conclusion" class="row section cbp-so-section">
 		<div class="col-md-1"></div>
-		<div class="col-md-7 cbp-so-side cbp-so-side-left">
+		<div class="col-md-10">
 			<h2></h2>
 			<p>Over the years, many alternative systems to having state legislatures draw district lines have been proposed.</p>
-			<ul>
-				<li><h4>Independent redistricting commissions</h4> Canada shifted to this model in 1960s, but in the US, politicians still name appointees to the district.</li>
+			
+			<div class="row">
+				<div class="col-md-4 cbp-so-side cbp-so-side-left">
+					<h4>Independent redistricting commissions</h4>
+					<small>Canada shifted to this model in 1960s, but in the US, politicians still name appointees to the district.</small>
+				</div>
+				<div class="col-md-4 cbp-so-side cbp-so-side-left">
+					<h4>Algorithm-based districting</h4>
+					<small>Algorithms group on compactness and grouping an equal distribution of voters, but have a difficult time factoring in shared communities of interest.</small>
+				</div>
+				<div class="col-md-4 cbp-so-side cbp-so-side-left">
+					<h4>Proportional representation</h4>
+					<small>Allocates representatives proportionally to voting results across the state instead of the current Winner Take All model, which uniquely solves judicial meddling and natural geographic clustering.</small>
+				</div>
+			</div>
 
-				<li><h4>Algorithm-based districting</h4> Algorithms group on compactness and grouping an equal distribution of voters, but have a difficult time factoring in shared communities of interest.</li>
-
-				<li><h4>Proportional representation</h4> Allocates representatives proportionally to voting results across the state instead of the current Winner Take All model, which uniquely solves judicial meddling and natural geographic clustering.</li>
-			</ul>
+			<hr />
 
 			<p>While Proportional Representation would most fairly represent a state's interests, it also requires the most drastic changes to the current politican system. For now, the outcome of the Supreme Court's decision for <em>Gill v. Whitford</em> will potentially provide a precedent for states to test the fairness of districting as a single, universal standard.</p>
-			<h3>In light of the impending 2020 Census redistricting, the shape of these districts could dramatically impact the 2020 Presidential Election and the future of America.</h3>
 		</div>
-		<div class="col-md-3 cbp-so-side cbp-so-side-right">
-			<h2></h2>
+	</section>
+
+	<section id="references" class="row section cbp-so-section">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+			<h3>In light of the impending 2020 Census redistricting, the shape of these districts could dramatically impact the 2020 Presidential Election and the future of America.</h3>
+
+			<hr />
+
 			<h5>Learn more about how gerrymandering affects you</h5>
 
-			<ul>
-				<li><a href="https://www.brennancenter.org/issues/redistricting" target="_blank">Brennan Center for Justice</a></li>
-				<li><a href="http://gerrymander.princeton.edu/" target="_blank">Princeton Gerrymandering Project</a></li>
-				<li><a href="https://www.vox.com/policy-and-politics/2017/10/11/16453512/gerrymandering-proportional-representation" target="_blank">"The real fix for gerrymandering is proportional representation"</a> (Vox)</li>
-			</ul>
+			<div class="col-md-6 cbp-so-side cbp-so-side-left">
+				<ul>
+					<li><a href="https://www.brennancenter.org/issues/redistricting" target="_blank">Brennan Center for Justice</a></li>
+					<li><a href="http://gerrymander.princeton.edu/" target="_blank">Princeton Gerrymandering Project</a></li>
+					<li><a href="https://www.vox.com/policy-and-politics/2017/10/11/16453512/gerrymandering-proportional-representation" target="_blank">"The real fix for gerrymandering is proportional representation"</a> (Vox)</li>
+				</ul>
+			</div>			
+			<div class="col-md-6 cbp-so-side cbp-so-side-right">
+				<ul>
+					<li><a href="https://www.brennancenter.org/issues/redistricting" target="_blank">Brennan Center for Justice</a></li>
+					<li><a href="http://gerrymander.princeton.edu/" target="_blank">Princeton Gerrymandering Project</a></li>
+					<li><a href="https://www.vox.com/policy-and-politics/2017/10/11/16453512/gerrymandering-proportional-representation" target="_blank">"The real fix for gerrymandering is proportional representation"</a> (Vox)</li>
+				</ul>
+			</div>
+
 		</div>
 	</section>
 </div>
