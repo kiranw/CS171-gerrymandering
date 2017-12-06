@@ -36,15 +36,15 @@
 		<section class="row section cbp-so-section">
 		<div class="col-md-6 cbp-so-side cbp-so-side-left" id="districtGrouping">
 			
-			<div class="btn-group" id="groupingMethod" data-toggle="buttons" onChange="getSelectedGroup()">
-			  <label class="btn btn-secondary">
-			    <input type="radio" name="groups" id="perfectRep" autocomplete="off">Perfect representation
-			  </label>
-			  <label class="btn btn-secondary">
-			    <input type="radio" name="groups" id="compactUnfair" autocomplete="off" checked>Compact but unfair
-			  </label>
+			<div class="btn-group" id="groupingMethod" data-toggle="buttons" onChange="districtGroupingVis()">
 			  <label class="btn btn-secondary active">
-			    <input type="radio" name="groups" id="neither" autocomplete="off">Neither compact nor fair
+			    <input type="radio" name="groups" id="groupPerfectRep" autocomplete="off" checked>Perfect representation
+			  </label>
+			  <label class="btn btn-secondary">
+			    <input type="radio" name="groups" id="groupCompactUnfair" autocomplete="off">Compact but unfair
+			  </label>
+			  <label class="btn btn-secondary">
+			    <input type="radio" name="groups" id="groupNeither" autocomplete="off">Neither compact nor fair
 			  </label>
 			</div>
 
@@ -150,7 +150,7 @@
 
 			<p>To measure "fairness", numerous metrics have been proposed, including a measure of <b>compactness</b> (the ratio of perimeter to area, with the ideal being a perfect circle at 1) and more recently, the <b>efficiency gap</b>, which measures the number of both wasted vote and diluted votes.</p>
 
-			<p>The efficiency gap measures a ratio of <b>net wasted votes</b> by both parties over the total number of votes cast. The metric is compared against the number of seats won to find any <b>seat advantages</b> attained by either party.</p>
+			<p>The efficiency gap measures <b>net wasted votes</b> by both parties over the <b>total votes</b>. The metric is compared against the number of seats won to find any <b>seat advantages</b> attained by either party.</p>
 
 			<p>The <a href="https://www.brennancenter.org/legal-work/whitford-v-gill" target="_blank">Gill v. Whitford</a> case heard by the Supreme Court in October 2017 offers an opportunity to set a precedent for a legal test of fairness.</p>
 		</div>
