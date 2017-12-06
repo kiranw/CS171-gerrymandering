@@ -47,7 +47,7 @@ function updateDistrictDrawn() {
             }
         })
     })
-    console.log(stateData);
+    // console.log(stateData);
 
     // Draw map
     var districtMap = districtSvg

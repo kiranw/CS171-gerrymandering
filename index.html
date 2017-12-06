@@ -36,15 +36,15 @@
 		<section class="row section cbp-so-section">
 		<div class="col-md-6 cbp-so-side cbp-so-side-left" id="districtGrouping">
 			
-			<div class="btn-group" id="groupingMethod" data-toggle="buttons">
+			<div class="btn-group" id="groupingMethod" data-toggle="buttons" onChange="getSelectedGroup()">
 			  <label class="btn btn-secondary">
-			    <input type="radio" name="options" id="option1" autocomplete="off" checked>Perfect representation
+			    <input type="radio" name="groups" id="perfectRep" autocomplete="off">Perfect representation
 			  </label>
 			  <label class="btn btn-secondary">
-			    <input type="radio" name="options" id="option2" autocomplete="off">Compact but unfair
+			    <input type="radio" name="groups" id="compactUnfair" autocomplete="off" checked>Compact but unfair
 			  </label>
 			  <label class="btn btn-secondary active">
-			    <input type="radio" name="options" id="option3" autocomplete="off">Neither compact nor fair
+			    <input type="radio" name="groups" id="neither" autocomplete="off">Neither compact nor fair
 			  </label>
 			</div>
 

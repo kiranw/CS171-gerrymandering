@@ -1,5 +1,14 @@
 districtGrouping();
 
+// global var for selected district grouping
+var selectedGroup;
+
+// get selected input
+function getSelectedGroup() {
+    selectedGroup = d3.select('input[name="groups"]:checked').property("id");
+    console.log(selectedGroup);
+}
+
 // Draws 5x10 box representing ways to group districts
 function districtGrouping() {
 
@@ -82,7 +91,7 @@ function districtGrouping() {
         .attr("transform", "translate(150,25)");
 
     var group = districtG.selectAll(".row")
-        .data(neither);
+        .data(selectedGroup);
     
     var row = group.enter()
         .append("g")
@@ -113,7 +122,7 @@ function districtGrouping() {
         .attr("fill", function(d, i) {
             return groupColor(d);
         });
-        
+
     // Circle shows people
     var partyG = groupingSvg.append("g")
         .attr("class", "districtGrouping")
@@ -156,14 +165,14 @@ function districtGrouping() {
         .attr("fill","none");
 
     // Add legend
-    var groupLegend = partySvg.selectAll('.legend')
+    var groupLegend = groupingSvg.selectAll('.legend')
         .data(groups)
         .enter()
         .append('g')
         .attr('class', 'legend')
         .attr('transform', function(d, i) {
             var y = 15*i+150;
-            return 'translate(250,' + y + ')';
+            return 'translate(400,' + y + ')';
         });
 
     groupLegend.append('rect')
