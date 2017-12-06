@@ -72,31 +72,17 @@ function districtGrouping() {
                     [4,4,4,4,3],
                     [4,3,3,3,3]];
 
-
-    var groupingData = [];
-
-    /* NEED TO STRUCTURE groupingData LIKE THIS:
-    [
-        [{"party": 0, "perfectRep": 0, "compactUnfair": 0, "neither": 0},
-        {"party": 0, "perfectRep": 0, "compactUnfair": 0, "neither": 0},
-        {"party": 0, "perfectRep": 0, "compactUnfair": 0, "neither": 0},
-        {"party": 0, "perfectRep": 0, "compactUnfair": 0, "neither": 0},
-        {"party": 0, "perfectRep": 0, "compactUnfair": 0, "neither": 0}]
-        ,x10
-        ];
-    */
-
-    console.log(groupingData);
-
     var groupingSvg = d3.select("#districtGrouping").append("svg")
         .attr("width", width)
-        .attr("height", height)
-    .append("g")
+        .attr("height", height);
+
+    // Square shows district
+    var districtG = groupingSvg.append("g")
         .attr("class", "districtGrouping")
         .attr("transform", "translate(150,25)");
 
-    var group = groupingSvg.selectAll(".row")
-        .data(perfectRep);
+    var group = districtG.selectAll(".row")
+        .data(neither);
     
     var row = group.enter()
         .append("g")
@@ -112,7 +98,6 @@ function districtGrouping() {
             return "translate(0," + (cellHeight + cellPadding) * i + ")";
         });
 
-    // Rect shows grouping
     var cell = row.selectAll(".cell")
         .data(function(d) { return d; })
         .enter().append("rect")
@@ -128,9 +113,30 @@ function districtGrouping() {
         .attr("fill", function(d, i) {
             return groupColor(d);
         });
-
+        
     // Circle shows people
-    var party = row.selectAll(".party")
+    var partyG = groupingSvg.append("g")
+        .attr("class", "districtGrouping")
+        .attr("transform", "translate(150,25)");
+
+    var partyGroup = partyG.selectAll(".party")
+        .data(party);
+
+    var partyRow = partyGroup.enter()
+        .append("g")
+        .attr("class", "party");
+
+    partyRow.merge(partyGroup)
+        .attr("height", cellHeight)
+        .style("opacity",0.3)
+        .transition()
+        .duration(500)
+        .style("opacity",1)
+        .attr("transform", function(d, i) {
+            return "translate(0," + (cellHeight + cellPadding) * i + ")";
+        });
+
+    var party = partyRow.selectAll(".party")
         .data(function(d) {
             return d;
         })
@@ -149,9 +155,8 @@ function districtGrouping() {
     })
         .attr("fill","none");
 
-
     // Add legend
-    var groupLegend = groupingSvg.selectAll('.legend')
+    var groupLegend = partySvg.selectAll('.legend')
         .data(groups)
         .enter()
         .append('g')

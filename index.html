@@ -25,7 +25,7 @@
 <div id="cbp-so-scroller" class="container cbp-so-scroller">
 	<section id="intro" class="row section cbp-so-section">
 		<div class="col-md-2"></div>
-		<div class="col-md-8 cbp-so-side cbp-so-side-left">
+		<div class="col-md-8 cbp-so-side cbp-so-side-center">
 			<h2>A Tradition as Old as the Republic</h2>
 			<p>Gerrymandering, or the practice of manipulating electoral district boundaries for political gain, is a practice as old as America itself.</p>
 
@@ -33,14 +33,72 @@
 		</div>
 	</section>
 
-	<section class="row section cbp-so-section">
-		<div class="col-md-2">
+		<section class="row section cbp-so-section">
+		<div class="col-md-6 cbp-so-side cbp-so-side-left" id="districtGrouping">
+			
+			<div class="btn-group" id="groupingMethod" data-toggle="buttons">
+			  <label class="btn btn-secondary">
+			    <input type="radio" name="options" id="option1" autocomplete="off" checked>Perfect representation
+			  </label>
+			  <label class="btn btn-secondary">
+			    <input type="radio" name="options" id="option2" autocomplete="off">Compact but unfair
+			  </label>
+			  <label class="btn btn-secondary active">
+			    <input type="radio" name="options" id="option3" autocomplete="off">Neither compact nor fair
+			  </label>
+			</div>
+
+			<h4 style="text-align:center">Winner: <span id="winner" class="red">Red</span></h4>
 		</div>
-		<div class="col-md-8 cbp-so-side cbp-so-side-right">
+		<div class="col-md-6 cbp-so-side cbp-so-side-right">
+			<h2>How does gerrymandering impact elections?</h2>
+
+			<p>Gerrymandering often occurs to secure party control, favor incumbents, or dilute the voting power of certain demographic groups. There is a fine line between an appropriate amount of community representation and partisan favoritism. The ambiguity of the situation is exacerbated by the lack of standard measurements of fairness.</p>
+
+			<br />
+
+			<h4>Imagine a state of 50 people where 60% are blue and 40% are red.</h4>
+
+			<p>There are 3 ways to divide 5 districts:</p>
+
+			<p>1. Perfect representation (3 blue districts, 2 red): Blue</p>
+			<p>2. Compact but unfair (5 blue districts, 0 red): Blue</p>
+			<p>3. Neither compact nor unfair (2 blue districts, 3 red): Red</p>
+		</div>
+	</section>
+
+	<section class="row section cbp-so-section">
+		<div class="col-md-1"></div>
+		<div class="col-md-4 cbp-so-side cbp-so-side-left">
 			<h2>Windiest Districts in America</h2>
 			<p>Many of the resulting districts end up as strange, winding shapes that intentionally include or exclude populations for political gain.</p>
 
 			<p>As a result, even though Party A may win the popular vote, Party B may end up sending more representatives to congress. Whoever decides the lines decide whose vote is reflected. This can skew statewide representation, dilute minority votes, split communities.</p>
+		</div>
+		<div class="col-md-7 cbp-so-side cbp-so-side-right">
+			
+		</div>
+	</section>
+
+	<section class="row section cbp-so-section">
+		<div class="col-md-2"></div>
+		<div class="col-md-8 cbp-so-side cbp-so-side-center">
+			<h2>The Art &amp; Science of Map Manipulation</h2>
+
+			<p>The goal of gerrymandering is to maximize the partisan number of districts that will vote for your party. This partisan distribution requires balancing the risk of maintaining a comfortable lead with the need of minimizing vote wastage.</p>
+
+			<hr />
+
+			<div class="row">
+				<div class="col-md-6">
+					<h4>"Packing"</h4>
+					<p>Place all of your opponent's supporters into a few foregone districts to maximize wasted votes</p>
+				</div>
+				<div class="col-md-6">
+					<h4>"Cracking"</h4>
+					<p>Distribute your own supporters evenly amongst the districts to ensure a comfortable majority</p>
+				</div>
+			</div>
 		</div>
 	</section>
 
@@ -55,22 +113,10 @@
 		</div>
 	</section>
 
-	<section class="row section cbp-so-section">
-		<div class="col-md-2"></div>
-		<div class="col-md-8 cbp-so-side cbp-so-side-left">
-			<h2>The Art &amp; Science of Map Manipulation</h2>
-
-			<p>The goal of gerrymandering is to maximize the number of districts that will vote for your party. There are multiple ways to do that, primarily being <b>“cracking”</b> the constituency to dilute votes and <b>"packing"</b> similar interests to waste votes.</p>
-
-			<p>Ideally, a district map would place all of your opponent’s supporters into only a few foregone districts, while the rest of your supporters can be spread out evenly amongst the districts so you win a comfortable majority.</p>
-
-			<p>This partisan distribution requires balancing the risk of maintaining a comfortable lead with the need of minimizing vote wastage.</p>
-		</div>
-	</section>
-
 	<section id="timeline" class="row section cbp-so-section">
-		<h2>Tracing the legal and cultural history of gerrymandering</h2>
-		<div class="cbp-so-side cbp-so-side-right">
+		<div class="cbp-so-side cbp-so-side-center">
+			<h2>Tracing the legal and cultural history of gerrymandering</h2>
+
 			<div id="tl-svg" class="col-md-8">
                 <div id="tl-svg-axis">
                     <div class="tl-row-label">Time</div>
@@ -99,37 +145,6 @@
 	</section>
 
 	<section class="row section cbp-so-section">
-		<div class="col-md-6 cbp-so-side cbp-so-side-left" id="districtGrouping">
-			<div class="btn-group" id="groupingMethod" data-toggle="buttons">
-			  <label class="btn btn-secondary">
-			    <input type="radio" name="options" id="option1" autocomplete="off" checked>Perfect representation
-			  </label>
-			  <label class="btn btn-secondary">
-			    <input type="radio" name="options" id="option2" autocomplete="off">Compact but unfair
-			  </label>
-			  <label class="btn btn-secondary active">
-			    <input type="radio" name="options" id="option3" autocomplete="off">Neither compact nor fair
-			  </label>
-			</div>
-
-			<h4 style="text-align:center">Winner: <span id="winner" class="red">Red</span></h4>
-		</div>
-		<div class="col-md-6 cbp-so-side cbp-so-side-right">
-			<h2>Unfair Divisions</h2>
-
-			<p>Gerrymandering often occurs to secure party control, favor incumbents, or dilute the voting power of certain demographic groups.</p>
-
-			<p>In some cases, gerrymandering <em>can</em> be helpful by grouping minority interests to give their community a voice in government. But there is a fine line between packing and cracking where an appropriate amount of community representation falls. The ambiguity of the situation is exacerbated by the lack of standard measurements of fairness.</p>
-
-			<p>In an imaginary country of 50 people where 60% are blue and 40% are red, there are 3 ways to divide 5 districts.</p>
-
-			<p>1. Perfect representation (3 blue districts, 2 red): Blue</p>
-			<p>2. Compact but unfair (5 blue districts, 0 red): Blue</p>
-			<p>3. Neither compact nor unfair (2 blue districts, 3 red): Red</p>
-		</div>
-	</section>
-
-	<section class="row section cbp-so-section">
 		<div class="col-md-7 cbp-so-side cbp-so-side-left">
 			<h2>A Rule for Fairness</h2>
 
@@ -139,16 +154,15 @@
 
 			<p>The <a href="https://www.brennancenter.org/legal-work/whitford-v-gill" target="_blank">Gill v. Whitford</a> case heard by the Supreme Court in October 2017 offers an opportunity to set a precedent for a legal test of fairness.</p>
 		</div>
-		<div class="col-md-5 cbp-so-side cbp-so-side-right">
+		<div class="col-md-1"></div>
+		<div class="col-md-4 cbp-so-side cbp-so-side-right">
 			<h2></h2>
-			<h4>Efficiency Gap Formula</h4>
+			<h4>Calculating the Efficiency Gap</h4>
 
 			<code>Seat margin - (2 * vote margin)</code>
 
-			<ul>
-				<li><b>Seat margin:</b> share of seats won by the winning party minus 50%</li>
-				<li><b>Vote margin:</b> share of votes won by the winning party minus 50%</li>
-			</ul>
+			<p><small><b>Seat margin:</b> share of seats won by the winning party minus 50%<br />
+			<b>Vote margin:</b> share of votes won by the winning party minus 50%</small></p>
 
 			<small><em>For uncontested races, we assumed that the opponent would have won 25% of the votes, as both the <a href="http://www.detroitnews.com/story/news/politics/2017/06/25/redrawing-america-imbalance-power-methodology/103170886/">Associated Press</a> and the <a href="http://chicagounbound.uchicago.edu/cgi/viewcontent.cgi?article=1946&context=public_law_and_legal_theory">University of Chicago Law School</a> utilized this 75-to-25 vote share assumption in their models.</em></small>
 		</div>
@@ -156,9 +170,10 @@
 
 
 	<section id="map" class="row section cbp-so-section">
+		<div class="row">
+
 		<h2>How gerrymandered is your district?</h2>
 
-		<div class="row">
             <div class="col-md-7 cbp-so-side cbp-so-side-left">
                 <h5>Mouse over to explore the 2014 elections:</h5>
                 <div class="btn-group" id="mapMethod" data-toggle="buttons">
@@ -189,20 +204,22 @@
 
 	<section id="conclusion" class="row section cbp-so-section">
 		<div class="col-md-1"></div>
-		<div class="col-md-10">
+		<div class="col-md-10 cbp-so-side cbp-so-side-center">
 			<h2></h2>
 			<p>Over the years, many alternative systems to having state legislatures draw district lines have been proposed.</p>
+
+			<hr />
 			
 			<div class="row">
-				<div class="col-md-4 cbp-so-side cbp-so-side-left">
+				<div class="col-md-4">
 					<h4>Independent redistricting commissions</h4>
 					<small>Canada shifted to this model in 1960s, but in the US, politicians still name appointees to the district.</small>
 				</div>
-				<div class="col-md-4 cbp-so-side cbp-so-side-left">
+				<div class="col-md-4">
 					<h4>Algorithm-based districting</h4>
 					<small>Algorithms group on compactness and grouping an equal distribution of voters, but have a difficult time factoring in shared communities of interest.</small>
 				</div>
-				<div class="col-md-4 cbp-so-side cbp-so-side-left">
+				<div class="col-md-4">
 					<h4>Proportional representation</h4>
 					<small>Allocates representatives proportionally to voting results across the state instead of the current Winner Take All model, which uniquely solves judicial meddling and natural geographic clustering.</small>
 				</div>
@@ -221,21 +238,24 @@
 
 			<hr />
 
-			<h5>Learn more about how gerrymandering affects you</h5>
+			<h5 style="text-align:center">Learn more about how gerrymandering affects you</h5>
+			<br />
 
-			<div class="col-md-6 cbp-so-side cbp-so-side-left">
-				<ul>
-					<li><a href="https://www.brennancenter.org/issues/redistricting" target="_blank">Brennan Center for Justice</a></li>
-					<li><a href="http://gerrymander.princeton.edu/" target="_blank">Princeton Gerrymandering Project</a></li>
-					<li><a href="https://www.vox.com/policy-and-politics/2017/10/11/16453512/gerrymandering-proportional-representation" target="_blank">"The real fix for gerrymandering is proportional representation"</a> (Vox)</li>
-				</ul>
-			</div>			
-			<div class="col-md-6 cbp-so-side cbp-so-side-right">
-				<ul>
-					<li><a href="https://www.brennancenter.org/issues/redistricting" target="_blank">Brennan Center for Justice</a></li>
-					<li><a href="http://gerrymander.princeton.edu/" target="_blank">Princeton Gerrymandering Project</a></li>
-					<li><a href="https://www.vox.com/policy-and-politics/2017/10/11/16453512/gerrymandering-proportional-representation" target="_blank">"The real fix for gerrymandering is proportional representation"</a> (Vox)</li>
-				</ul>
+			<div class="row">
+				<div class="col-md-6 cbp-so-side cbp-so-side-left">
+					<ul>
+						<li><a href="https://www.brennancenter.org/issues/redistricting" target="_blank">Brennan Center for Justice</a></li>
+						<li><a href="http://gerrymander.princeton.edu/" target="_blank">Princeton Gerrymandering Project</a></li>
+						<li><a href="https://www.vox.com/policy-and-politics/2017/10/11/16453512/gerrymandering-proportional-representation" target="_blank">"The real fix for gerrymandering is proportional representation"</a> (Vox)</li>
+					</ul>
+				</div>			
+				<div class="col-md-6 cbp-so-side cbp-so-side-right">
+					<ul>
+						<li><a href="https://www.brennancenter.org/issues/redistricting" target="_blank">Brennan Center for Justice</a></li>
+						<li><a href="http://gerrymander.princeton.edu/" target="_blank">Princeton Gerrymandering Project</a></li>
+						<li><a href="https://www.vox.com/policy-and-politics/2017/10/11/16453512/gerrymandering-proportional-representation" target="_blank">"The real fix for gerrymandering is proportional representation"</a> (Vox)</li>
+					</ul>
+				</div>
 			</div>
 
 		</div>

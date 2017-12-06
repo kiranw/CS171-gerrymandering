@@ -91,7 +91,7 @@ body {
 }
 .section {
     padding: 2em;
-    min-height: 560px;
+    min-height: 90vh;
 }
 .title div {
     min-height: 100vh;
@@ -114,7 +114,9 @@ p, li {
 .hideme {
     opacity:0;
 }
-
+.btn-group {
+    margin: 8px auto 16px;
+}
 
 
 /*.gap-explain{*/
@@ -401,10 +403,18 @@ rect.event-rect:hover {
     transform: translateX(80px);
 }
 
+.cbp-so-init .cbp-so-side-center {
+    -webkit-transform: translateY(80px);
+    -moz-transform: translateY(80px);
+    transform: translateY(80px);
+}
+
+
 /* Animated state */
 /* add you final states (transition) or your effects (animations) for each side */
 .cbp-so-section.cbp-so-animate .cbp-so-side-left,
-.cbp-so-section.cbp-so-animate .cbp-so-side-right {
+.cbp-so-section.cbp-so-animate .cbp-so-side-right,
+.cbp-so-section.cbp-so-animate .cbp-so-side-center {
     -webkit-transform: translateX(0px);
     -moz-transform: translateX(0px);
     transform: translateX(0px);
