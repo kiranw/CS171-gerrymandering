@@ -66,6 +66,12 @@ small {
     font-weight: 700;
     font-size: 1em;
 }
+
+.ntl-title {
+    font-weight: 600;
+    font-size: .8em;
+}
+
 .blue {
     color: #4575b4;
 }

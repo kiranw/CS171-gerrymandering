@@ -177,14 +177,14 @@
 
 		<h2>How gerrymandered is your district?</h2>
 
-            <div class="col-md-7 cbp-so-side cbp-so-side-left">
+            <div class="col-md-6 cbp-so-side cbp-so-side-left">
                 <h5>Mouse over to explore the 2014 elections:</h5>
                 <div class="btn-group" id="mapMethod" data-toggle="buttons">
-                    <label class="btn btn-secondary active" onclick="choroplethColoring(0)">
-                        <input type="radio" name="options" value="gapColor" id="gapColor" checked>Efficiency Gap (%)
+                    <label class="btn btn-secondary" onclick="choroplethColoring(0)">
+                        <input type="radio" name="options" value="gapColor" id="gapColor">Efficiency Gap (%)
                     </label>
-                    <label class="btn btn-secondary" onclick="choroplethColoring(1)">
-                        <input type="radio" name="options" value="partyColor" id="partyColor"> Election Outcome
+                    <label class="btn btn-secondary active" onclick="choroplethColoring(1)">
+                        <input type="radio" name="options" value="partyColor" id="partyColor" checked> Election Outcome
                     </label>
                     <label class="btn btn-secondary" onclick="choroplethColoring(2)">
                         <input type="radio" name="options" value="seatsColor" id="seatsColor"> Total Contested Seats
@@ -192,7 +192,7 @@
                 </div>
 				<div id="choropleth"></div>
 			</div>
-			<div class="col-md-5 cbp-so-side cbp-so-side-right">
+			<div class="col-md-6 cbp-so-side cbp-so-side-right">
 				<div id="gapData">
 					<h5 id="current-district">Click on a district to learn more.</h5>
 					<h4 id="efficiency-gap">Efficiency Gap: </h4>

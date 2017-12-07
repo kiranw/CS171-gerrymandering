@@ -105,6 +105,7 @@ queue()
                 return d
             }
             });
+        drawWindy()
 
         // Update choropleth: add legend
         updateChoropleth();
@@ -131,22 +132,25 @@ var stateName;
 var stateCode;
 var districtID;
 
+var coloring = 1;
 function choroplethColoring(d){
     if(d == 0){
         console.log("Efficiency gap")
+        coloring = 0;
     }
     if(d == 1){
         console.log("Election outcome")
+        coloring = 1;
+
     }
     if(d == 2){
         console.log("Total contested seats")
+        coloring = 2;
     }
+    updateChoropleth()
 }
 
-function updateChoropleth(error) {
-    var districts = topojson.feature(mapJson, mapJson.objects.districts).features;
-    console.log(districts)
-
+function drawWindy(error){
     WindySvg.append("g")
         .attr("class", "NCregion")
         .selectAll("path")
@@ -176,6 +180,18 @@ function updateChoropleth(error) {
         })
         .attr("transform", "translate(-300,0) scale(2.5)")
 
+}
+
+var colorSeats = d3.scaleLinear()
+    .domain([0,55])
+    .range(["#f2f0f7", "#54278f"]);
+
+var colorGap = d3.scaleLinear()
+    .domain([0,40])
+    .range(["#edf8fb", "#596bbf"]);
+
+function updateChoropleth(error) {
+    var districts = topojson.feature(mapJson, mapJson.objects.districts).features;
 
     choroplethSvg.append("g")
         .attr("class", "region")
@@ -194,15 +210,31 @@ function updateChoropleth(error) {
             stateName = stateInfo[0].name;
             stateCode = stateInfo[0].code;
             districtID = (d.id % 100);
-            var electionResult = congressData.filter(findDistrict);
-            if(stateID <= 56 && stateID != 11){
-                if(electionResult[0].party.includes("R")){
-                    return colors[0];
-                }
-                else{
-                    return colors[1];
+            districtInfo = gapData.filter(findGapData);
+            if(coloring == 0){
+                if(stateID <= 56 && stateID != 11) {
+                    console.log(stateName)
+                    console.log(districtInfo[0].Gap)
+                    return colorGap(districtInfo[0].Gap)
                 }
             }
+            if(coloring == 1){
+                var electionResult = congressData.filter(findDistrict);
+                if(stateID <= 56 && stateID != 11){
+                    if(electionResult[0].party.includes("R")){
+                        return colors[0];
+                    }
+                    else{
+                        return colors[1];
+                    }
+                }
+            }
+            if(coloring == 2){
+                if(stateID <= 56 && stateID != 11) {
+                    return colorSeats(districtInfo[0].Seats)
+                }
+            }
+            return "grey"
         })
         .attr("transform", "translate(0,50) scale(1.5)")
         .on('mouseenter', stateMouseOver)
