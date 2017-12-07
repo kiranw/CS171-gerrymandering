@@ -75,7 +75,7 @@ function districtGroupingInit() {
         .attr('class', 'legend')
         .attr('transform', function(d, i) {
             var y = 15*i+150;
-            return 'translate(400,' + y + ')';
+            return 'translate(350,' + y + ')';
         });
 
     groupLegend.append('rect')
@@ -93,8 +93,8 @@ function districtGroupingInit() {
 
     // Circle shows people
     var partyG = groupingSvg.append("g")
-        .attr("class", "districtGrouping")
-        .attr("transform", "translate(150,25)");
+        .attr("class", "partyGrouping")
+        .attr("transform", "translate(100,25)");
 
     var partyGroup = partyG.selectAll(".party")
         .data(groupingData["party"]);
@@ -139,21 +139,27 @@ function districtGroupingVis() {
     // get selected Group
     selectedGroup = d3.select('input[name="groups"]:checked').property("id");
 
+    // clear all districts first
+    d3.selectAll(".districtGrouping").remove();
+
+    // update winner
+    d3.select("#winner").html(function() { 
+            if (selectedGroup == "neither") { return "<span class='red'>Red</span>"; }
+            else { return "<span class='blue'>Blue</span>"; }
+        });
+
     // Square shows district    
     var districtG = groupingSvg.append("g")
         .attr("class", "districtGrouping")
-        .attr("transform", "translate(150,25)");
-
-    var districtRow = districtG.selectAll(".row")
+        .attr("transform", "translate(100,25)")
+        .selectAll(".row")
         .data(groupingData[selectedGroup], function(d) { return d; });
 
-    var row = districtRow.enter()
+    var row = districtG.enter()
         .append("g")
         .attr("class", "row");
 
-    row.exit().remove();
-
-    row.merge(districtRow)
+    row.merge(row)
         .attr("height", cellHeight)
         .style("opacity",0.2)
         .transition()
@@ -164,11 +170,8 @@ function districtGroupingVis() {
         });
 
     var cell = row.selectAll(".cell")
-        .data(function(d) { return d; });
-
-    cell.exit().remove();
-
-    cell.enter().append("rect")
+        .data(function(d) { return d; })
+        .enter().append("rect")
         .attr("class", function(d, i) {
             return "column" + i;
         })

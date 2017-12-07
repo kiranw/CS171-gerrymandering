@@ -20,6 +20,11 @@ var mapJson;
 var stateNames;
 var stateID;
 
+var colors = ['#d73027','#4575b4'];
+var party = [];
+party.push("Republican");
+party.push("Democrat");
+
 // Create SVG Drawing area
 function findState(x) {
     return x.id == stateID;
@@ -151,10 +156,10 @@ function updateChoropleth(error) {
             var electionResult = congressData.filter(findDistrict);
             if(stateID <= 56 && stateID != 11){
                 if(electionResult[0].party.includes("R")){
-                    return "#cd0000"
+                    return colors[0];
                 }
                 else{
-                    return "#0000ff"
+                    return colors[1];
                 }
             }
         })
@@ -190,12 +195,6 @@ function updateChoropleth(error) {
     addLegend()
 }
 
-var colors = ['#d7301f','#2171b5'];
-var party = [];
-party.push("Republican");
-party.push("Democrat");
-
-
 function addLegend() {
     var legend = choroplethSvg.selectAll('.legend')
         .data(party)
@@ -227,7 +226,7 @@ function stateMouseOver(d) {
     // console.log(d);
     tool_tip.show(d);
     d3.select("#s" + d.id)
-        .attr("stroke","white")
+        .attr("stroke","#fff")
         .attr("stroke-width",1)
         .attr("stroke-opacity",0.6)
         .attr("opacity",0.7);
@@ -236,7 +235,7 @@ function stateMouseOver(d) {
 function stateMouseOut(d) {
     tool_tip.hide(d);
     d3.select("#s" + d.id)
-        .attr("stroke","white")
+        .attr("stroke","#fff")
         .attr("stroke-width",0)
         .attr("opacity", 1);
 }

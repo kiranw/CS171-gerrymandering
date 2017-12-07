@@ -16,8 +16,7 @@ function updateDistrictDrawn() {
 
     // Scales & legends
     var districtColor = d3.scaleOrdinal()
-        .range(['#d73027','#fc8d59','#fee090','#ffffbf','#e0f3f8','#91bfdb','#4575b4']);
-        
+        .range(['#bfd3e6','#eee','#aeaeae','#88419d','#9ebcda','#6e016b','#8c6bb1']);
 
     var legendText = ["Legislature Alone", "Advisory Commission", "Backup Commission", "Politician Commission", "Independent Commission", "Single District"];
 
@@ -60,21 +59,17 @@ function updateDistrictDrawn() {
 
     districtMap.append("path")
         .attr("d", districtPath)
+        .attr("stroke","#fff")
+        .attr("stroke-width",0.5)
         .attr("fill", function(d) {
             return districtColor(d.properties.drawnBy);
         })
         .on("mouseover", function(d) {
-            d3.select(this).attr("opacity", 0.7)
-                .attr("stroke","white")
-                .attr("stroke-width",1)
-                .attr("stroke-opacity",0.6);
+            d3.select(this).attr("opacity", 0.7);
             districtTip.show(d);
         })
         .on("mouseout", function(d) {
-            d3.select(this).attr("opacity", 1)
-                .attr("stroke","white")
-                .attr("stroke-width",0)
-                .attr("stroke-opacity",0.6);
+            d3.select(this).attr("opacity", 1);
             districtTip.hide(d);
         });
 

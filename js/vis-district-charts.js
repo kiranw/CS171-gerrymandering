@@ -8,7 +8,7 @@ var chartsSvg = d3.select("#districtCharts").append("svg")
     .attr("height", height);
 
 var arc = d3.arc().outerRadius(50).innerRadius(0);
-var color = ['#762a83','#af8dc3','#e7d4e8','#d9f0d3','#7fbf7b','grey','orange'];
+var color = ['#edf8fb','#bfd3e6','#9ebcda','#8c96c6','#8c6bb1','#88419d','#6e016b'];
 
 // Add demographic charts for the selected district
 function createLineCharts(error, districtData){

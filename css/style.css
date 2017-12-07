@@ -28,16 +28,18 @@ p {
     color: #333;
 }
 #headline{
-    font-size:5em;
+    font-size:3.75em;
     font-weight: 700;
     color: #fff;
-    margin-top: 2em;
+    margin: 2em auto 1em;
+    text-align: center;
 }
 #subheadline{
-    font-size:3em;
+    font-size:2.5em;
     font-weight: 400;
     font-style: italic;
     color: #fff;
+    text-align: center;
 }
 p, li {
     font-size: 18px;
@@ -64,10 +66,10 @@ small {
     font-size: 1em;
 }
 .blue {
-    color: #2171b5;
+    color: #4575b4;
 }
 .red {
-    color: #d7301f;
+    color: #d73027;
 }
 .btn-group label {
     border: 1px solid #ccc;
@@ -82,6 +84,9 @@ small {
 body {
     margin: 0;
     background-color: #f4f4f4;
+}
+.container {
+    width: 95vw !important;
 }
 .container-fluid {
     padding: 0;
@@ -340,7 +345,7 @@ rect.event-rect:hover {
 
 .cbp-so-section {
     background-color: #fff;
-    margin-bottom: 15em;
+    margin-bottom: 8em;
 }
 
 /* Clear floats of children */
