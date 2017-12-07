@@ -68,7 +68,7 @@ function createRaceChart(districtData){
         .attr('d', arc)
         .attr("transform", "translate(50,100)")
         .attr('stroke', '#fff')
-        .attr('stroke-width', '2')
+        .attr('stroke-width', '0.5')
         .attr('fill', function(d, i) {
             return color[i];
         })
@@ -83,7 +83,7 @@ function createRaceChart(districtData){
         .attr('d', arc)
         .attr("transform", "translate(50,300)")
         .attr('stroke', '#fff')
-        .attr('stroke-width', '2')
+        .attr('stroke-width', '0.5')
         .attr('fill', function(d, i) {
             return color[i];
         })
@@ -171,7 +171,7 @@ function createIncomeChart(districtData){
         .attr('d', arc)
         .attr("transform", "translate(100,100)")
         .attr('stroke', '#fff')
-        .attr('stroke-width', '2')
+        .attr('stroke-width', '0.5')
         .attr('fill', function(d, i) {
             return color[i];
         })
@@ -184,7 +184,7 @@ function createIncomeChart(districtData){
         .attr('d', arc)
         .attr("transform", "translate(100,300)")
         .attr('stroke', '#fff')
-        .attr('stroke-width', '2')
+        .attr('stroke-width', '0.5')
         .attr('fill', function(d, i) {
             return color[i];
         })
@@ -266,7 +266,7 @@ function createEmploymentChart(districtData){
         .attr('d', arc)
         .attr("transform", "translate(100,100)")
         .attr('stroke', '#fff')
-        .attr('stroke-width', '2')
+        .attr('stroke-width', '0.5')
         .attr('fill', function(d, i) {
             return color[i];
         })
@@ -279,7 +279,7 @@ function createEmploymentChart(districtData){
         .attr('d', arc)
         .attr("transform", "translate(100,300)")
         .attr('stroke', '#fff')
-        .attr('stroke-width', '2')
+        .attr('stroke-width', '0.5')
         .attr('fill', function(d, i) {
             return color[i];
         })

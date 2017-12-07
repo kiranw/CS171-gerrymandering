@@ -53,8 +53,8 @@ var groupingData = {
 var districtNumbers = ["District 1", "District 2", "District 3", "District 4", "District 5"];
 
 var groupingSvg = d3.select("#districtGrouping").append("svg")
-    .attr("width", width)
-    .attr("height", height);
+    .attr("width", 500)
+    .attr("height", 500);
 
 
 districtGroupingInit();
@@ -62,10 +62,6 @@ districtGroupingInit();
 
 // Draws 5x10 box representing ways to group districts
 function districtGroupingInit() {
-
-    var margin = { top: 500, right: 50, bottom: 0, left: 50 };
-    var width = 500,
-        height = 500;
 
     // Add legend
     var groupLegend = groupingSvg.selectAll('.legend')
