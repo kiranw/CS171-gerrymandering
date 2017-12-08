@@ -8,6 +8,12 @@ var choroplethSvg = d3.select("#choropleth").append("svg")
     .attr("height", height)
     .on("click","clicked");
 
+var WindySvg = d3.select("#NC").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+
+
 // Initialize map settings
 var projection = d3.geoAlbersUsa()
     .scale(500)
@@ -63,10 +69,6 @@ var tool_tip = d3.tip()
         var stateAbbr = stateInfo[0].code;
         var stateName = stateInfo[0].name;
         var districtID = (d.id % 100);
-        var efficiencyGap = -1;
-        var compactnessRatio = -1;
-        var electoralOutcome = -1;
-        var congressionalSeats = -1;
         var totalInfo = "<div class='tooltip-label'><span class='tooltip-title'>State:</span> " + stateName + "</div>";
         totalInfo += "<div class='tooltip-label'><span class='tooltip-title'>District:</span> " + districtID + "</div>";
         // totalInfo += "<div class='tooltip-label'><span class='tooltip-title'>Efficiency Gap:</span> " + efficiencyGap + "</div>";
@@ -79,6 +81,7 @@ d3.select('svg').call(tool_tip);
 
 var congressData;
 var gapData
+var NCJson;
 // Use the Queue.js library to read two files
 queue()
     .defer(d3.json, "data/districts.json")
@@ -95,6 +98,14 @@ queue()
         gapData = allGapData;
         mapStates = mapStatesJson;
         // console.log(gapData)
+
+        windyJson = topojson.feature(mapJson, mapJson.objects.districts).features.filter(function(d) {
+            var stateNum = (d.id / 100 | 0);
+            if(stateNum == 37 || stateNum == 42 || stateNum == 26){
+                return d
+            }
+            });
+        drawWindy()
 
         // Update choropleth: add legend
         updateChoropleth();
@@ -121,25 +132,29 @@ var stateName;
 var stateCode;
 var districtID;
 
+var coloring = 1;
 function choroplethColoring(d){
     if(d == 0){
         console.log("Efficiency gap")
+        coloring = 0;
     }
     if(d == 1){
         console.log("Election outcome")
+        coloring = 1;
+
     }
     if(d == 2){
         console.log("Total contested seats")
+        coloring = 2;
     }
+    updateChoropleth()
 }
 
-function updateChoropleth(error) {
-    var districts = topojson.feature(mapJson, mapJson.objects.districts).features;
-
-    choroplethSvg.append("g")
-        .attr("class", "region")
+function drawWindy(error){
+    WindySvg.append("g")
+        .attr("class", "NCregion")
         .selectAll("path")
-        .data(districts)
+        .data(windyJson)
         .enter().append("path")
         .attr("d", path)
         .attr("id", function(d){ return "s"+d.id; })
@@ -163,6 +178,64 @@ function updateChoropleth(error) {
                 }
             }
         })
+        .attr("transform", "translate(-300,0) scale(2.5)")
+
+}
+
+var colorSeats = d3.scaleLinear()
+    .domain([0,55])
+    .range(["#f2f0f7", "#54278f"]);
+
+var colorGap = d3.scaleLinear()
+    .domain([0,40])
+    .range(["#edf8fb", "#596bbf"]);
+
+function updateChoropleth(error) {
+    var districts = topojson.feature(mapJson, mapJson.objects.districts).features;
+
+    choroplethSvg.append("g")
+        .attr("class", "region")
+        .selectAll("path")
+        .data(districts)
+        .enter().append("path")
+        .attr("d", path)
+        .attr("id", function(d){ return "s"+d.id; })
+        .attr("value", function(d){
+            stateID = (d.id / 100 | 0);
+            stateInfo = stateNames.filter(findState);
+            return stateInfo[0].name; })
+        .attr("fill", function(d) {
+            stateID = (d.id / 100 | 0);
+            stateInfo = stateNames.filter(findState);
+            stateName = stateInfo[0].name;
+            stateCode = stateInfo[0].code;
+            districtID = (d.id % 100);
+            districtInfo = gapData.filter(findGapData);
+            if(coloring == 0){
+                if(stateID <= 56 && stateID != 11) {
+                    console.log(stateName)
+                    console.log(districtInfo[0].Gap)
+                    return colorGap(districtInfo[0].Gap)
+                }
+            }
+            if(coloring == 1){
+                var electionResult = congressData.filter(findDistrict);
+                if(stateID <= 56 && stateID != 11){
+                    if(electionResult[0].party.includes("R")){
+                        return colors[0];
+                    }
+                    else{
+                        return colors[1];
+                    }
+                }
+            }
+            if(coloring == 2){
+                if(stateID <= 56 && stateID != 11) {
+                    return colorSeats(districtInfo[0].Seats)
+                }
+            }
+            return "grey"
+        })
         .attr("transform", "translate(0,50) scale(1.5)")
         .on('mouseenter', stateMouseOver)
         .on('mouseout', stateMouseOut)
@@ -180,7 +253,7 @@ function updateChoropleth(error) {
             //Electoral Outcome
             // console.log(d)
             var electionResult = congressData.filter(findDistrict);
-            //console.log(electionResult)
+            console.log(electionResult)
             document.getElementById("outcome").innerHTML = "Winning Party: " + electionResult[0].party;
             if (electionResult[0].party.includes("R")) {
                 document.getElementById("outcome").className = "red";

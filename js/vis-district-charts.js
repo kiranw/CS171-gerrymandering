@@ -28,6 +28,7 @@ function createLineCharts(error, districtData){
 
 }
 
+
 function createRaceChart(districtData){
 
     var prcntAsian = districtData[0].prcntAsian;
@@ -48,6 +49,13 @@ function createRaceChart(districtData){
         .attr("x", 20)
         .attr("y", 16)
         .text("Race");
+
+    chartsSvg.append("text")
+        .attr("class","ntl-title")
+        .style("fill", "black")
+        .attr("x", 20)
+        .attr("y", 380)
+        .text("Nationwide Race");
 
     var races = ["White","Hispanic","Black","Asian", "Other"]
 
@@ -160,6 +168,13 @@ function createIncomeChart(districtData){
         .attr("y", 16)
         .text("Income");
 
+    chartsSvg.append("text")
+        .attr("class","ntl-title")
+        .style("fill", "black")
+        .attr("x", 260)
+        .attr("y", 380)
+        .text("Nationwide Income");
+
     var pie = d3.pie()
         .value(function(d,i) {
             return d
@@ -245,6 +260,12 @@ function createEmploymentChart(districtData){
         .attr("x", 500)
         .attr("y", 16)
         .text("Labor Force");
+    chartsSvg.append("text")
+        .attr("class","ntl-title")
+        .style("fill", "black")
+        .attr("x", 500)
+        .attr("y", 380)
+        .text("Nationwide Labor");
 
     var pie = d3.pie()
         .value(function(d,i) {
