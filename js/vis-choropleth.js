@@ -9,7 +9,7 @@ var choroplethSvg = d3.select("#choropleth").append("svg")
     .on("click","clicked");
 
 var WindySvg = d3.select("#NC").append("svg")
-    .attr("width", width)
+    .attr("width", 700)
     .attr("height", height);
 
 
@@ -36,31 +36,6 @@ function findState(x) {
     return x.id == stateID;
 }
 
-function clicked(d) {
-    var x, y, k;
-
-    if (d && centered !== d) {
-        var centroid = path.centroid(d);
-        x = centroid[0];
-        y = centroid[1];
-        k = 4;
-        centered = d;
-    } else {
-        x = width / 2;
-        y = height / 2;
-        k = 1;
-        centered = null;
-    }
-
-    g.selectAll("path")
-        .classed("active", centered && function(d) { return d === centered; });
-
-    g.transition()
-        .duration(750)
-        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
-        .style("stroke-width", 1.5 / k + "px");
-}
-
 var tool_tip = d3.tip()
     .attr("class", "d3-tip")
     .html(function(d) {
@@ -81,7 +56,7 @@ d3.select('svg').call(tool_tip);
 
 var congressData;
 var gapData
-var NCJson;
+var windyJson;
 // Use the Queue.js library to read two files
 queue()
     .defer(d3.json, "data/districts.json")
@@ -101,7 +76,7 @@ queue()
 
         windyJson = topojson.feature(mapJson, mapJson.objects.districts).features.filter(function(d) {
             var stateNum = (d.id / 100 | 0);
-            if(stateNum == 37 || stateNum == 42 || stateNum == 26){
+            if(stateNum == 37|| stateNum == 24 || stateNum == 12 || stateNum == 48){
                 return d
             }
             });
@@ -109,6 +84,7 @@ queue()
 
         // Update choropleth: add legend
         updateChoropleth();
+        addLegend()
         createLineCharts()
 
         // Update district drawn by Chloropleth [JFAN]
@@ -137,20 +113,129 @@ function choroplethColoring(d){
     if(d == 0){
         console.log("Efficiency gap")
         coloring = 0;
+        choroplethSvg.selectAll('.legend').remove()
+        choroplethSvg.selectAll('.legend-names').remove()
+        drawColorLegend()
+        choroplethSvg.append('text')
+            .attr("class", "legend-names")
+            .attr('x', 400)
+            .attr('y', 40)
+            .text("0%");
+        choroplethSvg.append('text')
+            .attr("class", "legend-names")
+            .attr('x', 530)
+            .attr('y', 40)
+            .text("36%");
     }
     if(d == 1){
         console.log("Election outcome")
         coloring = 1;
-
+        choroplethSvg.selectAll('.color-legend').remove()
+        choroplethSvg.selectAll('.legend-names').remove()
+        addLegend()
     }
     if(d == 2){
         console.log("Total contested seats")
         coloring = 2;
+        choroplethSvg.selectAll('.legend').remove()
+        choroplethSvg.selectAll('.legend-names').remove()
+        drawColorLegend()
+        choroplethSvg.append('text')
+            .attr("class", "legend-names")
+            .attr('x', 400)
+            .attr('y', 40)
+            .text("0");
+        choroplethSvg.append('text')
+            .attr("class", "legend-names")
+            .attr('x', 530)
+            .attr('y', 40)
+            .text("55");
     }
     updateChoropleth()
 }
 
+function drawColorLegend(){
+    var defs = choroplethSvg.append("defs");
+
+    var linearGradient = defs.append("linearGradient")
+        .attr("id", "linear-gradient");
+
+    linearGradient
+        .attr("x1", "0%")
+        .attr("y1", "0%")
+        .attr("x2", "100%")
+        .attr("y2", "0%");
+
+    // Starting color
+    linearGradient.append("stop")
+        .attr("offset", "0%")
+        .attr("stop-color", "#edf8fb");
+
+    // Ending color
+    linearGradient.append("stop")
+        .attr("offset", "100%")
+        .attr("stop-color", "#6702ff");
+
+    choroplethSvg.append("rect")
+        .attr("class", "color-legend")
+        .attr("width", 140)
+        .attr("height", 12)
+        .style("fill", "url(#linear-gradient)")
+        .attr("transform", "translate(400,50)");
+}
+
 function drawWindy(error){
+    var windyLabels = WindySvg.append("g")
+        .attr("class", "windy-labels")
+
+    windyLabels.append('text')
+        .attr("class", "windy-names")
+        .attr('x', 200)
+        .attr('y', 220)
+        .attr("transform", "rotate(10)")
+        .text("Texas-35");
+    windyLabels.append('text')
+        .attr("class", "windy-names")
+        .attr('x', 410)
+        .attr('y', 310)
+        .attr("transform", "rotate(0)")
+        .text("Florida-5");
+    windyLabels.append('text')
+        .attr("class", "windy-names")
+        .attr('x', 500)
+        .attr('y', -370)
+        .attr("transform", "rotate(70)")
+        .text("Florida-22");
+    windyLabels.append('text')
+        .attr("class", "windy-names")
+        .attr('x',440)
+        .attr('y', 170)
+        .attr("transform", "rotate(10)")
+        .text("North Carolina-12");
+    windyLabels.append('text')
+        .attr("class", "windy-names")
+        .attr("transform", "translate(550,250) rotate(-40)")
+        .text("North Carolina-04");
+    windyLabels.append('text')
+        .attr("class", "windy-names")
+        .attr("transform", "translate(445,155) rotate(-10)")
+        .text("Maryland-06");
+    windyLabels.append('text')
+        .attr("class", "windy-names")
+        .attr("transform", "translate(570,100) rotate(80)")
+        .text("Maryland-03");
+
+
+    var windy = []
+    windy.push("3712")
+    windy.push("1205")
+    windy.push("2403")
+    windy.push("4835")
+    windy.push("3704")
+    windy.push("1222")
+    windy.push("2406")
+    console.log(windy)
+
     WindySvg.append("g")
         .attr("class", "NCregion")
         .selectAll("path")
@@ -162,33 +247,33 @@ function drawWindy(error){
             stateID = (d.id / 100 | 0);
             stateInfo = stateNames.filter(findState);
             return stateInfo[0].name; })
+        .attr("stroke-width",0.15)
+        .attr("stroke","#000000")
         .attr("fill", function(d) {
             stateID = (d.id / 100 | 0);
             stateInfo = stateNames.filter(findState);
             stateName = stateInfo[0].name;
             stateCode = stateInfo[0].code;
             districtID = (d.id % 100);
-            var electionResult = congressData.filter(findDistrict);
-            if(stateID <= 56 && stateID != 11){
-                if(electionResult[0].party.includes("R")){
-                    return colors[0];
-                }
-                else{
-                    return colors[1];
-                }
+            if(windy.includes(d.id.toString())){
+                console.log(d.id)
+                var electionResult = congressData.filter(findDistrict);
+                return "#44c0ff"
             }
+            return "white"
         })
-        .attr("transform", "translate(-300,0) scale(2.5)")
+        .attr("transform", "translate(-300,-150) scale(2.5)")
+
 
 }
 
 var colorSeats = d3.scaleLinear()
     .domain([0,55])
-    .range(["#f2f0f7", "#54278f"]);
+    .range(["#edf8fb", "#6702ff"]);
 
 var colorGap = d3.scaleLinear()
-    .domain([0,40])
-    .range(["#edf8fb", "#596bbf"]);
+    .domain([0,36])
+    .range(["#edf8fb", "#6702ff"]);
 
 function updateChoropleth(error) {
     var districts = topojson.feature(mapJson, mapJson.objects.districts).features;
@@ -215,8 +300,11 @@ function updateChoropleth(error) {
             districtInfo = gapData.filter(findGapData);
             if(coloring == 0){
                 if(stateID <= 56 && stateID != 11) {
-                    console.log(stateName)
-                    console.log(districtInfo[0].Gap)
+                    if(stateID == 38 || stateID == 30 || stateID == 2){
+                        return "grey"
+                    }
+                    // console.log(stateName)
+                    // console.log(districtInfo[0].Gap)
                     return colorGap(districtInfo[0].Gap)
                 }
             }
@@ -278,7 +366,6 @@ function updateChoropleth(error) {
             document.getElementById("contested-seats").innerHTML = "Contested Seats: ";
         });
 
-    addLegend()
 }
 
 function addLegend() {

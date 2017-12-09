@@ -121,6 +121,11 @@ small {
     font-size: 0.8em;
 }
 
+.windy-names {
+    font-weight: 250;
+    font-size: 0.6em;
+}
+
 .ntl-title {
     font-weight: 600;
     font-size: .8em;
