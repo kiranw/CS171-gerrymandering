@@ -16,19 +16,26 @@
 
 <header id="title" class="title container-fluid">
 	<div class="col-xs-12">
-		<h1 id="headline">The United States of Gerrymandering</h1>
-		<h4 id="subheadline">A Primer on Gerrymandering, Fair Districting, and its Impacts on Representation</h4>
+		<!-- <h1 id="headline">The United States of Gerrymandering</h1>
+		<h4 id="subheadline">A Primer on Gerrymandering, Fair Districting, and its Impacts on Representation</h4> -->
 	</div>
 </header>
 
 <div id="cbp-so-scroller" class="container cbp-so-scroller">
 	<section id="intro" class="row section cbp-so-section">
-		<div class="col-md-2"></div>
-		<div class="col-md-8 cbp-so-side cbp-so-side-center">
+		<div class="col-md-1"></div>
+		<div class="col-md-6 cbp-so-side cbp-so-side-left">
 			<h2>A Tradition as Old as the Republic</h2>
 			<p>Gerrymandering, or the practice of manipulating electoral district boundaries for political gain, is a practice as old as America itself.</p>
 
 			<p>Where the lines are drawn affects both state and federal elections. For Congressional elections, states are divided into districts based on how many representatives they send to the House of Representatives. In these cases, partisan gerrymandering is often used to maximize the wins for their own party.</p>
+		</div>
+		<div class="col-md-1"></div>
+		<div class="col-md-4 cbp-so-side cbp-so-side-right">
+			<br /><br />
+			<img src="img/Gerry.jpg" border="0" alt="" />
+
+			<p class="small"><em>Massachusetts Governor Gerry first redraw the map of districts in an unusual way when he took office in 1810 to weaken the Federalist Party. Newspapers ridiculed the salamander-shaped districts, calling them "Gerrymanders", a term that stuck.</em></p>
 		</div>
 	</section>
 
@@ -47,7 +54,7 @@
 			  </label>
 			</div>
 
-			<h4 style="padding-left:100px">Winner: <span id="winner"></span></h4>
+			<h3 style="padding-left:100px">Winner: <span id="winner"></span></h3>
 		</div>
 		<div class="col-md-6 cbp-so-side cbp-so-side-right">
 			<h2>How does gerrymandering impact elections?</h2>
@@ -59,7 +66,7 @@
 			<h4>Imagine a state of 50 people where 60% are blue and 40% are red. Is there a way that reds could win, despite being a minority?</h4>
 
 			<br />
-			<small><em>Visualization adapted from <a href="https://commons.wikimedia.org/wiki/File:How_to_Steal_an_Election_-_Gerrymandering.svg" target="_blank">Stephen Nass's "How to steal an election"</a></em></small>
+			<p class="small"><em>Visualization adapted from <a href="https://commons.wikimedia.org/wiki/File:How_to_Steal_an_Election_-_Gerrymandering.svg" target="_blank">Stephen Nass's "How to steal an election"</a></em></p>
 
 			<!-- 
 			<p>There are 3 ways to divide 5 districts:</p>
@@ -94,11 +101,11 @@
 
 			<div class="row">
 				<div class="col-md-6">
-					<h4>"Packing"</h4>
+					<h3>Packing</h3>
 					<p>Place all of your opponent's supporters into a few foregone districts to maximize wasted votes</p>
 				</div>
 				<div class="col-md-6">
-					<h4>"Cracking"</h4>
+					<h3>Cracking</h3>
 					<p>Distribute your own supporters evenly amongst the districts to ensure a comfortable majority</p>
 				</div>
 			</div>
@@ -111,6 +118,9 @@
 			<p>District lines are redrawn every 10 years to reflect the updated populations taken by the US Census.</p>
 
 			<p>In most states, district lines are drawn by the majority party of the state legislature and approved by governor. Even in states with alternative processes like Independent Commissions, there are seats specifically reserved for Democratic or Republican appointees, so there are no truly non-partisan redistricting committees.</p>
+
+			<br />
+			<p><em>Visualization adapted from <a href="http://redistricting.lls.edu/who.php" target="_blank">All About Redistricting</a></em></p>
 		</div>
 		<div class="col-md-7 cbp-so-side cbp-so-side-right" id="districtDrawn">
 		</div>
@@ -159,26 +169,24 @@
 		</div>
 		<div class="col-md-1"></div>
 		<div class="col-md-4 cbp-so-side cbp-so-side-right">
-			<h2></h2>
+			<br /><br />
 			<h4>Calculating the Efficiency Gap</h4>
 
 			<code>Seat margin - (2 * vote margin)</code>
 
-			<p><small><b>Seat margin:</b> share of seats won by the winning party minus 50%<br />
-			<b>Vote margin:</b> share of votes won by the winning party minus 50%</small></p>
+			<p><b>Seat margin:</b> share of seats won by the winning party minus 50%</p>
+			<p><b>Vote margin:</b> share of votes won by the winning party minus 50%</p>
 
-			<small><em>For uncontested races, we assumed that the opponent would have won 25% of the votes, as both the <a href="http://www.detroitnews.com/story/news/politics/2017/06/25/redrawing-america-imbalance-power-methodology/103170886/">Associated Press</a> and the <a href="http://chicagounbound.uchicago.edu/cgi/viewcontent.cgi?article=1946&context=public_law_and_legal_theory">University of Chicago Law School</a> utilized this 75-to-25 vote share assumption in their models.</em></small>
+			<br />
+			<p class="small"><em>For uncontested races, we assumed that the opponent would have won 25% of the votes, as both the <a href="http://www.detroitnews.com/story/news/politics/2017/06/25/redrawing-america-imbalance-power-methodology/103170886/">Associated Press</a> and the <a href="http://chicagounbound.uchicago.edu/cgi/viewcontent.cgi?article=1946&context=public_law_and_legal_theory">University of Chicago Law School</a> utilized this 75-to-25 vote share assumption in their models.</em></p>
 		</div>
 	</section>
 
 
 	<section id="map" class="row section cbp-so-section">
 		<div class="row">
-
-		<h2>How gerrymandered is your district?</h2>
-
-            <div class="col-md-6 cbp-so-side cbp-so-side-left">
-                <h5>Mouse over to explore the 2014 elections:</h5>
+			<h2></h2>
+            <div class="col-md-7 cbp-so-side cbp-so-side-left">
                 <div class="btn-group" id="mapMethod" data-toggle="buttons">
                     <label class="btn btn-secondary" onclick="choroplethColoring(0)">
                         <input type="radio" name="options" value="gapColor" id="gapColor">Efficiency Gap (%)
@@ -190,16 +198,19 @@
                         <input type="radio" name="options" value="seatsColor" id="seatsColor"> Total Contested Seats
                     </label>
                 </div>
+
+                <h5 style="padding-left:24px">Mouse over to explore the 2014 elections:</h5>
 				<div id="choropleth"></div>
 			</div>
-			<div class="col-md-6 cbp-so-side cbp-so-side-right">
+			<div class="col-md-5 cbp-so-side cbp-so-side-right">
 				<div id="gapData">
-					<h5 id="current-district">Click on a district to learn more.</h5>
+					<h3 id="current-district">Select District</h3>
 					<h4 id="efficiency-gap">Efficiency Gap: </h4>
-					<h4 id="outcome">Election Outcome: </h4>
-					<h4 id="contested-seats">Total contested Seats:</h4>
+					<h4>Election Outcome: <span id="outcome"></span></h4>
+					<h4 id="contested-seats">Contested Seats:</h4>
 				</div>
-                <h5>Selected District Demographics</h5>
+
+				<hr />
                 <div id="districtCharts"></div>
 	        </div>
     	</div>
@@ -208,23 +219,20 @@
 	<section id="alternatives" class="row section cbp-so-section">
 		<div class="col-md-1"></div>
 		<div class="col-md-10 cbp-so-side cbp-so-side-center">
-			<h2></h2>
-			<p>Over the years, many alternative systems to having state legislatures draw district lines have been proposed.</p>
-
-			<hr />
+			<h2>Alternatives for Drawing Districts</h2>
 			
 			<div class="row">
 				<div class="col-md-4">
 					<h4>Independent redistricting commissions</h4>
-					<small>Canada shifted to this model in 1960s, but in the US, politicians still name appointees to the district.</small>
+					<p class="small">Canada shifted to this model in 1960s, but in the US, politicians still name appointees to the district.</p>
 				</div>
 				<div class="col-md-4">
 					<h4>Algorithm-based districting</h4>
-					<small>Algorithms group on compactness and grouping an equal distribution of voters, but have a difficult time factoring in shared communities of interest.</small>
+					<p class="small">Algorithms group on compactness and grouping an equal distribution of voters, but have a difficult time factoring in shared communities of interest.</p>
 				</div>
 				<div class="col-md-4">
 					<h4>Proportional representation</h4>
-					<small>Allocates representatives proportionally to voting results across the state instead of the current Winner Take All model, which uniquely solves judicial meddling and natural geographic clustering.</small>
+					<p class="small">Allocates representatives proportionally to voting results across the state instead of the current Winner Take All model, which uniquely solves judicial meddling and natural geographic clustering.</p>
 				</div>
 			</div>
 
@@ -238,39 +246,49 @@
 		<div class="col-md-1"></div>
 		<div class="col-md-6">
 			<h2></h2>
-			<h3>In light of the impending 2020 Census redistricting, the shape of these districts could dramatically impact the 2020 Presidential Election and the future of America.</h3>
+			<h1>In light of the impending 2020 Census redistricting, the shape of these districts could dramatically impact the 2020 Presidential Election and the future of America.</h1>
 		</div>
 		<div class="col-md-4">
-			<h2></h2>
+			<br /><br /><br />
 			<blockquote>&ldquo; If you can stack a legislature in this way, what incentive is there for a voter to exercise his vote? Whether it’s a Democratic district or a Republican district, the result is preordained in most of the districts[...] <strong>What becomes of the precious right to vote?&rdquo;</strong></blockquote>
-			<small style="padding-left:32px">&mdash; Ruth Bader Ginsburg</small>
+			<p class="small" style="padding-left:32px">&mdash; Ruth Bader Ginsburg</p>
 		</div>
 	</section>
 
 	<section id="references" class="row section cbp-so-section">
-		<div class="col-md-2"></div>
-		<div class="col-md-8">
+		<div class="col-md-1"></div>
+		<div class="col-md-10">
 			<h2></h2>
-			<h4 style="text-align:center">Further Reading</h4>
+			<h3 style="text-align:center">Further Reading</h3>
 
 			<hr />
-
-			<h5>Bibliography</h5>
-			<ul>
-				<li><a href="https://www.brennancenter.org/issues/redistricting" target="_blank">Brennan Center for Justice</a></li>
-				<li><a href="http://gerrymander.princeton.edu/" target="_blank">Princeton Gerrymandering Project</a></li>
-				<li><a href="https://electionlab.mit.edu/medsl-dataverse" target="_blank">MIT Election Data and Science Lab</a></li>
-				<li><a href="https://www.azavea.com/blog/2017/07/19/gerrymandered-states-ranked-efficiency-gap-seat-advantage/" target="_blank">The Most Gerrymandered States Ranked by Efficiency Gap and Seat Advantage</a> (Azavea)</li>
-				<li><a href="https://www.policymap.com/2017/08/a-deeper-look-at-gerrymandering/" target="_blank">A Deeper Look at Gerrymandering</a> (Policy Map)</li>
-				<li><a href="https://www.policymap.com/2017/08/solutions-to-gerrymandering/" target="_blank">Solutions to Gerrymandering</a> (Policy Map)</li>
-				<li><a href="https://www.vox.com/policy-and-politics/2017/10/11/16453512/gerrymandering-proportional-representation" target="_blank">"The real fix for gerrymandering is proportional representation"</a> (Vox)</li>
-			</ul>
-
-			<h5>Data</h5>
-			<ul>
-				<li>TBD</li>
-			</ul>
-
+			<div class="row">
+				<div class="col-md-6 cbp-so-side cbp-so-side-left">
+					<h4>Bibliography</h4>
+	<ul>
+		<li><a href="https://www.brennancenter.org/issues/redistricting" target="_blank">Brennan Center for Justice</a></li>
+		<li><a href="http://redistricting.lls.edu" target="_blank">"All About Redistricting."</a> (Justin Levitt, Loyola Law School)</li>
+		<li><a href="http://www.wnyc.org/story/whos-gerry-and-why-he-so-bad-drawing-maps/" target="_blank">"Who’s Gerry and Why Is He So Bad at Drawing Maps?"</a> (WYNC Radio)</li>
+		<li><a href="https://www.nytimes.com/interactive/2017/10/03/upshot/how-the-new-math-of-gerrymandering-works-supreme-court.html" target="_blank">"How the New Math of Gerrymandering Works"</a> (NYC)</li>
+		<li><a href="http://www.scotusblog.com/case-files/cases/gill-v-whitford/" target="_blank">Gill v. Whitford</a> (SCOTUS)</li>
+		<li><a href="https://www.policymap.com/2017/08/solutions-to-gerrymandering/" target="_blank">Solutions to Gerrymandering</a> (Policy Map)</li>
+		<li><a href="https://www.vox.com/policy-and-politics/2017/10/11/16453512/gerrymandering-proportional-representation" target="_blank">"The real fix for gerrymandering is proportional representation"</a> (Vox)</li>
+		<li><a href="https://www.washingtonpost.com/news/wonk/wp/2015/03/01/this-is-the-best-explanation-of-gerrymandering-you-will-ever-see/?utm_term=.f6e8f0c5d893" target="_blank">This is the Best Explanation of Gerrymandering You Will Ever See</a></li>
+	</ul>
+				</div>
+				<div class="col-md-6 cbp-so-side cbp-so-side-right">
+					<h4>Data</h4>
+					<ul>
+						<li><a href="https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/CI2EPI" target="_blank">Historical Congressional Legislation and District Demographics 1972-2014</a> (Congressional demographics)</li>
+						<li><a href="https://www.azavea.com/blog/2017/07/19/gerrymandered-states-ranked-efficiency-gap-seat-advantage/" target="_blank">The Most Gerrymandered States Ranked by Efficiency Gap and Seat Advantage</a> (Azavea)</li>
+						<li><a href="https://www.policymap.com/2017/08/a-deeper-look-at-gerrymandering/" target="_blank">A Deeper Look at Gerrymandering</a> (Policy Map)</li>
+						<li><a href="http://gerrymander.princeton.edu/" target="_blank">Princeton Gerrymandering Project</a></li>
+						<li><a href="https://electionlab.mit.edu/medsl-dataverse" target="_blank">MIT Election Data and Science Lab</a></li>
+						<li><a href="http://redistricting.lls.edu/who.php" target="_blank">Who Draws the Lines</a> (All About Redistricting)</li>
+						<li><a href="https://commons.wikimedia.org/wiki/File:How_to_Steal_an_Election_-_Gerrymandering.svg" target="_blank">Stephen Nass's "How to steal an election"</a></li>
+					</ul>
+				</div>
+			</div>
 		</div>
 	</section>
 </div>

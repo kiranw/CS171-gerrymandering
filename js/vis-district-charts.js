@@ -1,14 +1,56 @@
-
-var margin = { top: 30, right: 40, bottom: 60, left: 60 };
-var width = 840,
-    height = 500;
+var width = 520,
+    height = 400;
 
 var chartsSvg = d3.select("#districtCharts").append("svg")
     .attr("width", width)
     .attr("height", height);
 
 var arc = d3.arc().outerRadius(50).innerRadius(0);
-var color = ['#edf8fb','#bfd3e6','#9ebcda','#8c96c6','#8c6bb1','#88419d','#6e016b'];
+// Purple/blue
+// var color = ['#edf8fb','#bfd3e6','#9ebcda','#8c96c6','#8c6bb1','#88419d','#6e016b'];
+
+// Purple to red
+var color = ['#3B0090', '#6702FF', '#00328D', '#44C0FF', '#FFE600', '#FFA502',  '#CD2E2E'];
+
+// Red to purple
+// var color = ['#CD2E2E','#FFA502','#FFE600','#44C0FF','#00328D','#6702FF','#3B0090'];
+    
+
+    chartsSvg.append("text")
+        .attr("class","race-title")
+        .attr("x", 0)
+        .attr("y", 16)
+        .text("District Race");
+
+    chartsSvg.append("text")
+        .attr("class","ntl-title")
+        .attr("x", 0)
+        .attr("y", 160)
+        .text("Nation Race");
+
+    chartsSvg.append("text")
+        .attr("class","emp-title")
+        .attr("x", 140)
+        .attr("y", 16)
+        .text("District Income");
+
+    chartsSvg.append("text")
+        .attr("class","ntl-title")
+        .attr("x", 140)
+        .attr("y", 160)
+        .text("Nation Income");
+
+    chartsSvg.append("text")
+        .attr("class","emp-title")
+        .attr("x", 300)
+        .attr("y", 16)
+        .text("District Employment");
+        
+    chartsSvg.append("text")
+        .attr("class","ntl-title")
+        .attr("x", 300)
+        .attr("y", 160)
+        .text("Nation Employment");
 
 // Add demographic charts for the selected district
 function createLineCharts(error, districtData){
@@ -22,6 +64,7 @@ function createLineCharts(error, districtData){
 
     var districtData = congressData.filter(findDistrict);
     // console.log(districtData)
+
     createRaceChart(districtData)
     createIncomeChart(districtData)
     createEmploymentChart(districtData)
@@ -43,27 +86,18 @@ function createRaceChart(districtData){
     raceData.push(prcntAsian)
     raceData.push(other)
     // console.log(raceData)
-    chartsSvg.append("text")
-        .attr("class","race-title")
-        .style("fill", "black")
-        .attr("x", 20)
-        .attr("y", 16)
-        .text("Race");
-
-    chartsSvg.append("text")
-        .attr("class","ntl-title")
-        .style("fill", "black")
-        .attr("x", 20)
-        .attr("y", 380)
-        .text("Nationwide Race");
 
     var races = ["White","Hispanic","Black","Asian", "Other"]
 
     var raceChart = chartsSvg.append("g")
         .attr("class", "race")
+        .attr("height",200)
+        .attr("width",200);
 
     var raceUS = chartsSvg.append("g")
         .attr("class", "raceUS")
+        .attr("height",200)
+        .attr("width",200);
 
     var pie = d3.pie()
         .value(function(d,i) {
@@ -74,7 +108,7 @@ function createRaceChart(districtData){
         .data(pie(raceData))
         .enter().append('path')
         .attr('d', arc)
-        .attr("transform", "translate(50,100)")
+        .attr("transform", "translate(50,80)")
         .attr('stroke', '#fff')
         .attr('stroke-width', '0.5')
         .attr('fill', function(d, i) {
@@ -89,7 +123,7 @@ function createRaceChart(districtData){
         .data(pie(raceUSData))
         .enter().append('path')
         .attr('d', arc)
-        .attr("transform", "translate(50,300)")
+        .attr("transform", "translate(50,230)")
         .attr('stroke', '#fff')
         .attr('stroke-width', '0.5')
         .attr('fill', function(d, i) {
@@ -104,8 +138,8 @@ function createRaceChart(districtData){
         .append('g')
         .attr('class', 'legend')
         .attr('transform', function(d, i) {
-            var y = 15*i+150;
-            return 'translate(85,' + y + ')';
+            var y = 15*i+300;
+            return 'translate(10,' + y + ')';
         });
 
     legend.append('rect')
@@ -116,6 +150,7 @@ function createRaceChart(districtData){
         });
 
     d3.selectAll(".race-legend-names").remove();
+
     legend.append('text')
         .attr("class", "race-legend-names")
         .attr('x', 20)
@@ -155,25 +190,15 @@ function createIncomeChart(districtData){
 
     var incomeChart = chartsSvg.append("g")
         .attr("class", "income")
-        .attr("transform", "translate(200,0)")
+        .attr("transform", "translate(100,0)")
+        .attr("height",200)
+        .attr("width",200);
 
     var incomeUS = chartsSvg.append("g")
         .attr("class", "incomeUS")
-        .attr("transform", "translate(200,0)")
-
-    chartsSvg.append("text")
-        .attr("class","emp-title")
-        .style("fill", "black")
-        .attr("x", 260)
-        .attr("y", 16)
-        .text("Income");
-
-    chartsSvg.append("text")
-        .attr("class","ntl-title")
-        .style("fill", "black")
-        .attr("x", 260)
-        .attr("y", 380)
-        .text("Nationwide Income");
+        .attr("transform", "translate(100,0)")
+        .attr("height",200)
+        .attr("width",200);
 
     var pie = d3.pie()
         .value(function(d,i) {
@@ -184,7 +209,7 @@ function createIncomeChart(districtData){
         .data(pie(incomeData))
         .enter().append('path')
         .attr('d', arc)
-        .attr("transform", "translate(100,100)")
+        .attr("transform", "translate(100,80)")
         .attr('stroke', '#fff')
         .attr('stroke-width', '0.5')
         .attr('fill', function(d, i) {
@@ -197,7 +222,7 @@ function createIncomeChart(districtData){
         .data(pie(incomeUSData))
         .enter().append('path')
         .attr('d', arc)
-        .attr("transform", "translate(100,300)")
+        .attr("transform", "translate(100,230)")
         .attr('stroke', '#fff')
         .attr('stroke-width', '0.5')
         .attr('fill', function(d, i) {
@@ -212,8 +237,8 @@ function createIncomeChart(districtData){
         .append('g')
         .attr('class', 'legend')
         .attr('transform', function(d, i) {
-            var y = 15*i+150;
-            return 'translate(135,' + y + ')';
+            var y = 15*i+300;
+            return 'translate(50,' + y + ')';
         });
 
     legend.append('rect')
@@ -238,7 +263,7 @@ function createIncomeChart(districtData){
 function createEmploymentChart(districtData){
     // console.log(districtData)
     var unemp = districtData[0].prcntUnemp
-    console.log(unemp)
+    // console.log(unemp)
     var emData = []
     emData.push(100-unemp)
     emData.push(unemp)
@@ -247,45 +272,36 @@ function createEmploymentChart(districtData){
     var employmentChart = chartsSvg.append("g")
         .attr("class", "employment")
         .attr("id", "employment")
-        .attr("transform", "translate(450,0)")
+        .attr("transform", "translate(260,0)")
+        .attr("height",200)
+        .attr("width",200);
 
     var employmentUS = chartsSvg.append("g")
         .attr("class", "employmentUS")
         .attr("id", "employmentUS")
-        .attr("transform", "translate(450,0)")
-
-    chartsSvg.append("text")
-        .attr("class","emp-title")
-        .style("fill", "black")
-        .attr("x", 500)
-        .attr("y", 16)
-        .text("Labor Force");
-    chartsSvg.append("text")
-        .attr("class","ntl-title")
-        .style("fill", "black")
-        .attr("x", 500)
-        .attr("y", 380)
-        .text("Nationwide Labor");
+        .attr("transform", "translate(260,0)")
+        .attr("height",200)
+        .attr("width",200);
 
     var pie = d3.pie()
         .value(function(d,i) {
             return d
         }).sort(null);
 
-    var tooltipPie = d3.select('.employment')
-        .append('div')
-        .attr('id', 'tooltip-pie')
-        .attr('class', 'tooltip');
+    // var tooltipPie = d3.select('.employment')
+    //     .append('div')
+    //     .attr('id', 'tooltip-pie')
+    //     .attr('class', 'tooltip');
 
-    tooltipPie.append('div')
-        .attr('class', 'tooltip-label')
-        .attr('id', 'pie-label');
+    // tooltipPie.append('div')
+    //     .attr('class', 'tooltip-label')
+    //     .attr('id', 'pie-label');
 
     var path = employmentChart.selectAll('path')
         .data(pie(emData))
         .enter().append('path')
         .attr('d', arc)
-        .attr("transform", "translate(100,100)")
+        .attr("transform", "translate(100,80)")
         .attr('stroke', '#fff')
         .attr('stroke-width', '0.5')
         .attr('fill', function(d, i) {
@@ -298,7 +314,7 @@ function createEmploymentChart(districtData){
         .data(pie(emUS))
         .enter().append('path')
         .attr('d', arc)
-        .attr("transform", "translate(100,300)")
+        .attr("transform", "translate(100,230)")
         .attr('stroke', '#fff')
         .attr('stroke-width', '0.5')
         .attr('fill', function(d, i) {
@@ -315,8 +331,8 @@ function createEmploymentChart(districtData){
         .append('g')
         .attr('class', 'legend')
         .attr('transform', function(d, i) {
-            var y = 15*i+150;
-            return 'translate(135,' + y + ')';
+            var y = 15*i+300;
+            return 'translate(50,' + y + ')';
         });
 
     legend.append('rect')

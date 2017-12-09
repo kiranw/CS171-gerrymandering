@@ -1,22 +1,59 @@
+/* SECTION STYLING */
+body {
+    margin: 0;
+    background-color: #f4f4f4;
+}
+.container {
+    width: 95vw !important;
+}
+.container-fluid {
+    padding: 0;
+}
+#cbp-so-scroller section {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+}
+.section {
+    padding: 4em 2em;
+    min-height: 90vh;
+}
+.title div {
+    min-height: 100vh;
+}
+.gapData {
+    margin-top: -48px;
+}
+
+
 /* TEXT STYLES */
 body {
     font-size: 16px;
     line-height: 1.5em;
     font-family: 'Lora', Georgia, serif;
+    /* font-family: 'Roboto', Arial, sans-serif; */
+    color: #333;
 }
 h1, h2, h3, h4 {
     font-weight: 700;
-    color: #000;
+    color: #333;
+}
+h1 {
+    font-size: 32px;    
+    line-height: 48px;
+    font-weight: 100;
+    margin-top: 24px;
 }
 h2 {
-    font-size: 2.2em;
+    font-size: 2em;
     margin: 2em auto 1em;
     line-height: 1em;
-    font-weight: 400;
+    font-weight: 500;
+    font-family: 'Roboto', Arial, sans-serif;
 }
 h3 {
     line-height: 1.4em;
-    margin: 2em auto 4em;
+    margin: 1em auto;
+    font-family: 'Roboto', Arial, sans-serif;
+    font-weight: 100;
 }
 h4 {
     line-height: 1.3em;
@@ -51,11 +88,24 @@ p, li {
     line-height: 1.7em;
     font-weight: 300;
 }
-label, text {
-    color: #333;
+a:link, a:visited {
+    color: #0058FF;
+}
+a:active, a:focus {
+    color: #FFA502;
+}
+code {
+    color: #0058FF;
+    background-color: #FFFBDA;
+}
+label, .sidebar {
+    font-size: 14px;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+text {
     fill: #333;
-    font-family: 'Lora', Georgia, serif;
-    font-size: 11px;
+    font-family: 'Roboto Mono', sans-serif;
+    font-size: 10px;
     font-weight: 100;
     margin-bottom: 2px;
 }
@@ -67,8 +117,8 @@ small {
     line-height: 12px;
 }
 .legend, .race-title, .income-title, .emp-title {
-    font-weight: 700;
-    font-size: 1em;
+    font-weight: 300;
+    font-size: 0.8em;
 }
 
 .ntl-title {
@@ -77,54 +127,30 @@ small {
 }
 
 .blue {
-    color: #4575b4;
+    color: #0058FF;
 }
 .red {
-    color: #d73027;
+    color: #CD2E2E;
 }
 .btn-group label {
-    border: 1px solid #ccc;
+    border: 1px solid #f4f4f4;
 }
 .btn-group .active {
     color: #fff;
-    background-color: #337ab7;
-    border-color: #2e6da4;
+    background-color: #0058FF;
+    border-color: #0058FF;
 }
 
-/* SECTION STYLING */
-body {
-    margin: 0;
-    background-color: #f4f4f4;
-}
-.container {
-    width: 95vw !important;
-}
-.container-fluid {
-    padding: 0;
-}
-#cbp-so-scroller section {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
-}
-.section {
-    padding: 2em;
-    min-height: 90vh;
-}
-.title div {
-    min-height: 100vh;
-}
-section {
-    color: #333;
-}
+
 p, li {
     font-size: 16px;
     line-height: 1.5em;
     font-weight: 300;
 }
 .title {
-    /*background-image: url('../img/districtmap.jpg');*/
-    /* background-image: url('../img/Salamander.png'); */
-    background-image: url('../img/Salamander2.jpg');
+    background-image: url('../img/title.jpg');
     background-size: cover;
+    background-position: center;
     height: 100vh;
 }
 .hideme {
@@ -175,7 +201,7 @@ p, li {
 }
 
 .tooltip-label {
-    font-family: 'Lora', Georgia, serif;
+    font-family: 'Roboto Mono', Arial, sans-serif;
     font-size: 11px;
     font-weight: 100;
     margin-bottom: 2px;
@@ -186,7 +212,7 @@ p, li {
 }
 .income-line {
     fill: none;
-    stroke: #F4B006;
+    stroke: #FFA502;
     stroke-width: 1.5px;
 }
 
@@ -261,9 +287,7 @@ button:focus {outline:0;}
 }
 
 .node circle:hover{
-/*     stroke-width:4px;
-    stroke: white; */
-    fill: #F4B006;
+    fill: #FFA502;
     fill-opacity: 1;
 }
 
@@ -292,14 +316,14 @@ button:focus {outline:0;}
 .activeLink {
     fill: none;
     stroke: 1px;
-    stroke: #F4B006;
+    stroke: #FFA502;
     stroke-opacity: 0.3;
 }
 
 .node circle.activeNode {
 /*     stroke-width:4px;
-    stroke: #F4B006; */
-    fill: #F4B006 !important;
+    stroke: #FFA502; */
+    fill: #FFA502 !important;
     fill-opacity: 0.7;
 }
 
@@ -463,6 +487,8 @@ rect.event-rect:hover {
     }
 }
 
+
+
 /*** Reading Indicator: https://codepen.io/blucube/pen/bdGgzg ***/
 .progressbar {
   display: none;
@@ -480,7 +506,7 @@ rect.event-rect:hover {
 .progressbar .holder {
   position: relative;
   font-size: 85%;
-  padding: 0;
+  padding: 1.8em 0 0 0;
   background-color: #f4f4f4;
   box-shadow: 0 0.5em 1.5em #f4f4f4;
 }
@@ -500,14 +526,14 @@ rect.event-rect:hover {
   left: 0;
   width: 100%;
   height: 2px;
-  background-color: #B6D1DA;
+  background-color: #D1E1FF;
 }
 .progressbar .holder .bar .indicator {
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
-  background-color: #4598B5;
+  background-color: #005AFF;
 }
 .progressbar .holder .labels {
   max-width: 1280px;
@@ -530,8 +556,8 @@ rect.event-rect:hover {
   width: .9em;
   height: .9em;
   border-radius: 50%;
-  border: solid 3px #B6D1DA;
-  background-color: #D6E1E5;
+  border: solid 3px #D1E1FF;
+  background-color: #f4f4f4;
   -webkit-transform: translateX(-50%) translateY(50%);
           transform: translateX(-50%) translateY(50%);
   -webkit-transition: border-color 100ms ease-in, background-color 150ms ease-in;
@@ -545,24 +571,24 @@ rect.event-rect:hover {
   padding-bottom: 1.8em;
   font-family: 'Open Sans';
   font-weight: 400;
-  color: #4598B5;
+  color: #005AFF;
   -webkit-transition: color 150ms ease-in, top 100ms ease-out;
   transition: color 150ms ease-in, top 100ms ease-out;
 }
 .progressbar .holder .labels i:hover::before, .progressbar .holder .labels i:focus::before {
-  background-color: #B6D1DA;
+  background-color: #D1E1FF;
 }
 .progressbar .holder .labels i:hover::after, .progressbar .holder .labels i:focus::after {
   top: -.2em;
 }
 .progressbar .holder .labels i.read::before {
-  border-color: #4598B5;
+  border-color: #005AFF;
 }
 .progressbar .holder .labels i.read:hover::before, .progressbar .holder .labels i.read:focus::before {
-  background-color: #4598B5;
+  background-color: #005AFF;
 }
 .progressbar .holder .labels i.reading::after {
-  color: #222;
+  color: #005AFF;
 }
 .progressbar .holder .labels i.reading:hover::after, .progressbar .holder .labels i.reading:focus::after {
   top: 0;

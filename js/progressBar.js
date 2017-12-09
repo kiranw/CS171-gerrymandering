@@ -84,7 +84,7 @@ $(document).ready(function(){
 			var currentPosition = $(window).scrollTop() + triggerPoint;
 			// dots
 			// if before first section
-			if(currentPosition < $('h2').eq(0).offset().top) {
+			if(currentPosition < $('section').eq(0).offset().top) {
 				points.removeClass('reading read');
 				section = -1;
 			}
@@ -141,7 +141,7 @@ $(document).ready(function(){
 	// on click, scroll to target section
 	points.click(function(){
 		var sectionIndex = points.index($(this));
-		var targetY = $('h2').eq(sectionIndex).offset().top - (triggerPoint * .92);
+		var targetY = $('h2').eq(sectionIndex).offset().top - (triggerPoint * .95);
 		$('html, body').animate({scrollTop:targetY}, 600, 'easeInOutCubic');
 	});
   

@@ -1,6 +1,6 @@
 // Create SVG Drawing area
 var margin = { top: 30, right: 0, bottom: 60, left: 0 };
-var width = 800,
+var width = 600,
     height = 500;
 
 var choroplethSvg = d3.select("#choropleth").append("svg")
@@ -204,6 +204,8 @@ function updateChoropleth(error) {
             stateID = (d.id / 100 | 0);
             stateInfo = stateNames.filter(findState);
             return stateInfo[0].name; })
+        .attr("stroke-width",0.25)
+        .attr("stroke","#fff")
         .attr("fill", function(d) {
             stateID = (d.id / 100 | 0);
             stateInfo = stateNames.filter(findState);
@@ -237,9 +239,9 @@ function updateChoropleth(error) {
             return "grey"
         })
         .attr("transform", "translate(0,50) scale(1.5)")
-        .on('mouseenter', stateMouseOver)
-        .on('mouseout', stateMouseOut)
-        .on("click", function(d) {
+        // .on("mouseenter", stateMouseOver)
+        // .on("mouseout", stateMouseOut)
+        .on("mouseenter click", function(d) {
             stateID = (d.id / 100 | 0);
             stateInfo = stateNames.filter(findState);
             stateName = stateInfo[0].name;
@@ -253,16 +255,27 @@ function updateChoropleth(error) {
             //Electoral Outcome
             // console.log(d)
             var electionResult = congressData.filter(findDistrict);
-            console.log(electionResult)
-            document.getElementById("outcome").innerHTML = "Winning Party: " + electionResult[0].party;
+            // console.log(electionResult)
+
+            document.getElementById("outcome").innerHTML = electionResult[0].party;
             if (electionResult[0].party.includes("R")) {
                 document.getElementById("outcome").className = "red";
             }
             else {
                 document.getElementById("outcome").className = "blue";
             }
-            document.getElementById("contested-seats").innerHTML = "Total contested seats in " + stateName +": " + districtInfo[0].Seats;
+            document.getElementById("contested-seats").innerHTML = "Contested Seats in " + stateName +": " + districtInfo[0].Seats;
             createLineCharts()
+        })
+        .on("mouseout", function(d) {
+
+            document.getElementById("current-district").innerHTML = "Select district";
+
+            document.getElementById("efficiency-gap").innerHTML = "Efficiency Gap: ";
+            
+            document.getElementById("outcome").innerHTML = "";
+            
+            document.getElementById("contested-seats").innerHTML = "Contested Seats: ";
         });
 
     addLegend()
