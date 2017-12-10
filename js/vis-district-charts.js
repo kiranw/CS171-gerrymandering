@@ -26,7 +26,7 @@ var color = ['#3B0090', '#6702FF', '#00328D', '#44C0FF', '#FFE600', '#FFA502',  
         .attr("class","ntl-title")
         .attr("x", 0)
         .attr("y", 160)
-        .text("Nation Race");
+        .text("Nationwide Race");
 
     chartsSvg.append("text")
         .attr("class","emp-title")
@@ -38,7 +38,7 @@ var color = ['#3B0090', '#6702FF', '#00328D', '#44C0FF', '#FFE600', '#FFA502',  
         .attr("class","ntl-title")
         .attr("x", 140)
         .attr("y", 160)
-        .text("Nation Income");
+        .text("Nationwide Income");
 
     chartsSvg.append("text")
         .attr("class","emp-title")
@@ -50,7 +50,7 @@ var color = ['#3B0090', '#6702FF', '#00328D', '#44C0FF', '#FFE600', '#FFA502',  
         .attr("class","ntl-title")
         .attr("x", 300)
         .attr("y", 160)
-        .text("Nation Employment");
+        .text("Nationwide Employment");
 
 // Add demographic charts for the selected district
 function createLineCharts(error, districtData){
