@@ -9,7 +9,7 @@ The **css** folder contains our styling and style packages.
 
 The **js** folder contains code for our visualizations as well as d3 and other JS packages we used.
 
-The **data** folder contains csv files with the data that we used.
+The **data** folder contains csv files with the data that we used and the scripts that we created to clean the data.
 
 The **fonts** and **img** folder contain other visual assets.
 
