@@ -122,6 +122,11 @@ code {
 small {
     line-height: 12px;
 }
+.smallest {
+    font-size: 0.7em;
+    line-height: 1.2em;
+    top: -20px;
+}
 .legend, .race-title, .income-title, .emp-title {
     font-weight: 300;
     font-size: 0.8em;
@@ -245,6 +250,10 @@ p, li {
 
 
 /* ============ TIMELINE SECTION =================*/
+
+#expansion-height-box {
+}
+
 
 #tl-info {
     /* background-color: #efefef; */

@@ -47,16 +47,20 @@ var tl_expansion_case = d3.select("#tl-expansion-case").append("svg")
 
 var tl_expansion_event = d3.select("#tl-expansion-event").append("svg")
     .attr("width", tl_width)
-    .attr("height", 190)
+    .attr("height", 100)
+    .attr("transform", "translate("+0+","+(tl_margin.top+10)+")")
+    .attr("id","expansion-height-box")
+    .on('mouseenter', tlMouseEnterBox)
+    .on('mouseout', tlMouseOutBox)
     .append("g")
     .attr("width", tl_width - tl_margin.right - tl_margin.left)
     .attr("height", tl_expansion_height - tl_margin.top - tl_margin.bottom)
-    .attr("transform", "translate("+tl_margin.left+","+tl_margin.top+")");
+    .attr("transform", "translate("+tl_margin.left+","+0+")");
 
 var node_position_factor = 7;
 
 var svgMappings = {"event":tl_svg_event, "policy": tl_svg_policy, "case":tl_svg_case};
-var colorMappings = {"event": "#3E2B38", "policy": "#732D41", "case": "#DA7C07"}
+var colorMappings = {"event": '#44C0FF', "case": '#FFA502', "policy": '#00328D'}
 
 var tl_width2 = tl_width - tl_margin.right - tl_margin.left;
 var tl_height2 = tl_height - tl_margin.top - tl_margin.bottom;
@@ -425,8 +429,8 @@ function tlInitVis(error, events, caseMetadata, caseLinks, policies) {
         .append("rect")
         .attr("class", "expansion-event-pointer")
         .attr("x", function(d){ return tl_x(d.date) - 2.5; })
-        .attr("y", rectWidth)
-        .attr("height", 12)
+        .attr("y", 0)
+        .attr("height", 20)
         .attr("width", rectWidth)
         .attr("fill", "#d9d9d9");
 
@@ -577,7 +581,6 @@ function tlMouseEnter(data){
     if ("src" in data){
         $("#tl-src").text("Source: " + data.src);
     }
-    console.log(d3.select(this).attr("class"));
     if (d3.select(this).attr("class").includes(" event")){
         expandSection("event");
     }
@@ -590,6 +593,11 @@ function tlMouseOut(data){
 }
 
 function tlMouseEnterImage(data){
+    clearTimeout($("#expansion-height-box").data('timeoutId'));
+    d3.select("#expansion-height-box")
+        .transition()
+        .duration(200)
+        .attr("height",190);
     d3.select(this)
         .attr("width",100)
         .attr("height",150);
@@ -602,7 +610,6 @@ function tlMouseEnterImage(data){
     if ("src" in data){
         $("#tl-src").text("Source: " + data.src);
     }
-    console.log(d3.select(this).attr("class"));
     if (d3.select(this).attr("class").includes(" event")){
         expandSection("event");
     }
@@ -615,6 +622,23 @@ function tlMouseOutImage(data){
     d3.select(this)
         .attr("width",50)
         .attr("height",75);
+    var someElement = $("#expansion-height-box"),
+        timeoutId = setTimeout(function(){
+            d3.select("#expansion-height-box")
+                .transition()
+                .duration(200)
+                .attr("height",100);
+        }, 650);
+    //set the timeoutId, allowing us to clear this trigger if the mouse comes back over
+    someElement.data('timeoutId', timeoutId);
+
+    // d3.select("#expansion-height-box").attr("height",100);
+}
+
+function tlMouseEnterBox(){
+}
+
+function tlMouseOutBox(d,i){
 }
 
 function tlClick(data){
@@ -627,7 +651,6 @@ function tlClick(data){
     if ("src" in data){
         $("#tl-src").text("Source: " + data.src);
     }
-    console.log(d3.select(this).attr("class"));
     if (d3.select(this).attr("class").includes(" event")){
         expandSection("event");
     }
@@ -666,3 +689,4 @@ function expandSection(d){
         { queue: false, duration: 'slow' }
     );
 }
+

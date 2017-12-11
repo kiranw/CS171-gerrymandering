@@ -134,7 +134,7 @@ function chloroplethColoring(d){
         d3.selectAll(".chloroFilter").classed("highlight",false);
         d3.select("#election-outcome").classed("highlight",true);
 
-        console.log("Election outcome")
+        // console.log("Election outcome")
         coloring = 1;
         choroplethSvg.selectAll('.color-legend').remove()
         choroplethSvg.selectAll('.legend-names').remove()
@@ -144,7 +144,7 @@ function chloroplethColoring(d){
         d3.selectAll(".chloroFilter").classed("highlight",false);
         d3.select("#contested-seats").classed("highlight",true);
 
-        console.log("Total contested seats")
+        // console.log("Total contested seats")
         coloring = 2;
         choroplethSvg.selectAll('.legend').remove()
         choroplethSvg.selectAll('.legend-names').remove()
@@ -243,7 +243,7 @@ function drawWindy(error){
     windy.push("3704")
     windy.push("1222")
     windy.push("2406")
-    console.log(windy)
+    // console.log(windy)
 
     WindySvg.append("g")
         .attr("class", "NCregion")
@@ -265,7 +265,7 @@ function drawWindy(error){
             stateCode = stateInfo[0].code;
             districtID = (d.id % 100);
             if(windy.includes(d.id.toString())){
-                console.log(d.id)
+                // console.log(d.id)
                 var electionResult = congressData.filter(findDistrict);
                 return "#44c0ff"
             }
@@ -397,7 +397,7 @@ function addLegend() {
         .attr('x', 20)
         .attr('y', 10)
         .text(function(d,i) {
-            console.log(d)
+            // console.log(d)
             return d;
         });
 }

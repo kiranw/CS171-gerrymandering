@@ -4,7 +4,7 @@ var selectedGroup, groupingSvg;
 // Scales & legends
 var groupColor = d3.scaleOrdinal()
     // .range(['#e66101','#fdb863','#f7f7f7','#b2abd2','#5e3c99']);
-    .range(['#3B0090', '#44C0FF', '#00328D', '#FFA502', '#FFE600']);
+    .range(['#3B0090', '#FFA502', '#44C0FF', '#FFE600', '#00328D']);
 
 // cellPadding originally 2px
 var cellHeight = 40, cellWidth = 40, cellPadding = 0;
@@ -139,12 +139,10 @@ function districtGroupingVisInit() {
         .enter()
         .append("rect")
         .attr("class", function(d, i) {
-            return "cell column" + (i%5);
+            return "cell column" + (i%5) + " group"+d[1];
         })
         .attr("width", cellWidth)
         .attr("height", cellHeight)
-        // .transition()
-        // .duration(500)
         .attr("x", function(d, i) {
             return cellWidth * (i%5);
         })
@@ -152,9 +150,21 @@ function districtGroupingVisInit() {
             return cellHeight * (i - i%5)/5;
         })
         .attr("fill", function(d, i) {
-            // console.log(d);
             return groupColor(d[1]);
-        });
+        })
+        .on('mouseenter', dGMouseEnter)
+        .on('mouseout', dGMouseOut);
+
+    function dGMouseEnter(){
+        var groupClass = d3.select(this).attr("class").split(" ")[2];
+        d3.selectAll("."+groupClass).attr("opacity",0.5);
+    }
+
+    function dGMouseOut(){
+        var groupClass = d3.select(this).attr("class").split(" ")[2];
+        d3.selectAll("."+groupClass).attr("opacity",1);
+    }
+
 
     // Circle shows people
     var partyG = groupingSvg.append("g")
