@@ -98,6 +98,9 @@ code {
     color: #0058FF;
     background-color: #FFFBDA;
 }
+.highlight {
+    background-color: #FFFBDA;
+}
 label, .sidebar {
     font-size: 14px;
     font-family: 'Roboto', Arial, sans-serif;
@@ -133,6 +136,7 @@ small {
 
 .blue {
     color: #0058FF;
+    fill: #0058FF;
 }
 .red {
     color: #CD2E2E;

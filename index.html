@@ -191,28 +191,27 @@
 			<h2>How Gerrymandered is your district?</h2>
             <div class="col-md-7 cbp-so-side cbp-so-side-left">
                 <div class="btn-group" id="mapMethod" data-toggle="buttons">
-                    <label class="btn btn-secondary" onclick="choroplethColoring(0)">
+                    <label class="btn btn-secondary" onclick="chloroplethColoring(0)">
                         <input type="radio" name="options" value="gapColor" id="gapColor">Efficiency Gap (%)
                     </label>
-                    <label class="btn btn-secondary active" onclick="choroplethColoring(1)">
+                    <label class="btn btn-secondary active" onclick="chloroplethColoring(1)">
                         <input type="radio" name="options" value="partyColor" id="partyColor" checked> Election Outcome
                     </label>
-                    <label class="btn btn-secondary" onclick="choroplethColoring(2)">
+                    <label class="btn btn-secondary" onclick="chloroplethColoring(2)">
                         <input type="radio" name="options" value="seatsColor" id="seatsColor"> Total Contested Seats
                     </label>
                 </div>
 
-                <h5 style="padding-left:24px">Mouse over to explore the 2014 elections
-					(the most recent complete election data set available):
+                <h5>Mouse over to explore the 2014 elections (latest complete available election data set):
 				</h5>
 				<div id="choropleth"></div>
 			</div>
 			<div class="col-md-5 cbp-so-side cbp-so-side-right">
 				<div id="gapData">
 					<h3 id="current-district">Select District</h3>
-					<h4 id="efficiency-gap">Efficiency Gap: </h4>
-					<h4>Election Outcome: <span id="outcome"></span></h4>
-					<h4 id="contested-seats">Contested Seats:</h4>
+					<h4 class="chloroFilter" id="efficiency-gap">Efficiency Gap: </h4>
+					<h4 class="chloroFilter" id="election-outcome">Election Outcome: <span id="outcome"></span></h4>
+					<h4 class="chloroFilter" id="contested-seats">Contested Seats:</h4>
 				</div>
 
 				<hr />
@@ -272,25 +271,25 @@
 					<h4>Bibliography</h4>
 	<ul>
 		<li><a href="https://www.brennancenter.org/issues/redistricting" target="_blank">Brennan Center for Justice</a></li>
-		<li><a href="http://redistricting.lls.edu" target="_blank">"All About Redistricting."</a> (Justin Levitt, Loyola Law School)</li>
+		<li><a href="http://redistricting.lls.edu" target="_blank">"All About Redistricting"</a> (Justin Levitt, Loyola Law School)</li>
 		<li><a href="http://www.wnyc.org/story/whos-gerry-and-why-he-so-bad-drawing-maps/" target="_blank">"Who’s Gerry and Why Is He So Bad at Drawing Maps?"</a> (WYNC Radio)</li>
-		<li><a href="https://www.nytimes.com/interactive/2017/10/03/upshot/how-the-new-math-of-gerrymandering-works-supreme-court.html" target="_blank">"How the New Math of Gerrymandering Works"</a> (NYC)</li>
+		<li><a href="https://www.nytimes.com/interactive/2017/10/03/upshot/how-the-new-math-of-gerrymandering-works-supreme-court.html" target="_blank">"How the New Math of Gerrymandering Works"</a> (NYT)</li>
 		<li><a href="http://www.scotusblog.com/case-files/cases/gill-v-whitford/" target="_blank">Gill v. Whitford</a> (SCOTUS)</li>
 		<li><a href="https://www.policymap.com/2017/08/solutions-to-gerrymandering/" target="_blank">Solutions to Gerrymandering</a> (Policy Map)</li>
 		<li><a href="https://www.vox.com/policy-and-politics/2017/10/11/16453512/gerrymandering-proportional-representation" target="_blank">"The real fix for gerrymandering is proportional representation"</a> (Vox)</li>
-		<li><a href="https://www.washingtonpost.com/news/wonk/wp/2015/03/01/this-is-the-best-explanation-of-gerrymandering-you-will-ever-see/?utm_term=.f6e8f0c5d893" target="_blank">This is the Best Explanation of Gerrymandering You Will Ever See</a></li>
+		<li><a href="https://www.washingtonpost.com/news/wonk/wp/2015/03/01/this-is-the-best-explanation-of-gerrymandering-you-will-ever-see/?utm_term=.f6e8f0c5d893" target="_blank">This is the Best Explanation of Gerrymandering You Will Ever See</a> (WaPo)</li>
 	</ul>
 				</div>
 				<div class="col-md-6 cbp-so-side cbp-so-side-right">
 					<h4>Data</h4>
 					<ul>
-						<li><a href="https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/CI2EPI" target="_blank">Historical Congressional Legislation and District Demographics 1972-2014</a> (Congressional demographics)</li>
-						<li><a href="https://www.azavea.com/blog/2017/07/19/gerrymandered-states-ranked-efficiency-gap-seat-advantage/" target="_blank">The Most Gerrymandered States Ranked by Efficiency Gap and Seat Advantage</a> (Azavea)</li>
-						<li><a href="https://www.policymap.com/2017/08/a-deeper-look-at-gerrymandering/" target="_blank">A Deeper Look at Gerrymandering</a> (Policy Map)</li>
+						<li><a href="https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/CI2EPI" target="_blank">Historical Congressional Legislation and District Demographics</a>, 1972-2014</li>
 						<li><a href="http://gerrymander.princeton.edu/" target="_blank">Princeton Gerrymandering Project</a></li>
 						<li><a href="https://electionlab.mit.edu/medsl-dataverse" target="_blank">MIT Election Data and Science Lab</a></li>
+						<li><a href="https://www.azavea.com/blog/2017/07/19/gerrymandered-states-ranked-efficiency-gap-seat-advantage/" target="_blank">The Most Gerrymandered States Ranked by Efficiency Gap and Seat Advantage</a> (Azavea)</li>
+						<li><a href="https://www.policymap.com/2017/08/a-deeper-look-at-gerrymandering/" target="_blank">A Deeper Look at Gerrymandering</a> (Policy Map)</li>
 						<li><a href="http://redistricting.lls.edu/who.php" target="_blank">Who Draws the Lines</a> (All About Redistricting)</li>
-						<li><a href="https://commons.wikimedia.org/wiki/File:How_to_Steal_an_Election_-_Gerrymandering.svg" target="_blank">Stephen Nass's "How to steal an election"</a></li>
+						<li><a href="https://commons.wikimedia.org/wiki/File:How_to_Steal_an_Election_-_Gerrymandering.svg" target="_blank">"How to steal an election"</a> (Stephen Nass)</li>
 					</ul>
 				</div>
 			</div>

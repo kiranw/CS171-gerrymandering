@@ -109,8 +109,11 @@ var stateCode;
 var districtID;
 
 var coloring = 1;
-function choroplethColoring(d){
+function chloroplethColoring(d){
     if(d == 0){
+        d3.selectAll(".chloroFilter").classed("highlight",false);
+        d3.select("#efficiency-gap").classed("highlight",true);
+
         console.log("Efficiency gap")
         coloring = 0;
         choroplethSvg.selectAll('.legend').remove()
@@ -128,6 +131,9 @@ function choroplethColoring(d){
             .text("36%");
     }
     if(d == 1){
+        d3.selectAll(".chloroFilter").classed("highlight",false);
+        d3.select("#election-outcome").classed("highlight",true);
+
         console.log("Election outcome")
         coloring = 1;
         choroplethSvg.selectAll('.color-legend').remove()
@@ -135,6 +141,9 @@ function choroplethColoring(d){
         addLegend()
     }
     if(d == 2){
+        d3.selectAll(".chloroFilter").classed("highlight",false);
+        d3.select("#contested-seats").classed("highlight",true);
+
         console.log("Total contested seats")
         coloring = 2;
         choroplethSvg.selectAll('.legend').remove()

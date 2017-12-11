@@ -139,7 +139,7 @@ function createRaceChart(districtData){
         .attr('class', 'legend')
         .attr('transform', function(d, i) {
             var y = 15*i+300;
-            return 'translate(10,' + y + ')';
+            return 'translate(0,' + y + ')';
         });
 
     legend.append('rect')
@@ -156,7 +156,7 @@ function createRaceChart(districtData){
         .attr('x', 20)
         .attr('y', 10)
         .text(function(d,i) {
-            var pieData = raceData
+            var pieData = raceData;
             return d + " " + pieData[i] + "%  (" + raceUSData[i] + "%)";
         });
 
@@ -185,7 +185,7 @@ function createIncomeChart(districtData){
     incomeData.push(from150to200.toFixed(2));
     incomeData.push(over200k);
     // console.log(incomeData)
-    var incomes = ["under 25k","25k to 50k", "50k to 75k", "75k to 100k", "100k to 150k","150k to 200k","200k+"];
+    var incomes = ["<25k","25-50k", "50-75k", "75-100k", "100-150k","150-200k","200k+"];
     var incomeUSData = ["22.1","22.7","16.7","12.1","14.1","6.2","6.1"]
     // https://www.statista.com/statistics/203183/percentage-distribution-of-household-income-in-the-us/
 
@@ -239,7 +239,7 @@ function createIncomeChart(districtData){
         .attr('class', 'legend')
         .attr('transform', function(d, i) {
             var y = 15*i+300;
-            return 'translate(50,' + y + ')';
+            return 'translate(40,' + y + ')';
         });
 
     legend.append('rect')
