@@ -272,23 +272,6 @@ function drawWindy(error){
             return "white"
         })
         .attr("transform", "translate(-300,-150) scale(2.5)")
-
-    var g = WindySvg.append("g");
-
-    WindySvg.append("rect")
-        .attr("fill", "none")
-        .attr("pointer-events", "all")
-        .attr("width", 700)
-        .attr("height", height)
-        .call(d3.zoom()
-            .scaleExtent([1, 8])
-            .on("zoom", zoom));
-
-    function zoom() {
-        console.log("zoom")
-        WindySvg.attr("transform", d3.event.transform);
-    }
-
 }
 
 var colorSeats = d3.scaleLinear()
