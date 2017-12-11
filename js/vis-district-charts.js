@@ -157,8 +157,9 @@ function createRaceChart(districtData){
         .attr('y', 10)
         .text(function(d,i) {
             var pieData = raceData
-            return d + " " + pieData[i] + "%";
+            return d + " " + pieData[i] + "%  (" + raceUSData[i] + "%)";
         });
+
 }
 
 function createIncomeChart(districtData){
@@ -255,7 +256,7 @@ function createIncomeChart(districtData){
         .attr('y', 10)
         .text(function(d,i) {
             var pieData = incomeData
-            return d + " " + pieData[i] + "%";
+            return d + " " + pieData[i] + "%" + " (" + incomeUSData[i] + "%)";
         });
 
 }
@@ -287,15 +288,6 @@ function createEmploymentChart(districtData){
         .value(function(d,i) {
             return d
         }).sort(null);
-
-    // var tooltipPie = d3.select('.employment')
-    //     .append('div')
-    //     .attr('id', 'tooltip-pie')
-    //     .attr('class', 'tooltip');
-
-    // tooltipPie.append('div')
-    //     .attr('class', 'tooltip-label')
-    //     .attr('id', 'pie-label');
 
     var path = employmentChart.selectAll('path')
         .data(pie(emData))
@@ -349,7 +341,7 @@ function createEmploymentChart(districtData){
         .attr('y', 10)
         .text(function(d,i) {
             var pieData = emData
-            return d + " " + pieData[i] + "%";
+            return d + " " + pieData[i] + "% (" + emUS[i] + "%)";
         });
 
 }

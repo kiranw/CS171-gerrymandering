@@ -264,8 +264,6 @@ function drawWindy(error){
         })
         .attr("transform", "translate(-300,-150) scale(2.5)")
 
-
-
     WindySvg.on("mousemove", function(e) {
         // console.log(e)
         var native_width = 200
@@ -288,8 +286,8 @@ function drawWindy(error){
         if($(".mag").is(":visible"))
         {
             console.log("sldkfj")
-            var rx = Math.round((mx-500)/$("#NC").width() - $(".mag").width()/2)*-1;
-            var ry = Math.round((my-2200)/$("#NC").height() - $(".mag").height()/2)*-1;
+            var rx = Math.round((mx)/$("#NC").width() - $(".mag").width()/2)*-1;
+            var ry = Math.round((my)/$("#NC").height() - $(".mag").height()/2)*-1;
             var bgp = rx + "px " + ry + "px";
 
             var px = mx - $(".mag").width()/2;
