@@ -282,14 +282,15 @@ p, li {
 .tl-row-label{
     position: relative;
     display: inline-block;
+    font-family: "Roboto Mono";
     top: 35px;
-    left: -150px;
+    left: -80px;
     /* text-anchor: end; */
     text-align: end;
     width: 200px;
     font-weight: 600;
     text-transform: uppercase;
-    font-size: 0.8em;
+    font-size: 0.6em;
     letter-spacing: 1.5px;
     border: none;
     background-color: transparent;
@@ -298,7 +299,7 @@ p, li {
 button:focus {outline:0;}
 
 #tl-content {
-    height: 50vh;
+    height: 100%;
     overflow-y: scroll;
 }
 
@@ -318,6 +319,15 @@ button:focus {outline:0;}
     fill-opacity: 1;
 }
 
+#gill {
+    /*fill: red !important;*/
+    animation: blinker 3s linear infinite;
+}
+@keyframes blinker {
+    50% { fill: red; }
+}
+
+
 .node text {
     pointer-events: none;
     text-shadow: 2px 2px 2px #fff;
@@ -333,11 +343,17 @@ button:focus {outline:0;}
     -moz-transition: all 0.5s linear;
     -o-transition: all 0.5s linear;
     transition: all 0.5s linear;
-
 }
 
 .link:hover {
     stroke-opacity: .5;
+}
+
+#gill-link {
+    animation: blinker-link 3s linear infinite;
+}
+@keyframes blinker-link {
+    50% { stroke: red; stroke-opacity: 1;}
 }
 
 .activeLink {

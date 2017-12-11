@@ -226,6 +226,14 @@ function districtGroupingVisUpdate() {
 
     // get selected Group
     selectedGroup = d3.select('input[name="groups"]:checked').property("id");
+
+    // update winner
+    d3.select("#winner").html(function() {
+        if (selectedGroup == "neither") { return "<span class='red'>Red</span>"; }
+        else { return "<span class='blue'>Blue</span>"; }
+    });
+
+
     currentData = groupingDataById[selectedGroup];
     d3.selectAll(".cell")
         .data(currentData, function(d){ return d; })

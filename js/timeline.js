@@ -1,6 +1,6 @@
 // set the dimensions and margins of the graph
-var tl_margin = {top: 10, right: 20, bottom: 10, left: 50},
-    tl_width = 800 - tl_margin.left - tl_margin.right,
+var tl_margin = {top: 10, right: 0, bottom: 10, left: 130},
+    tl_width = $(".col-md-8").width()+ 80 - tl_margin.left - tl_margin.right,
     tl_height = 70 - tl_margin.top - tl_margin.bottom;
 
 var tl_expansion_height = 400;
@@ -47,7 +47,7 @@ var tl_expansion_case = d3.select("#tl-expansion-case").append("svg")
 
 var tl_expansion_event = d3.select("#tl-expansion-event").append("svg")
     .attr("width", tl_width)
-    .attr("height", 200)
+    .attr("height", 190)
     .append("g")
     .attr("width", tl_width - tl_margin.right - tl_margin.left)
     .attr("height", tl_expansion_height - tl_margin.top - tl_margin.bottom)
@@ -121,7 +121,7 @@ function drawSankey(svg, nodes, links_tl_1, links_tl_2){
         .enter().append("path")
         // .attr("class", "link")
         .attr("d", path)
-        .style("stroke-width", function(d) { return Math.max(1, d.dy); })
+        .style("stroke-width", function(d) { return 2; })
         .sort(function(a, b) { return b.dy - a.dy; })
         .attr("class", function(d){ return "node"+d.source.node + " node" + d.target.node + " link";});
 
@@ -198,6 +198,12 @@ function drawSankey(svg, nodes, links_tl_1, links_tl_2){
         sankey.relayout();
         link.attr("d", path);
     }
+
+    d3.select(".node .node3")
+        .attr("id","gill");
+
+    d3.select(".node3.link")
+        .attr("id","gill-link");
 }
 
 
@@ -440,7 +446,7 @@ function tlInitVis(error, events, caseMetadata, caseLinks, policies) {
             .data(dataSet)
             .enter()
             .append("rect")
-            .attr("class", "event-rect")
+            .attr("class", "event-rect " + key)
             .attr("x", function(d){ return tl_x(d.date) - 2.5; })
             .attr("y", 0)
             .attr("height", tl_height2)
@@ -556,11 +562,28 @@ function tlInitVis(error, events, caseMetadata, caseLinks, policies) {
 
     node_position_factor = tl_expansion_height/tl_nodes.length;
     drawSankey(tl_expansion_case, tl_nodes, tl_links.slice(0,19), tl_links.slice(20));
-    $("#tl-expansion-event").slideUp("fast")
+    // $("#tl-expansion-event").slideUp("fast")
+    // $("#tl-expansion-case").slideUp("fast")
 
 }
 
 function tlMouseEnter(data){
+    if ("title" in data){
+        $("#tl-title").text(data.title);
+    }
+    if ("expanded" in data){
+        $("#tl-text").text(data.expanded);
+    }
+    if ("src" in data){
+        $("#tl-src").text("Source: " + data.src);
+    }
+    console.log(d3.select(this).attr("class"));
+    if (d3.select(this).attr("class").includes(" event")){
+        expandSection("event");
+    }
+    else if (d3.select(this).attr("class").includes("case")){
+        expandSection("case");
+    }
 }
 
 function tlMouseOut(data){
@@ -570,6 +593,22 @@ function tlMouseEnterImage(data){
     d3.select(this)
         .attr("width",100)
         .attr("height",150);
+    if ("title" in data){
+        $("#tl-title").text(data.title);
+    }
+    if ("expanded" in data){
+        $("#tl-text").text(data.expanded);
+    }
+    if ("src" in data){
+        $("#tl-src").text("Source: " + data.src);
+    }
+    console.log(d3.select(this).attr("class"));
+    if (d3.select(this).attr("class").includes(" event")){
+        expandSection("event");
+    }
+    else if (d3.select(this).attr("class").includes("case")){
+        expandSection("case");
+    }
 }
 
 function tlMouseOutImage(data){
@@ -588,6 +627,13 @@ function tlClick(data){
     if ("src" in data){
         $("#tl-src").text("Source: " + data.src);
     }
+    console.log(d3.select(this).attr("class"));
+    if (d3.select(this).attr("class").includes(" event")){
+        expandSection("event");
+    }
+    else if (d3.select(this).attr("class").includes("case")){
+        expandSection("case");
+    }
 }
 
 
@@ -596,20 +642,27 @@ $(".tl-row-label").click(function(){
     var id = this.id.slice("tl-row-".length);
     options.forEach(function(d){
         if (d!== id){
-            $("#"+d+"-caret").addClass("caret-reversed");
-            $("#tl-expansion-"+d).slideUp("slow").animate(
-                { opacity: 0 },
-                { queue: false, duration: 'slow' }
-            );
+            // $("#"+d+"-caret").addClass("caret-reversed");
+            // $("#tl-expansion-"+d).slideUp("slow").animate(
+            //     { opacity: 0 },
+            //     { queue: false, duration: 'slow' }
+            // );
         } else {
-            $("#"+d+"-caret").removeClass("caret-reversed");
-            $("#tl-expansion-"+d).slideDown("slow"
+            $("#"+d+"-caret").toggleClass("caret-reversed");
+            $("#tl-expansion-"+d).slideToggle("slow"
             ).animate(
                 { opacity: 1 },
                 { queue: false, duration: 'slow' }
-            );;
+            );
         }
-
     })
+});
 
-})
+function expandSection(d){
+    $("#"+d+"-caret").removeClass("caret-reversed");
+    $("#tl-expansion-"+d).slideDown("slow"
+    ).animate(
+        { opacity: 1 },
+        { queue: false, duration: 'slow' }
+    );
+}
