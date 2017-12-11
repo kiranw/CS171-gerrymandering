@@ -178,14 +178,14 @@ p, li {
 /*}*/
 
 .NCregion {
-    stroke-dasharray: 1000;
-    stroke-dashoffset: 1000;
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
     animation: dash 5s linear alternate infinite;
 }
 
 @keyframes dash {
     from {
-        stroke-dashoffset: 1000;
+        stroke-dashoffset: 300;
     }
     to {
         stroke-dashoffset: 0;
