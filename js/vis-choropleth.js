@@ -264,39 +264,21 @@ function drawWindy(error){
         })
         .attr("transform", "translate(-300,-150) scale(2.5)")
 
+    var g = WindySvg.append("g");
 
+    WindySvg.append("rect")
+        .attr("fill", "none")
+        .attr("pointer-events", "all")
+        .attr("width", 700)
+        .attr("height", height)
+        .call(d3.zoom()
+            .scaleExtent([1, 8])
+            .on("zoom", zoom));
 
-    WindySvg.on("mousemove", function(e) {
-        // console.log(e)
-        var native_width = 200
-        var native_height = 200
-        var magnify_offset = $(this).offset();
-        console.log(magnify_offset)
-        console.log(d3.mouse(this)[0])
-        // // console.log(e.pageX)
-        var mx = d3.mouse(this)[0]
-        var my = d3.mouse(this)[1]
-        if(mx < $(this).width() && my < $(this).height() && mx > 0 && my > 0)
-        {
-            console.log("hi")
-            $(".mag").fadeIn(100);
-        }
-        else
-        {
-            $(".mag").fadeOut(100);
-        }
-        if($(".mag").is(":visible"))
-        {
-            console.log("sldkfj")
-            var rx = Math.round((mx-500)/$("#NC").width() - $(".mag").width()/2)*-1;
-            var ry = Math.round((my-2200)/$("#NC").height() - $(".mag").height()/2)*-1;
-            var bgp = rx + "px " + ry + "px";
-
-            var px = mx - $(".mag").width()/2;
-            var py = my - $(".mag").height()/2;
-            $(".mag").css({left: px, top: py, backgroundPosition: bgp});
-        }
-    });
+    function zoom() {
+        console.log("zoom")
+        WindySvg.attr("transform", d3.event.transform);
+    }
 
 }
 
