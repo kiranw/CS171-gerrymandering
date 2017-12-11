@@ -6,10 +6,12 @@ var groupColor = d3.scaleOrdinal()
     // .range(['#e66101','#fdb863','#f7f7f7','#b2abd2','#5e3c99']);
     .range(['#3B0090', '#44C0FF', '#00328D', '#FFA502', '#FFE600']);
 
-var cellHeight = 40, cellWidth = 40, cellPadding = 2;
+// cellPadding originally 2px
+var cellHeight = 40, cellWidth = 40, cellPadding = 0;
 
 var groupingData = {
-    party: [[0,0,1,1,1],
+    party:
+                [[0,0,1,1,1],
                 [0,0,1,1,1],
                 [0,0,1,1,1],
                 [0,0,1,1,1],
@@ -19,7 +21,7 @@ var groupingData = {
                 [0,0,1,1,1],
                 [0,0,1,1,1],
                 [0,0,1,1,1]],
-    perfectRep: [[0,1,2,3,4],
+    perfectRep:     [[0,1,2,3,4],
                     [0,1,2,3,4],
                     [0,1,2,3,4],
                     [0,1,2,3,4],
@@ -39,7 +41,7 @@ var groupingData = {
                     [3,3,3,3,3],
                     [4,4,4,4,4],
                     [4,4,4,4,4]],
-    neither: [[0,1,1,1,1],
+    neither:        [[0,1,1,1,1],
                     [0,0,0,0,1],
                     [0,0,0,0,1],
                     [0,2,2,2,1],
@@ -51,12 +53,13 @@ var groupingData = {
                     [4,3,3,3,3]]
     };
 
+var currentData;
+
 var districtNumbers = ["District 1", "District 2", "District 3", "District 4", "District 5"];
 
 var groupingSvg = d3.select("#districtGrouping").append("svg")
     .attr("width", 500)
     .attr("height", 500);
-
 
 districtGroupingInit();
 
@@ -76,8 +79,8 @@ function districtGroupingInit() {
         });
 
     groupLegend.append('rect')
-        .attr('width', 12)
-        .attr('height', 12)
+        .attr('width', 15)
+        .attr('height', 15)
         .style('fill', function(d) {
             return groupColor(d);
         });
@@ -88,62 +91,72 @@ function districtGroupingInit() {
         .attr('y', 10)
         .text(function(d) { return d; });
 
-    districtGroupingVis();
+    // districtGroupingVis();
+    districtGroupingVisInit();
 }
 
-function districtGroupingVis() {
+
+function districtGroupingVisInit() {
+    var groupingDataById = {};
+    var keys = ["perfectRep","compactUnfair","neither"];
+    keys.forEach(function(key){
+        var newList = [];
+        var counts = {};
+        groupingData[key].forEach(function(row){
+            var newRow = [];
+            row.forEach(function(d){
+                var total = 1;
+                if (d in counts){
+                    counts[d] += 1;
+                    total = counts[d];
+                }
+                else {
+                    counts[d] =1;
+                }
+                newRow.push([total,d]);
+            })
+            newList = newList.concat(newRow);
+        });
+        groupingDataById[key] = newList;
+    });
+
     // get selected Group
     selectedGroup = d3.select('input[name="groups"]:checked').property("id");
-
-    // clear all districts first
-    d3.selectAll(".districtGrouping").remove();
+    currentData = groupingDataById[selectedGroup];
 
     // update winner
-    d3.select("#winner").html(function() { 
-            if (selectedGroup == "neither") { return "<span class='red'>Red</span>"; }
-            else { return "<span class='blue'>Blue</span>"; }
-        });
+    d3.select("#winner").html(function() {
+        if (selectedGroup == "neither") { return "<span class='red'>Red</span>"; }
+        else { return "<span class='blue'>Blue</span>"; }
+    });
 
-    // Square shows district    
+    // Square shows district
     var districtG = groupingSvg.append("g")
         .attr("class", "districtGrouping")
         .attr("transform", "translate(100,25)")
-        .selectAll(".row")
-        .data(groupingData[selectedGroup], function(d) { return d; });
-
-    var row = districtG.enter()
-        .append("g")
-        .attr("class", "row");
-
-    row.merge(row)
-        .attr("height", cellHeight)
-        .style("opacity",0.2)
-        .transition()
-        .duration(500)
-        .style("opacity",1)
-        .attr("transform", function(d, i) {
-            return "translate(0," + (cellHeight + cellPadding) * i + ")";
-        });
-
-    var cell = row.selectAll(".cell")
-        .data(function(d) { return d; })
-        .enter().append("rect")
+        .selectAll(".cell")
+        .data(currentData, function(d) { return d; })
+        .enter()
+        .append("rect")
         .attr("class", function(d, i) {
-            return "column" + i;
+            return "cell column" + (i%5);
         })
         .attr("width", cellWidth)
         .attr("height", cellHeight)
-        .attr("x", function(d, i) { 
-            return (cellWidth + cellPadding) * i;
+        // .transition()
+        // .duration(500)
+        .attr("x", function(d, i) {
+            return cellWidth * (i%5);
         })
-        .transition()
-        .duration(500)
-        .attr("y", 0)
+        .attr("y", function(d, i){
+            return cellHeight * (i - i%5)/5;
+        })
         .attr("fill", function(d, i) {
-            return groupColor(d);
+            // console.log(d);
+            return groupColor(d[1]);
         });
 
-        // Circle shows people
+    // Circle shows people
     var partyG = groupingSvg.append("g")
         .attr("class", "partyGrouping")
         .attr("transform", "translate(100,25)");
@@ -172,7 +185,7 @@ function districtGroupingVis() {
         .attr("class", function(d, i) {
             return "cell" + i;
         })
-        .attr("r", cellWidth/2.5)
+        .attr("r", cellWidth/5)
         .attr("cx", function(d, i) {
             return ((cellWidth + cellPadding) * i) + (cellWidth/2);
         })
@@ -180,6 +193,54 @@ function districtGroupingVis() {
         .attr("stroke-width","3")
         .attr("stroke", function(d,i) {
             return (d == 0) ? "#d7301f" : "#2171b5";
-    })
-        .attr("fill","none");
+        })
+        .attr("fill", function(d,i) {
+            return (d == 0) ? "#d7301f" : "#2171b5";
+        });
+}
+
+
+function districtGroupingVisUpdate() {
+    var groupingDataById = {};
+    var keys = ["perfectRep","compactUnfair","neither"];
+    keys.forEach(function(key){
+        var newList = [];
+        var counts = {};
+        groupingData[key].forEach(function(row){
+            var newRow = [];
+            row.forEach(function(d){
+                var total = 1;
+                if (d in counts){
+                    counts[d] += 1;
+                    total = counts[d];
+                }
+                else {
+                    counts[d] =1;
+                }
+                newRow.push([total,d]);
+            })
+            newList = newList.concat(newRow);
+        });
+        groupingDataById[key] = newList;
+    });
+
+    // get selected Group
+    selectedGroup = d3.select('input[name="groups"]:checked').property("id");
+    currentData = groupingDataById[selectedGroup];
+    d3.selectAll(".cell")
+        .data(currentData, function(d){ return d; })
+        .transition()
+        .duration(300)
+        .attr("opacity", 0.8)
+        .transition()
+        .duration(500)
+        .attr("x", function(d, i) {
+            return cellWidth * (i%5);
+        })
+        .attr("y", function(d, i){
+            return cellHeight * (i - i%5)/5;
+        })
+        .transition()
+        .duration(300)
+        .attr("opacity", 1);
 }
