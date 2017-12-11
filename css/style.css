@@ -22,6 +22,9 @@ body {
 .gapData {
     margin-top: -48px;
 }
+#references {
+  background-color: #dedede;
+}
 
 
 /* TEXT STYLES */
