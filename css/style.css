@@ -331,6 +331,8 @@ button:focus {outline:0;}
 #gill {
     /*fill: red !important;*/
     animation: blinker 3s linear infinite;
+    stroke: orange;
+    stroke-width: 3px;
 }
 @keyframes blinker {
     50% { fill: red; }
