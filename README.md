@@ -21,6 +21,6 @@ The **process** folder contains the PDF version of our process book.
 _______
 
 
-Link to project website:
+Link to project website: [http://gerrymandering.herokuapp.com/index.html](http://gerrymandering.herokuapp.com/index.html)
 
-Link to screencast video:
+Link to screencast video: [https://youtu.be/4xJGsNxc448](Youtube)
